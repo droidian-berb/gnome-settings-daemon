@@ -1,7 +1,7 @@
 gnome-settings-daemon (3.4.2+git20121218.7c1322-3+deb7u1) UNRELEASED; urgency=low
 
   * Backport from sid:
-    - Disable "-Wl,-z,defs" on mipsel to fix segfault.
+    - Disable "-Wl,-z,defs" on mipsel to fix segfault.  (Closes: #629351)
 
  -- Xiyue Deng <manphiz-guest@users.alioth.debian.org>  Mon, 03 Jun 2013 00:53:30 -0700
 
