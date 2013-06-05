@@ -1,9 +1,16 @@
-gnome-settings-daemon (3.4.2+git20121218.7c1322-3+deb7u1) UNRELEASED; urgency=low
+gnome-settings-daemon (3.4.2+git20121218.7c1322-3+deb7u1) wheezy; urgency=low
 
+  [ Xiyue Deng ]
   * Backport from sid:
     - Disable "-Wl,-z,defs" on mipsel to fix segfault.  (Closes: #629351)
 
- -- Xiyue Deng <manphiz-guest@users.alioth.debian.org>  Mon, 03 Jun 2013 00:53:30 -0700
+  [ Emilio Pozuelo Monfort ]
+  * debian/patches/10_smaller_syndaemon_timeout.patch:
+    + Update patch to not write out of the array bounds. Fixes a crash
+      when the "Disable touchpad while typing" option is activated.
+      Closes: #684998.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 05 Jun 2013 10:35:35 +0200
 
 gnome-settings-daemon (3.4.2+git20121218.7c1322-3) unstable; urgency=low
 
