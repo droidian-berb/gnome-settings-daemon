@@ -1,3 +1,11 @@
+gnome-settings-daemon (3.4.2+git20121218.7c1322-3+deb7u3) wheezy; urgency=low
+
+  * 10_smaller_syndaemon_timeout.patch: drop patch, which is no longer 
+    related to what it is supposed to do, and makes syndaemon almost 
+    useless.
+
+ -- Josselin Mouette <joss@debian.org>  Wed, 20 Nov 2013 14:07:36 +0100
+
 gnome-settings-daemon (3.4.2+git20121218.7c1322-3+deb7u2) wheezy; urgency=low
 
   * gnome-settings-daemon.gsettings-override: stop installing security 

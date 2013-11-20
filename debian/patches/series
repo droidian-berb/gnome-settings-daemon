@@ -5,7 +5,6 @@
 05_sound_pkg-config.patch
 06_a11y_macro.patch
 06_a11y_gdm_leak.patch
-10_smaller_syndaemon_timeout.patch
 power-check-null-devices.patch
 power-ignore-bad-dbus-requests.patch
 revert_git_datetime_dropping.patch
