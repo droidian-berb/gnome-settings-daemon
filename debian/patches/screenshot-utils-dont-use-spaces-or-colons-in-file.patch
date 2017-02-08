@@ -1,0 +1,30 @@
+From 345001ae99b84dbcbeccc86e19d8efee20fec8b0 Mon Sep 17 00:00:00 2001
+From: Cosimo Cecchi <cosimoc@gnome.org>
+Date: Fri, 21 Nov 2014 17:47:23 -0800
+Subject: [PATCH] screenshot-utils: don't use spaces or colons in filenames
+
+Screenshots are often uploaded to web services or copied to (possibly
+FAT) external drives.
+Don't use characters that would be incompatible with those.
+See https://bugzilla.gnome.org/show_bug.cgi?id=698740
+
+https://bugzilla.gnome.org/show_bug.cgi?id=740520
+---
+ plugins/media-keys/gsd-screenshot-utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/media-keys/gsd-screenshot-utils.c b/plugins/media-keys/gsd-screenshot-utils.c
+index c59ee63..242115f 100644
+--- a/plugins/media-keys/gsd-screenshot-utils.c
++++ b/plugins/media-keys/gsd-screenshot-utils.c
+@@ -296,7 +296,7 @@ screenshot_build_filename (void)
+   GDateTime *d;
+ 
+   d = g_date_time_new_now_local ();
+-  origin = g_date_time_format (d, "%Y-%m-%d %H:%M:%S");
++  origin = g_date_time_format (d, "%Y-%m-%d %H-%M-%S");
+   g_date_time_unref (d);
+ 
+   /* translators: this is the name of the file that gets made up
+-- 
+2.1.0

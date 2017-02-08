@@ -2,3 +2,4 @@
 04_superP.patch
 30_xrandr_dbus_init.patch
 power-make-sure-to-set-an-error-when-GDBus-set_prope.patch
+screenshot-utils-dont-use-spaces-or-colons-in-file.patch
