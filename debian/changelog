@@ -1,3 +1,10 @@
+gnome-settings-daemon (3.30.2-3) unstable; urgency=medium
+
+  * debian/rules: Set libdir to /usr/lib, this is needed for the gtk-modules
+    (Closes: #922125)
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 12 Feb 2019 13:24:57 +0100
+
 gnome-settings-daemon (3.30.2-2) unstable; urgency=medium
 
   * keyboard-Enable-ibus-for-OSK-purposes.patch: Cherry-pick from master.
