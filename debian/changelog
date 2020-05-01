@@ -1,3 +1,11 @@
+gnome-settings-daemon (3.36.1-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New upstream version (lp: #1876263)
+  * debian/patches/git_sound_feedback.patch:
+    - removed, included in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Fri, 01 May 2020 10:36:23 +0200
+
 gnome-settings-daemon (3.36.0-1ubuntu2) focal; urgency=medium
 
   * debian/patches/ubuntu_vino_handling.patch: restore support to handle
