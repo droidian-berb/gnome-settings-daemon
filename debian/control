@@ -6,7 +6,7 @@ Source: gnome-settings-daemon
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Gunnar Hjalmarsson <gunnarhj@debian.org>, Iain Lane <laney@debian.org>, Jeremy Bicha <jbicha@ubuntu.com>, Laurent Bigonville <bigon@debian.org>
+Uploaders: Amin Bandali <bandali@ubuntu.com>, Gunnar Hjalmarsson <gunnarhj@debian.org>, Jeremy Bícha <jbicha@ubuntu.com>, Laurent Bigonville <bigon@debian.org>, Marco Trevisan (Treviño) <marco@ubuntu.com>
 Build-Depends: debhelper-compat (= 13),
                dh-exec,
                dh-sequence-gnome,
@@ -19,6 +19,7 @@ Build-Depends: debhelper-compat (= 13),
                libcups2-dev,
                libfontconfig-dev,
                libgcr-3-dev (>= 3.7.5) [linux-any],
+               libgck-1-dev (>= 3.36.0),
                libgeoclue-2-dev (>= 2.3.1),
                libgeocode-glib-dev (>= 3.26.3),
                libglib2.0-dev (>= 2.56),
@@ -31,7 +32,6 @@ Build-Depends: debhelper-compat (= 13),
                liblcms2-dev,
                libnm-dev (>= 1.0) [linux-any],
                libnotify-dev (>= 0.7.3),
-               libnss3-dev,
                libmm-glib-dev (>= 1.0) [linux-any],
                libpackagekit-glib2-dev (>= 0.8.1),
                libpolkit-gobject-1-dev,
