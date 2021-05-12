@@ -2583,6 +2583,10 @@ engine_session_properties_changed_cb (GDBusProxy      *session,
                                       GsdPowerManager *manager)
 {
         GVariant *v;
+        gboolean display_wake_disabled;
+
+        display_wake_disabled = g_settings_get_boolean (manager->settings_droidian_power,
+                                                        "disable-display-wake");
 
         v = g_variant_lookup_value (changed, "SessionIsActive", G_VARIANT_TYPE_BOOLEAN);
         if (v) {
@@ -2593,7 +2597,7 @@ engine_session_properties_changed_cb (GDBusProxy      *session,
                 manager->session_is_active = active;
                 /* when doing the fast-user-switch into a new account,
                  * ensure the new account is undimmed and with the backlight on */
-                if (active) {
+                if (active && !display_wake_disabled) {
                         idle_set_mode (manager, GSD_POWER_IDLE_MODE_NORMAL);
                         iio_proxy_claim_light (manager, TRUE);
                 } else {
@@ -2787,7 +2791,8 @@ static void
 handle_resume_actions (GsdPowerManager *manager)
 {
         /* ensure we turn the panel back on after resume */
-        backlight_enable (manager);
+        if (!g_settings_get_boolean (manager->settings_droidian_power, "disable-display-wake"))
+            backlight_enable (manager);
 
         /* set up the delay again */
         inhibit_suspend (manager);
