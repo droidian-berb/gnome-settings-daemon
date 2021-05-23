@@ -150,6 +150,7 @@ struct _GsdPowerManager
         GSettings               *settings;
         GSettings               *settings_bus;
         GSettings               *settings_screensaver;
+        GSettings               *settings_droidian_power;
 
         /* Screensaver */
         GsdScreenSaver          *screensaver_proxy;
@@ -2962,6 +2963,7 @@ gsd_power_manager_start (GsdPowerManager *manager,
         manager->settings = g_settings_new (GSD_POWER_SETTINGS_SCHEMA);
         manager->settings_screensaver = g_settings_new ("org.gnome.desktop.screensaver");
         manager->settings_bus = g_settings_new ("org.gnome.desktop.session");
+        manager->settings_droidian_power = g_settings_new ("org.droidian.settings-daemon.power");
 
         /* setup ambient light support */
         manager->iio_proxy_watch_id =
@@ -3117,6 +3119,7 @@ gsd_power_manager_stop (GsdPowerManager *manager)
         g_clear_object (&manager->settings);
         g_clear_object (&manager->settings_screensaver);
         g_clear_object (&manager->settings_bus);
+        g_clear_object (&manager->settings_droidian_power);
         g_clear_object (&manager->up_client);
 
         iio_proxy_claim_light (manager, FALSE);
