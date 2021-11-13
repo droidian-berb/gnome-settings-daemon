@@ -1243,8 +1243,10 @@ iio_proxy_claim_light (GsdPowerManager *manager, gboolean active)
                 return;
         if (!manager->backlight)
                 return;
-	if (active && !manager->session_is_active)
-		return;
+        if (active && !manager->session_is_active)
+                return;
+        if (active && !g_settings_get_boolean (manager->settings, "ambient-enabled"))
+                return;
 
         /* FIXME:
          * Remove when iio-sensor-proxy sends events only to clients instead
@@ -2563,6 +2565,13 @@ engine_settings_key_changed_cb (GSettings *settings,
                         enable_power_saver (manager);
                 else
                         disable_power_saver (manager);
+                return;
+        }
+        if (g_str_equal (key, "ambient-enabled")) {
+                if (manager->current_idle_mode == GSD_POWER_IDLE_MODE_NORMAL ||
+                    manager->current_idle_mode == GSD_POWER_IDLE_MODE_DIM)
+                        iio_proxy_claim_light (manager,
+                                               g_settings_get_boolean (settings, key));
                 return;
         }
 }
