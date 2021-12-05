@@ -1,19 +1,17 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '3.38.0',
+  version: '41.0',
   license: [ 'GPL2+', 'LGPLv2+' ],
-  meson_version: '>= 0.47.0'
+  meson_version: '>= 0.49.0'
 )
 
 gsd_version = meson.project_version()
 version_array = gsd_version.split('.')
 gsd_major_version = version_array[0].to_int()
 
-gsd_api_version_minor = 0
-gsd_api_version = '@0@.@1@'.format(gsd_major_version, gsd_api_version_minor)
-gsd_api_name = '@0@-@1@'.format(meson.project_name(), gsd_api_version)
+gsd_api_name = '@0@-@1@'.format(meson.project_name(), gsd_major_version)
 
-glib_min_version = '2.56'
+glib_min_version = '2.58'
 
 glib_version_def = 'GLIB_VERSION_@0@_@1@'.format(
     glib_min_version.split('.')[0], glib_min_version.split('.')[1])
@@ -34,6 +32,9 @@ gsd_pkglibdir = join_paths(gsd_libdir, gsd_api_name)
 gsd_schemadir = join_paths(gsd_datadir, 'glib-2.0', 'schemas')
 
 gsd_xdg_autostart = join_paths(gsd_sysconfdir, 'xdg', 'autostart')
+
+gsd_3_0_api_name = '@0@-@1@'.format(meson.project_name(), '3.0')
+gsd_gtk_modules_directory = join_paths(gsd_libdir, gsd_3_0_api_name, 'gtk-modules')
 
 gsd_buildtype = get_option('buildtype')
 
@@ -81,9 +82,7 @@ elif gsd_buildtype.contains('release')
   common_flags += ['-DG_DISABLE_CAST_CHECKS']
 endif
 
-# Workaround for meson's bug
-# https://github.com/mesonbuild/meson/pull/1896
-if get_option('b_ndebug') == true
+if get_option('b_ndebug') == 'true'
   common_flags += ['-DG_DISABLE_ASSERT']
 endif
 
@@ -93,11 +92,11 @@ glib_dep = dependency('glib-2.0', version: '>=' + glib_min_version)
 geocode_glib_dep = dependency('geocode-glib-1.0', version: '>= 3.10.0')
 gio_dep = dependency('gio-2.0', version: '>= 2.53.0')
 gio_unix_dep = dependency('gio-unix-2.0')
-gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.34.2')
-gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 3.35.91')
+gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.37.1')
+gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 40')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.15.3')
 gtk_x11_dep = dependency('gtk+-x11-3.0')
-gweather_dep = dependency('gweather-3.0', version: '>= 3.9.5')
+gweather_dep = dependency('gweather-3.0', version: '>= 40.alpha')
 lcms_dep = dependency('lcms2', version: '>= 2.2')
 libcanberra_gtk_dep = dependency('libcanberra-gtk3')
 libgeoclue_dep = dependency('libgeoclue-2.0', version: '>= 2.3.1')
@@ -107,6 +106,7 @@ pango_dep = dependency('pango', version: '>= 1.20.0')
 polkit_gobject_dep = dependency('polkit-gobject-1', version: '>= 0.105')
 upower_glib_dep = dependency('upower-glib', version: '>= 0.99.8')
 x11_dep = dependency('x11')
+xfixes_dep = dependency('xfixes', version: '>= 6.0')
 
 enable_systemd = get_option('systemd')
 if enable_systemd
@@ -228,7 +228,7 @@ config_h.set10('HAVE_NETWORK_MANAGER', enable_network_manager)
 # colord
 enable_colord = get_option('colord')
 if enable_colord
-  colord_dep = dependency('colord', version: '>= 1.3.5')
+  colord_dep = dependency('colord', version: '>= 1.4.5')
 endif
 
 gnome = import('gnome')
@@ -263,6 +263,7 @@ output += '        libexecdir:               ' + gsd_libexecdir + '\n'
 output += '        bindir:                   ' + gsd_bindir + '\n'
 output += '        sysconfdir:               ' + gsd_sysconfdir + '\n'
 output += '        datadir:                  ' + gsd_datadir + '\n\n'
+output += '        gtk modules dir:          ' + gsd_gtk_modules_directory + '\n\n'
 output += '        source code location:     ' + meson.source_root() + '\n'
 output += '        compiler:                 ' + cc.get_id() + '\n'
 output += '        cflags:                   ' + ' '.join(compiler_flags) + '\n\n'

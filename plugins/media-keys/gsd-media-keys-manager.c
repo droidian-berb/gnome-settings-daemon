@@ -229,6 +229,7 @@ typedef struct
 
         /* RFKill stuff */
         guint            rfkill_watch_id;
+        guint64          rfkill_last_time;
         GDBusProxy      *rfkill_proxy;
         GCancellable    *rfkill_cancellable;
 
@@ -1645,7 +1646,8 @@ do_sound_action (GsdMediaKeysManager *manager,
 }
 
 static void
-update_default_sink (GsdMediaKeysManager *manager)
+update_default_sink (GsdMediaKeysManager *manager,
+                     gboolean             warn)
 {
         GsdMediaKeysManagerPrivate *priv = GSD_MEDIA_KEYS_MANAGER_GET_PRIVATE (manager);
         GvcMixerStream *stream;
@@ -1659,12 +1661,16 @@ update_default_sink (GsdMediaKeysManager *manager)
         if (stream != NULL) {
                 priv->sink = g_object_ref (stream);
         } else {
-                g_warning ("Unable to get default sink");
+                if (warn)
+                        g_warning ("Unable to get default sink");
+                else
+                        g_debug ("Unable to get default sink");
         }
 }
 
 static void
-update_default_source (GsdMediaKeysManager *manager)
+update_default_source (GsdMediaKeysManager *manager,
+                       gboolean             warn)
 {
         GsdMediaKeysManagerPrivate *priv = GSD_MEDIA_KEYS_MANAGER_GET_PRIVATE (manager);
         GvcMixerStream *stream;
@@ -1678,7 +1684,10 @@ update_default_source (GsdMediaKeysManager *manager)
         if (stream != NULL) {
                 priv->source = g_object_ref (stream);
         } else {
-                g_warning ("Unable to get default source");
+                if (warn)
+                        g_warning ("Unable to get default source");
+                else
+                        g_debug ("Unable to get default source");
         }
 }
 
@@ -1687,8 +1696,8 @@ on_control_state_changed (GvcMixerControl     *control,
                           GvcMixerControlState new_state,
                           GsdMediaKeysManager *manager)
 {
-        update_default_sink (manager);
-        update_default_source (manager);
+        update_default_sink (manager, new_state == GVC_STATE_READY);
+        update_default_source (manager, new_state == GVC_STATE_READY);
 }
 
 static void
@@ -1696,7 +1705,7 @@ on_control_default_sink_changed (GvcMixerControl     *control,
                                  guint                id,
                                  GsdMediaKeysManager *manager)
 {
-        update_default_sink (manager);
+        update_default_sink (manager, TRUE);
 }
 
 static void
@@ -1704,7 +1713,7 @@ on_control_default_source_changed (GvcMixerControl     *control,
                                    guint                id,
                                    GsdMediaKeysManager *manager)
 {
-        update_default_source (manager);
+        update_default_source (manager, TRUE);
 }
 
 #if HAVE_GUDEV
@@ -2334,6 +2343,9 @@ do_config_power_button_action (GsdMediaKeysManager *manager,
         case GSD_POWER_BUTTON_ACTION_INTERACTIVE:
                 action = GSD_POWER_ACTION_INTERACTIVE;
                 break;
+        default:
+                g_warn_if_reached ();
+                G_GNUC_FALLTHROUGH;
         case GSD_POWER_BUTTON_ACTION_NOTHING:
                 /* do nothing */
                 return;
@@ -2545,6 +2557,7 @@ do_rfkill_action (GsdMediaKeysManager *manager,
         GsdMediaKeysManagerPrivate *priv = GSD_MEDIA_KEYS_MANAGER_GET_PRIVATE (manager);
         const char *has_mode, *hw_mode, *mode;
         gboolean new_state;
+        guint64 current_time;
         RfkillData *data;
 
         has_mode = bluetooth ? "BluetoothHasAirplaneMode" : "HasAirplaneMode";
@@ -2553,6 +2566,15 @@ do_rfkill_action (GsdMediaKeysManager *manager,
 
         if (priv->rfkill_proxy == NULL)
                 return;
+
+        /* Some hardwares can generate multiple rfkill events from different
+         * drivers, on a single hotkey press. Only process the first event and
+         * debounce the others */
+        current_time = g_get_monotonic_time ();
+        if (current_time - priv->rfkill_last_time < G_USEC_PER_SEC)
+                return;
+
+        priv->rfkill_last_time = current_time;
 
         if (get_rfkill_property (manager, has_mode) == FALSE)
                 return;

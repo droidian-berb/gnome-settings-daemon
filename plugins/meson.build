@@ -48,6 +48,10 @@ if not enable_colord
   disabled_plugins += ['color']
 endif
 
+if not enable_cups
+  disabled_plugins += ['print-notifications']
+endif
+
 # Specify futher required units, 'before' or 'after' may be specified if ordering is needed
 plugin_gate_units = {
     'xsettings': [
@@ -57,11 +61,6 @@ plugin_gate_units = {
     ],
 #    'wacom': [['wacom.target']],
 #    'smartcard': [['smartcard.target']],
-}
-
-# Restart=on-failure is the default
-plugin_restart_rule = {
-    'xsettings' : 'on-abnormal',
 }
 
 plugins_conf = configuration_data()
@@ -109,7 +108,6 @@ foreach plugin: all_plugins
         input: desktop_in_file,
         output: desktop,
         configuration: desktop_conf,
-        install: true,
         install_dir: gsd_xdg_autostart
     )
 
@@ -122,7 +120,6 @@ foreach plugin: all_plugins
         unit_conf.set('description', plugin_description)
         unit_conf.set('libexecdir', gsd_libexecdir)
         unit_conf.set('plugin_dbus_name', plugin_dbus_name)
-        unit_conf.set('plugin_restart', plugin_restart_rule.get(plugin_name, 'on-failure'))
 
         gates_all = []
         gates_after = []
@@ -158,14 +155,12 @@ foreach plugin: all_plugins
                 input: 'gsd.service.in',
                 output: user_service,
                 configuration: unit_conf,
-                install: true,
                 install_dir: systemd_userunitdir
             )
             configure_file(
                 input: 'gsd.target.in',
                 output: user_target,
                 configuration: unit_conf,
-                install: true,
                 install_dir: systemd_userunitdir
             )
 

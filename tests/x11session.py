@@ -56,6 +56,8 @@ class X11SessionTestCase(DBusTestCase):
     @classmethod
     def setUpClass(klass):
         klass.start_xorg()
+        klass.addClassCleanup(klass.stop_xorg)
+
         klass.start_system_bus()
         klass.start_session_bus()
 
@@ -94,7 +96,10 @@ class X11SessionTestCase(DBusTestCase):
         klass.X_display = display
         # Export information into our environment for tests to use
         os.environ['DISPLAY'] = ":%d" % klass.X_display
-        os.environ['WAYLAND'] = ''
+        if 'GNOME_SETUP_DISPLAY' in os.environ:
+            del os.environ['GNOME_SETUP_DISPLAY']
+        if 'WAYLAND_DISPLAY' in os.environ:
+            del os.environ['WAYLAND_DISPLAY']
 
         # Server should still be up and running at this point
         assert klass.xorg.poll() is None
@@ -106,11 +111,10 @@ class X11SessionTestCase(DBusTestCase):
         if hasattr(klass, 'xorg'):
             klass.X_display = -1
             klass.xorg.terminate()
-            klass.xorg.wait()
+            try:
+                klass.xorg.wait(1)
+            except:
+                klass.xorg.kill()
+                klass.xorg.wait()
             del klass.xorg
 
-    @classmethod
-    def tearDownClass(klass):
-        DBusTestCase.tearDownClass()
-
-        klass.stop_xorg()

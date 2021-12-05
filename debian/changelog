@@ -1,3 +1,119 @@
+gnome-settings-daemon (41.0-2) unstable; urgency=medium
+
+  * Release to unstable
+
+ -- Jeremy Bicha <jbicha@debian.org>  Tue, 28 Sep 2021 19:33:07 -0400
+
+gnome-settings-daemon (41.0-1) experimental; urgency=medium
+
+  * New upstream release
+  * Drop libgweather-3.36 patch: no longer needed
+  * debian/control.in: Bump minimum libgweather to 40
+  * debian/control.in: Bump minimum meson to 0.49.0 and glib to 2.58
+  * debian.control.in: Bump minimum upower to 0.99.12
+
+ -- Jeremy Bicha <jbicha@debian.org>  Sun, 26 Sep 2021 16:48:10 -0400
+
+gnome-settings-daemon (40.0.1-2) unstable; urgency=medium
+
+  * Team upload
+  * d/p/datetime-Restore-compatibility-with-libgweather-3.36.patch:
+    Add patch to restore compatibility with libgweather 3.36.
+    This will let us get the core GNOME 40 components such as Shell and
+    g-s-d into testing without having to do a libgweather transition at
+    the same time.
+  * Release to unstable (part of transition: #992870)
+
+ -- Simon McVittie <smcv@debian.org>  Sat, 11 Sep 2021 21:21:20 +0100
+
+gnome-settings-daemon (40.0.1-1) experimental; urgency=medium
+
+  * New upstream release:
+    - Remove screenshot sound feedback, performed by gnome-shell
+    - Make use of new gweather API
+    - Use font aa/hinting/rgba-order from gsettings-desktop-schemas
+    - Use mouse drag-threshold/double-click from gsettings-desktop-schemas
+  * debian/control: Update build-dependencies to follow upstream
+  * debian: Use debhelper 13 and simplify debian/rules accordingly
+  * debian: Use dh 13 variable substitutions to install versioned libs.
+    Upstream g-s-d will use major version name now to define various paths,
+    so follow this by using some dh-13 magic.
+  * debian/control: Add Breaks on old gtk and mutter.
+    Since the font-settings related schemas are now moved to
+    gsettings-desktop-schemas, this version will break with various
+    libraries and applications relying on them.
+    So, add breaks on old versions of gtk3, gtk4 and mutter libraries
+    (using unreleased versions, as it's not expected that any new version of
+    them will be adapted to this change).
+    Do not break on gnome-tweaks, as it will still work even though without
+    showing the font settings, but this is not an huge requirement.
+
+ -- Marco Trevisan (Treviño) <marco@ubuntu.com>  Mon, 31 May 2021 20:17:23 +0200
+
+gnome-settings-daemon (3.38.2-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+    - Set unbuffered mode to read /dev/rfkill, fixing rfkill monitoring
+      on some kernel versions
+    - Translation update: sr
+    - Various other changes were already in 3.38.1-3
+  * Drop patches that came from upstream
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 05 May 2021 21:38:31 +0100
+
+gnome-settings-daemon (3.38.1-3) unstable; urgency=medium
+
+  * Team upload
+
+  [ Laurent Bigonville ]
+  * Disable colord support on non-linux architectures
+
+  [ Simon McVittie ]
+  * Update to upstream git commit
+    GNOME_SETTINGS_DAEMON_3_38_1-15-g6018dd49 from the gnome-3-38 branch
+    - Avoid warning about wireless input devices' low battery levels every
+      time they reconnect, which can be frequent
+    - Reduce memory use of gsd-datetime plugin
+    - Unit test fixes
+    - Translation updates
+  * Standards-Version: 4.5.1 (no changes required)
+  * Use upstream/3.38.x git branch.
+    Upstream has branched for GNOME 40.
+  * Mark g-s-d-dev as Multi-Arch: same.
+    Move the pkg-config metadata to /usr/share/pkgconfig to allow for
+    cross-compilation. There is actually nothing architecture-specific in
+    g-s-d-dev itself, but it depends on libglib2.0-dev, so leave it as
+    Architecture: any to get the right transitive dependency.
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 15 Jan 2021 09:56:54 +0000
+
+gnome-settings-daemon (3.38.1-2) unstable; urgency=medium
+
+  * Team upload
+  * d/patches: Update from upstream git commit
+    GNOME_SETTINGS_DAEMON_3_38_1-6-gaffebf89
+    - Fix a crash if a filesystem does not provide atime
+    - If system-wide power management idle action is set to log out,
+      ignore it in the gdm greeter (for which logging out makes no sense)
+    - Silence unnecessary warnings if usbguard is not installed
+    - Translation updates
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 23 Nov 2020 10:14:55 +0000
+
+gnome-settings-daemon (3.38.1-1) unstable; urgency=medium
+
+  * Team upload
+  * New upstream release
+    - Update gnome-volume-control with support for PulseAudio 14
+      (currently only in experimental, a binNMU will be required when
+      it arrives in unstable)
+    - Avoid unnecessary warnings from media-keys plugin
+    - Translation updates
+  * d/p/01_debianize_xrdb.patch: Add DEP-3 metadata
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 02 Nov 2020 10:26:54 +0000
+
 gnome-settings-daemon (3.38.0-2) unstable; urgency=medium
 
   * Team upload

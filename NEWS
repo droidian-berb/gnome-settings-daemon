@@ -1,3 +1,134 @@
+============
+Version 41.0
+============
+- Translation updates
+
+USB protection:
+- don't crash when screensaver service is unavailable
+
+Power:
+- Fix location of comments for translators
+
+=============
+Version 41.rc
+=============
+- Translation updates
+- CI and test fixes
+
+Power:
+- Enable power-saver profile when low on battery
+- Dim the screen quicker by default
+- Generalize laptop battery notifications
+- Refactor battery notifications for external devices
+
+Media-keys:
+- Replace deprecated calls
+- Add one second delay between each rfkill event
+
+Housekeeping:
+- Use GRefCount
+
+USB-protection:
+- Authorize devices after screen has been locked
+- Improve debug output
+- Misc. fixes
+
+Xsettings:
+- Add support for XFixes ClientDisconnectMode
+
+==============
+Version 40.0.1
+==============
+
+rfkill:
+- Fix reading /dev/rfkill on newer kernels
+
+============
+Version 40.0
+============
+- No changes WRT 40.rc
+
+=============
+Version 40.rc
+=============
+- Translation updates
+- Test framework improvements
+
+Xsettings:
+- Go back to loading gtk modules from lib/gnome-settings-daemon-3.0
+
+===============
+Version 40.beta
+===============
+- Translation updates
+
+Power:
+- Close idleness notifications before suspending
+
+Media-keys:
+- Fix compiler warning
+- Remove screenshot sound feedback, performed by
+  GNOME Shell.
+
+Xsettings:
+- Use Restart=on-failure like other plugins
+
+==================
+Version 40.alpha.1
+==================
+- Translation updates
+- Use pathless "false" on dummy desktop files
+- Auto-start screen saver service
+
+Datetime:
+- Make use of new gweather API
+
+Xsettings:
+- Fix mouse schema location
+- Fix updates after font settings changes
+
+================
+Version 40.alpha
+================
+- Translation updates
+- CI/test fixes
+
+Housekeeping:
+- Fix crash when atime is not present
+
+Power:
+- Avoid automatic logout in GDM/greeter
+- Do not warn more than once per warning level for devices
+
+USB-protection:
+- Do not warn about ServiceUnknown errors for USBGuard
+
+Datetime:
+- Query GWeather DB on the fly instead of caching
+
+Color:
+- Use the windowing system color transform matrix if available
+- Consider night-light active when disabled until tomorrow
+
+Xsettings:
+- Use font aa/hinting/rgba-order from gsettings-desktop-schemas
+- Use mouse drag-threshold/double-click from gsettings-desktop-schemas
+
+==============
+Version 3.38.1
+==============
+Sound:
+- Update g-v-c dependency. Necessary to support related UCM
+  changes in ALSA and Pulseaudio
+
+Media-keys:
+- Don't throw unnecessary warnings
+
+Print-notification:
+- Disable plugin if CUPS is diabled
+
+- Translation updates
+
 ==============
 Version 3.38.0
 ==============
