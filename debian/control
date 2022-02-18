@@ -40,6 +40,7 @@ Build-Depends: debhelper-compat (= 13),
                libwacom-dev (>= 0.7) [!hurd-any !kfreebsd-any !s390 !s390x],
                libx11-dev,
                libxext-dev,
+               libxfixes-dev (>= 1:6.0),
                libxi-dev,
                libxt-dev,
                meson (>= 0.49.0),
@@ -53,7 +54,7 @@ Build-Depends: debhelper-compat (= 13),
                xkb-data,
                xserver-xorg-input-wacom [!hurd-any !kfreebsd-any !s390 !s390x],
                xvfb <!nocheck>
-Standards-Version: 4.5.1
+Standards-Version: 4.6.0
 Vcs-Git: https://salsa.debian.org/gnome-team/gnome-settings-daemon.git
 Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-settings-daemon
 Rules-Requires-Root: no
