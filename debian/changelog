@@ -1,5 +1,6 @@
 gnome-settings-daemon (42.2-1) unstable; urgency=medium
 
+  * Team upload
   * New upstream release (LP: #1969637)
   * Bump Standards-Version to 4.6.1
 
