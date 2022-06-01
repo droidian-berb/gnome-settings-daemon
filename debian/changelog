@@ -1,3 +1,9 @@
+gnome-settings-daemon (42.2-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Gunnar Hjalmarsson <gunnarhj@ubuntu.com>  Wed, 01 Jun 2022 11:34:48 +0200
+
 gnome-settings-daemon (42.1-3) unstable; urgency=medium
 
   * Drop Revert-sharing-Don-t-manage-gnome-remote-desktop.patch
