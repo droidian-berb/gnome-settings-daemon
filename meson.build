@@ -1,6 +1,6 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '42.2',
+  version: '43.beta',
   license: [ 'GPL2+', 'LGPLv2+' ],
   meson_version: '>= 0.49.0'
 )
@@ -89,7 +89,10 @@ endif
 add_project_arguments(common_flags + compiler_flags, language: 'c')
 
 glib_dep = dependency('glib-2.0', version: '>=' + glib_min_version)
-geocode_glib_dep = dependency('geocode-glib-1.0', version: '>= 3.10.0')
+geocode_glib_dep = dependency('geocode-glib-2.0', version: '>= 3.26.3', required: false)
+if not geocode_glib_dep.found()
+  geocode_glib_dep = dependency('geocode-glib-1.0', version: '>= 3.10.0')
+endif
 gio_dep = dependency('gio-2.0', version: '>= 2.53.0')
 gio_unix_dep = dependency('gio-unix-2.0')
 gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.37.1')
@@ -211,7 +214,12 @@ endif
 # wwan
 enable_wwan = get_option('wwan')
 if enable_wwan
-  gcr_base_dep = dependency('gcr-base-3', version: '>= 3.7.5')
+  if get_option('gcr3')
+     gcr_dep = dependency('gcr-base-3', version: '>= 3.7.5')
+     config_h.set10('HAVE_GCR3', 1)
+  else
+     gcr_dep = dependency('gcr-4', version: '>= 3.90.0')
+  endif
   mm_glib_dep = dependency('mm-glib', version: '>= 1.0')
 endif
 
