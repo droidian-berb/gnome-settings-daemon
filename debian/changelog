@@ -1,8 +1,11 @@
-gnome-settings-daemon (43~beta-1) UNRELEASED; urgency=medium
+gnome-settings-daemon (43~beta-1) unstable; urgency=medium
 
   * New upstream release
+    - Unset GDK_BACKEND envvar if a specific backend is needed
+      (Closes: #1008992)
+  * debian/rules: Keep building using gcr3 for now
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 09 Aug 2022 15:59:41 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 09 Aug 2022 16:03:26 -0400
 
 gnome-settings-daemon (42.2-1) unstable; urgency=medium
 
@@ -440,7 +443,7 @@ gnome-settings-daemon (3.31.91-1) experimental; urgency=medium
 
 gnome-settings-daemon (3.31.90-1) experimental; urgency=medium
 
-  * New upstream development release 
+  * New upstream development release
   * Drop Build-Depend on libxtst-dev
   * Drop patch: applied in new release
 
