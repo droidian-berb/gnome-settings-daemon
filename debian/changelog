@@ -1,8 +1,9 @@
-gnome-settings-daemon (43~rc-1) UNRELEASED; urgency=medium
+gnome-settings-daemon (43~rc-1) unstable; urgency=medium
 
   * New upstream release
+  * Build against libsoup3
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 05 Sep 2022 16:34:52 -0400
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 05 Sep 2022 16:37:43 -0400
 
 gnome-settings-daemon (43~beta-1) unstable; urgency=medium
 
