@@ -76,6 +76,10 @@ class GSDTestCase(X11SessionTestCase):
         os.environ['XDG_DATA_HOME'] = os.path.join(klass.workdir, 'data')
         os.environ['XDG_RUNTIME_DIR'] = os.path.join(klass.workdir, 'runtime')
 
+        # Make dconf discoverable (requires newer dbusmock API, is not needed otherwise)
+        if hasattr(klass, 'enable_service'):
+            klass.enable_service('ca.desrt.dconf')
+
         # Copy gschema file into XDG_DATA_HOME
         gschema_dir = os.path.join(os.environ['XDG_DATA_HOME'], 'glib-2.0', 'schemas')
         os.makedirs(gschema_dir)
@@ -111,6 +115,9 @@ class GSDTestCase(X11SessionTestCase):
         def r(*args):
             raise KeyboardInterrupt()
         signal.signal(signal.SIGTERM, r)
+
+    def setUp(self):
+        self.daemon_death_expected = False
 
     def tearDown(self):
         # we check this at the end so that the other cleanup always happens

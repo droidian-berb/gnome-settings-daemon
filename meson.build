@@ -1,8 +1,8 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '41.0',
+  version: '43.rc',
   license: [ 'GPL2+', 'LGPLv2+' ],
-  meson_version: '>= 0.49.0'
+  meson_version: '>= 0.57.0'
 )
 
 gsd_version = meson.project_version()
@@ -89,14 +89,17 @@ endif
 add_project_arguments(common_flags + compiler_flags, language: 'c')
 
 glib_dep = dependency('glib-2.0', version: '>=' + glib_min_version)
-geocode_glib_dep = dependency('geocode-glib-1.0', version: '>= 3.10.0')
+geocode_glib_dep = dependency('geocode-glib-2.0', version: '>= 3.26.3', required: false)
+if not geocode_glib_dep.found()
+  geocode_glib_dep = dependency('geocode-glib-1.0', version: '>= 3.10.0')
+endif
 gio_dep = dependency('gio-2.0', version: '>= 2.53.0')
 gio_unix_dep = dependency('gio-unix-2.0')
 gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.37.1')
-gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 40')
+gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.15.3')
 gtk_x11_dep = dependency('gtk+-x11-3.0')
-gweather_dep = dependency('gweather-3.0', version: '>= 40.alpha')
+gweather_dep = dependency('gweather4')
 lcms_dep = dependency('lcms2', version: '>= 2.2')
 libcanberra_gtk_dep = dependency('libcanberra-gtk3')
 libgeoclue_dep = dependency('libgeoclue-2.0', version: '>= 2.3.1')
@@ -211,7 +214,12 @@ endif
 # wwan
 enable_wwan = get_option('wwan')
 if enable_wwan
-  gcr_base_dep = dependency('gcr-base-3', version: '>= 3.7.5')
+  if get_option('gcr3')
+     gcr_dep = dependency('gcr-base-3', version: '>= 3.7.5')
+     config_h.set10('HAVE_GCR3', 1)
+  else
+     gcr_dep = dependency('gcr-4', version: '>= 3.90.0')
+  endif
   mm_glib_dep = dependency('mm-glib', version: '>= 1.0')
 endif
 
@@ -248,9 +256,8 @@ configure_file(
   configuration: config_h
 )
 
-meson.add_install_script(
-  'meson_post_install.py',
-  gsd_datadir
+gnome.post_install(
+  glib_compile_schemas: true,
 )
 
 output = '\n        ' + meson.project_name() + ' ' + meson.project_version() +'\n'

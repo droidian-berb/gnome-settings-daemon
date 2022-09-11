@@ -38,6 +38,43 @@ from gi.repository import GLib
 from gi.repository import UPowerGlib
 from gi.repository import UMockdev
 
+# There must be a better way to do a version comparison ... but this works
+mutter_version = subprocess.run(['mutter', '--version'], stdout=subprocess.PIPE).stdout.decode().strip()
+assert mutter_version.startswith('mutter ')
+mutter_version = mutter_version[7:].split('.')
+
+def mutter_at_least(version):
+    global mutter_version
+    version = version.split('.')
+
+    for i in range(max(len(mutter_version), len(version))):
+        m = mutter_version[i]
+        try:
+            m = int(m)
+        except:
+            pass
+
+        v = version[i]
+        try:
+            v = int(v)
+        except:
+            pass
+
+        try:
+            if m > v:
+                return True
+            elif m < v:
+                return False
+        except TypeError:
+            # String is smaller than integer
+            if isinstance(m, str):
+                return False
+            else:
+                return True
+
+    # assume equal
+    return True
+
 class PowerPluginBase(gsdtestcase.GSDTestCase):
     '''Test the power plugin'''
 
@@ -584,7 +621,8 @@ class PowerPluginTest4(PowerPluginBase):
             dbus.UInt32(gsdpowerenums.GSM_INHIBITOR_FLAG_SUSPEND),
             dbus_interface='org.gnome.SessionManager')
 
-        time.sleep (gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT)
+        # Wait for startup inhibition to be gone
+        self.check_for_lid_uninhibited(gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 2)
 
         # Close the lid
         self.obj_upower.Set('org.freedesktop.UPower', 'LidIsClosed', True)
@@ -611,7 +649,8 @@ class PowerPluginTest4(PowerPluginBase):
             dbus.UInt32(gsdpowerenums.GSM_INHIBITOR_FLAG_SUSPEND),
             dbus_interface='org.gnome.SessionManager')
 
-        time.sleep (gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT)
+        # Wait for startup inhibition to be gone
+        self.check_for_lid_uninhibited(gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 2)
 
         # Close the lid
         self.obj_upower.Set('org.freedesktop.UPower', 'LidIsClosed', True)
@@ -625,6 +664,7 @@ class PowerPluginTest4(PowerPluginBase):
                 dbus_interface='org.gnome.SessionManager')
         # At this point logind should suspend for us
 
+    @unittest.skipIf(not mutter_at_least('42.0'), reason="mutter is too old and may be buggy")
     def test_unblank_on_lid_open(self):
         '''Check that we do unblank on lid opening, if the machine will not suspend'''
 
@@ -634,7 +674,8 @@ class PowerPluginTest4(PowerPluginBase):
             dbus.UInt32(gsdpowerenums.GSM_INHIBITOR_FLAG_SUSPEND),
             dbus_interface='org.gnome.SessionManager')
 
-        time.sleep (gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT)
+        # Wait for startup inhibition to be gone
+        self.check_for_lid_uninhibited(gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 2)
 
         # Close the lid
         self.obj_upower.Set('org.freedesktop.UPower', 'LidIsClosed', True)
@@ -658,9 +699,8 @@ class PowerPluginTest5(PowerPluginBase):
     def test_dim(self):
         '''Check that we do go to dim'''
 
-        # Wait and flush log
-        time.sleep (gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 1)
-        self.plugin_log.clear()
+        # Wait for startup inhibition to be gone
+        self.check_for_lid_uninhibited(gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 2)
 
         idle_delay = math.ceil(gsdpowerconstants.MINIMUM_IDLE_DIM_DELAY / gsdpowerconstants.IDLE_DELAY_TO_IDLE_DIM_MULTIPLIER)
         self.reset_idle_timer()
@@ -707,9 +747,8 @@ class PowerPluginTest5(PowerPluginBase):
     def test_lid_close_inhibition(self):
         '''Check that we correctly inhibit suspend with an external monitor'''
 
-        # Wait and flush log
-        time.sleep (gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 1)
-        self.plugin_log.clear()
+        # Wait for startup inhibition to be gone
+        self.check_for_lid_uninhibited(gsdpowerconstants.LID_CLOSE_SAFETY_TIMEOUT + 2)
 
         # Add an external monitor
         self.set_has_external_monitor(True)

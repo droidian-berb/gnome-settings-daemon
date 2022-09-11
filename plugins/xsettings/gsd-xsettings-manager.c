@@ -56,6 +56,9 @@
 #define PRIVACY_SETTINGS_SCHEMA     "org.gnome.desktop.privacy"
 #define WM_SETTINGS_SCHEMA        "org.gnome.desktop.wm.preferences"
 #define A11Y_SCHEMA               "org.gnome.desktop.a11y"
+#define A11Y_INTERFACE_SCHEMA     "org.gnome.desktop.a11y.interface"
+#define A11Y_APPLICATIONS_SCHEMA   "org.gnome.desktop.a11y.applications"
+#define INPUT_SOURCES_SCHEMA       "org.gnome.desktop.input-sources"
 #define CLASSIC_WM_SETTINGS_SCHEMA "org.gnome.shell.extensions.classic-overrides"
 
 #define XSETTINGS_PLUGIN_SCHEMA "org.gnome.settings-daemon.plugins.xsettings"
@@ -72,8 +75,19 @@
 #define FONT_HINTING_KEY      "font-hinting"
 #define FONT_RGBA_ORDER_KEY   "font-rgba-order"
 
+#define HIGH_CONTRAST_KEY "high-contrast"
+
+#define INPUT_SOURCES_KEY      "sources"
+#define OSK_ENABLED_KEY        "screen-keyboard-enabled"
+#define GTK_IM_MODULE_KEY      "gtk-im-module"
+
 #define GTK_SETTINGS_DBUS_PATH "/org/gtk/Settings"
 #define GTK_SETTINGS_DBUS_NAME "org.gtk.Settings"
+
+#define INPUT_SOURCE_TYPE_IBUS "ibus"
+
+#define GTK_IM_MODULE_SIMPLE "gtk-im-context-simple"
+#define GTK_IM_MODULE_IBUS   "ibus"
 
 static const gchar introspection_xml[] =
 "<node name='/org/gtk/Settings'>"
@@ -277,6 +291,11 @@ struct _GsdXSettingsManager
         FcMonitor         *fontconfig_monitor;
         gint64             fontconfig_timestamp;
 
+        GSettings         *interface_settings;
+        GSettings         *input_sources_settings;
+        GSettings         *a11y_settings;
+        GdkSeat           *user_seat;
+
         GsdXSettingsGtk   *gtk;
 
         guint              introspect_properties_changed_id;
@@ -285,6 +304,9 @@ struct _GsdXSettingsManager
 
         guint              display_config_watch_id;
         guint              monitors_changed_id;
+
+        guint              device_added_id;
+        guint              device_removed_id;
 
         guint              shell_name_watch_id;
         gboolean           have_shell;
@@ -377,6 +399,25 @@ translate_button_layout (GsdXSettingsManager *manager,
         if (classic_value)
                 g_variant_unref (classic_value);
         g_free (layout);
+}
+
+static void
+translate_theme_name (GsdXSettingsManager *manager,
+                      TranslationEntry    *trans,
+                      GVariant            *value)
+{
+        GSettings *settings;
+        gboolean hc = FALSE;
+
+        settings = g_hash_table_lookup (manager->settings, A11Y_INTERFACE_SCHEMA);
+
+        if (settings)
+                hc = g_settings_get_boolean (settings, HIGH_CONTRAST_KEY);
+
+        xsettings_manager_set_string (manager->manager,
+                                      trans->xsetting_name,
+                                      hc ? "HighContrast"
+                                         : g_variant_get_string (value, NULL));
 }
 
 static void
@@ -477,9 +518,8 @@ static TranslationEntry translations [] = {
         { "org.gnome.desktop.interface", "cursor-blink",           "Net/CursorBlink",         translate_bool_int },
         { "org.gnome.desktop.interface", "cursor-blink-time",      "Net/CursorBlinkTime",     translate_int_int },
         { "org.gnome.desktop.interface", "cursor-blink-timeout",   "Gtk/CursorBlinkTimeout",  translate_int_int },
-        { "org.gnome.desktop.interface", "gtk-theme",              "Net/ThemeName",           translate_string_string },
-        { "org.gnome.desktop.interface", "gtk-im-module",          "Gtk/IMModule",            translate_string_string },
-        { "org.gnome.desktop.interface", "icon-theme",             "Net/IconThemeName",       translate_string_string },
+        { "org.gnome.desktop.interface", "gtk-theme",              "Net/ThemeName",           translate_theme_name },
+        { "org.gnome.desktop.interface", "icon-theme",             "Net/IconThemeName",       translate_theme_name },
         { "org.gnome.desktop.interface", "cursor-theme",           "Gtk/CursorThemeName",     translate_string_string },
         { "org.gnome.desktop.interface", "gtk-enable-primary-paste", "Gtk/EnablePrimaryPaste", translate_bool_int },
         { "org.gnome.desktop.interface", "overlay-scrolling",      "Gtk/OverlayScrolling",    translate_bool_int },
@@ -1019,6 +1059,16 @@ xsettings_callback (GSettings           *settings,
         	return;
 	}
 
+        if (g_str_equal (key, HIGH_CONTRAST_KEY)) {
+                GSettings *iface_settings;
+
+                iface_settings = g_hash_table_lookup (manager->settings,
+                                                      INTERFACE_SETTINGS_SCHEMA);
+                xsettings_callback (iface_settings, "gtk-theme", manager);
+                xsettings_callback (iface_settings, "icon-theme", manager);
+                return;
+        }
+
         trans = find_translation_entry (settings, key);
         if (trans == NULL) {
                 return;
@@ -1291,6 +1341,112 @@ migrate_settings (void)
                                     mouse_entries, G_N_ELEMENTS (mouse_entries));
 }
 
+static gboolean
+need_ibus (GsdXSettingsManager *manager)
+{
+        GVariant *sources;
+        GVariantIter iter;
+        const gchar *type;
+        gboolean needs_ibus = FALSE;
+
+        sources = g_settings_get_value (manager->input_sources_settings,
+                                        INPUT_SOURCES_KEY);
+
+        g_variant_iter_init (&iter, sources);
+        while (g_variant_iter_next (&iter, "(&s&s)", &type, NULL)) {
+                if (g_str_equal (type, INPUT_SOURCE_TYPE_IBUS)) {
+                        needs_ibus = TRUE;
+                        break;
+                }
+        }
+
+        g_variant_unref (sources);
+
+        return needs_ibus;
+}
+
+static gboolean
+need_osk (GsdXSettingsManager *manager)
+{
+        gboolean has_touchscreen = FALSE;
+        GList *devices;
+        GdkSeat *seat;
+
+        if (g_settings_get_boolean (manager->a11y_settings,
+                                    OSK_ENABLED_KEY))
+                return TRUE;
+
+        seat = gdk_display_get_default_seat (gdk_display_get_default ());
+        devices = gdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_TOUCH);
+
+        has_touchscreen = devices != NULL;
+
+        g_list_free (devices);
+
+        return has_touchscreen;
+}
+
+static void
+update_gtk_im_module (GsdXSettingsManager *manager)
+{
+        const gchar *module;
+        gchar *setting;
+
+        setting = g_settings_get_string (manager->interface_settings,
+                                         GTK_IM_MODULE_KEY);
+        if (setting && *setting)
+                module = setting;
+        else if (need_ibus (manager) || need_osk (manager))
+                module = GTK_IM_MODULE_IBUS;
+        else
+                module = GTK_IM_MODULE_SIMPLE;
+
+        xsettings_manager_set_string (manager->manager, "Gtk/IMModule", module);
+        g_free (setting);
+}
+
+static void
+device_added_cb (GdkSeat             *user_seat,
+                 GdkDevice           *device,
+                 GsdXSettingsManager *manager)
+{
+        GdkInputSource source;
+
+        source = gdk_device_get_source (device);
+        if (source == GDK_SOURCE_TOUCHSCREEN) {
+                update_gtk_im_module (manager);
+        }
+}
+
+static void
+device_removed_cb (GdkSeat             *user_seat,
+                   GdkDevice           *device,
+                   GsdXSettingsManager *manager)
+{
+        GdkInputSource source;
+
+        source = gdk_device_get_source (device);
+        if (source == GDK_SOURCE_TOUCHSCREEN)
+                update_gtk_im_module (manager);
+}
+
+static void
+set_devicepresence_handler (GsdXSettingsManager *manager)
+{
+        GdkSeat *user_seat;
+
+        if (gnome_settings_is_wayland ())
+                return;
+
+        user_seat = gdk_display_get_default_seat (gdk_display_get_default ());
+
+        manager->device_added_id = g_signal_connect (G_OBJECT (user_seat), "device-added",
+                                                     G_CALLBACK (device_added_cb), manager);
+        manager->device_removed_id = g_signal_connect (G_OBJECT (user_seat), "device-removed",
+                                                       G_CALLBACK (device_removed_cb), manager);
+        manager->user_seat = user_seat;
+}
+
 gboolean
 gsd_xsettings_manager_start (GsdXSettingsManager *manager,
                              GError             **error)
@@ -1311,6 +1467,23 @@ gsd_xsettings_manager_start (GsdXSettingsManager *manager,
                              "Could not initialize xsettings manager.");
                 return FALSE;
         }
+
+	set_devicepresence_handler (manager);
+        manager->interface_settings = g_settings_new (INTERFACE_SETTINGS_SCHEMA);
+        g_signal_connect_swapped (manager->interface_settings,
+                                  "changed::" GTK_IM_MODULE_KEY,
+                                  G_CALLBACK (update_gtk_im_module), manager);
+
+        manager->input_sources_settings = g_settings_new (INPUT_SOURCES_SCHEMA);
+        g_signal_connect_swapped (manager->input_sources_settings,
+                                  "changed::" INPUT_SOURCES_KEY,
+                                  G_CALLBACK (update_gtk_im_module), manager);
+
+        manager->a11y_settings = g_settings_new (A11Y_APPLICATIONS_SCHEMA);
+        g_signal_connect_swapped (manager->a11y_settings,
+                                  "changed::" OSK_ENABLED_KEY,
+                                  G_CALLBACK (update_gtk_im_module), manager);
+        update_gtk_im_module (manager);
 
         manager->monitors_changed_id =
                 g_dbus_connection_signal_subscribe (manager->dbus_connection,
@@ -1369,6 +1542,8 @@ gsd_xsettings_manager_start (GsdXSettingsManager *manager,
                              WM_SETTINGS_SCHEMA, g_settings_new (WM_SETTINGS_SCHEMA));
         g_hash_table_insert (manager->settings,
                              A11Y_SCHEMA, g_settings_new (A11Y_SCHEMA));
+        g_hash_table_insert (manager->settings,
+                             A11Y_INTERFACE_SCHEMA, g_settings_new (A11Y_INTERFACE_SCHEMA));
 
         session = g_getenv ("XDG_CURRENT_DESKTOP");
         if (session && strstr (session, "GNOME-Classic")) {
@@ -1507,6 +1682,16 @@ gsd_xsettings_manager_stop (GsdXSettingsManager *manager)
                 g_object_unref (manager->gtk);
                 manager->gtk = NULL;
         }
+
+        if (manager->user_seat != NULL) {
+                g_signal_handler_disconnect (manager->user_seat, manager->device_added_id);
+                g_signal_handler_disconnect (manager->user_seat, manager->device_removed_id);
+                manager->user_seat = NULL;
+        }
+
+        g_clear_object (&manager->a11y_settings);
+        g_clear_object (&manager->input_sources_settings);
+        g_clear_object (&manager->interface_settings);
 }
 
 static void
