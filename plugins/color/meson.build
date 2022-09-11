@@ -1,9 +1,7 @@
 sources = files(
-  'gcm-edid.c',
   'gnome-datetime-source.c',
   'gsd-color-calibrate.c',
   'gsd-color-manager.c',
-  'gsd-color-profiles.c',
   'gsd-color-state.c',
   'gsd-night-light.c',
   'gsd-night-light-common.c',
@@ -12,8 +10,6 @@ sources = files(
 
 deps = plugins_deps + [
   colord_dep,
-  gnome_desktop_dep,
-  lcms_dep,
   libcanberra_gtk_dep,
   libgeoclue_dep,
   libnotify_dep,
@@ -34,7 +30,6 @@ executable(
 )
 
 sources = files(
-  'gcm-edid.c',
   'gcm-self-test.c',
   'gnome-datetime-source.c',
   'gsd-night-light.c',

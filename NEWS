@@ -1,3 +1,103 @@
+=============
+Version 43.rc
+=============
+- Translation updates
+
+Color:
+- Night light and color management functionality moved to Mutter
+
+Housekeeping:
+- Notify of applications being closed due to OOM
+
+===============
+Version 43.beta
+===============
+- Build with gcr4 by default
+
+================
+Version 43.alpha
+================
+
+Datetime:
+- Optionally depend on libsoup3-enabled geocode-glib
+
+Xsettings:
+- Unset GDK_BACKEND envvar
+
+Translation updates
+
+============
+Version 42.2
+============
+- Translation updates
+- Drop direct uses of GSlice
+
+A11y-settings:
+- Enable toolkit-accessibility when using the magnifier
+
+Xsettings:
+- Simplify fetching string for an enum value
+- Remove direct mapping from gtk-im-module to Gtk/IMModule
+
+============
+Version 42.1
+============
+- Brown paper bag release
+
+============
+Version 42.0
+============
+- Translation updates
+
+Keyboard:
+- Clear content of gtk-im-module setting
+
+=============
+Version 42.rc
+=============
+
+Sharing:
+- Do not manage gnome-remote-desktop, now done through
+  gnome-control-center and systemd services
+
+===============
+Version 42.beta
+===============
+- Translation updates
+
+Datetime:
+- Port to GWeather 4
+
+Media-keys:
+- Fix launching of Settings actions
+- Suppress UCM generic soundcard names on volume OSDs
+- Remove screenshot key handling, done now in GNOME Shell
+
+Power:
+- Improve battery warning debouncing logic
+
+XSettings:
+- Adopt x11-specific code to look up GTK IM module from
+  gsd-keyboard
+
+================
+Version 42.alpha
+================
+- Translation updates
+
+Color:
+- Night light color temperature fixes
+
+Media-keys:
+- Remove GNOME-specific MediaKeys API
+- Multiple MPRIS fixes
+
+Power:
+- Do not print an error for failures from realpath
+
+XSettings:
+- Support new "high-contrast" setting
+
 ============
 Version 41.0
 ============
