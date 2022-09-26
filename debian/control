@@ -64,10 +64,15 @@ Architecture: any
 Depends: gnome-settings-daemon-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 42~),
          default-logind [linux-any] | logind [linux-any],
+         libspa-0.2-bluetooth | pulseaudio-module-bluetooth,
+         pipewire-pulse | pulseaudio,
+         wireplumber | pulseaudio,
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: iio-sensor-proxy,
-            pulseaudio,
+            libspa-0.2-bluetooth,
+            pipewire-pulse,
+            wireplumber,
             x11-xserver-utils
 Suggests: usbguard
 Breaks: afterstep (<< 2.2.12-11.1~),
