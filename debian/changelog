@@ -1,3 +1,13 @@
+gnome-settings-daemon (43.0-2) unstable; urgency=medium
+
+  * Depend on libspa-0.2-bluetooth, pipewire & wireplumber
+  * Allow alternate Depends on the pulseaudio equivalents
+  * Also add Recommends without the pulseaudio alternates
+    so that upgraders get the recommended default as long as
+    they install Recommends
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 26 Sep 2022 17:26:23 -0400
+
 gnome-settings-daemon (43.0-1) unstable; urgency=medium
 
   [ Jeremy Bicha ]
