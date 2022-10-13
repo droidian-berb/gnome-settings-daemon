@@ -68,6 +68,7 @@ Depends: gnome-settings-daemon-common (= ${source:Version}),
 Recommends: iio-sensor-proxy,
             libspa-0.2-bluetooth,
             pipewire-pulse,
+            pkexec,
             wireplumber,
             x11-xserver-utils
 Suggests: usbguard
