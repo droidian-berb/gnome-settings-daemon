@@ -1,2 +1,8 @@
+Update-Kazakh-translation.patch
+Update-Turkish-translation.patch
+Update-British-English-translation.patch
+Update-Friulian-translation.patch
+Update-Bulgarian-translation.patch
+Update-Abkhazian-translation.patch
 debian/01_debianize_xrdb.patch
 debian/meson.build-Lower-polkit-requirement.patch
