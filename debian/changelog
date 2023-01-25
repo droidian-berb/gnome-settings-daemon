@@ -1,3 +1,10 @@
+gnome-settings-daemon (43.0-4) unstable; urgency=medium
+
+  * Use the new pipewire-audio metapackage instead of listing the individual
+    components
+
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 25 Jan 2023 13:52:38 +0100
+
 gnome-settings-daemon (43.0-3) unstable; urgency=medium
 
   * Team upload
