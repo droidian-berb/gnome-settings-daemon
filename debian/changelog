@@ -1,8 +1,9 @@
-gnome-settings-daemon (44~beta-1) UNRELEASED; urgency=medium
+gnome-settings-daemon (44~beta-1) experimental; urgency=medium
 
   * New upstream release
+  * Drop translation patches applied in new release
 
- -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 15 Feb 2023 10:45:39 -0500
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 15 Feb 2023 10:51:12 -0500
 
 gnome-settings-daemon (43.0-4) unstable; urgency=medium
 
