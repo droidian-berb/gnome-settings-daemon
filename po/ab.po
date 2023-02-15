@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-settings-daemon/"
 "issues\n"
-"POT-Creation-Date: 2022-07-19 23:19+0000\n"
+"POT-Creation-Date: 2022-10-31 10:51+0000\n"
 "Last-Translator: Нанба Наала <naala-nanba@rambler.ru>\n"
 "Language-Team: Abkhazian <daniel.abzakh@gmail.com>\n"
 "Language: ab\n"
@@ -10,6 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-DamnedLies-Scope: partial\n"
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:11
 msgid "Smartcard removal action"
@@ -78,10 +79,12 @@ msgid ""
 "Enables middle mouse button emulation through simultaneous left and right "
 "button click."
 msgstr ""
+"Иаҿанакуеит аҳәынаԥ арымаратәи арыӷьаратәи апытҟәырқәа аамҭакала "
+"рықәыӷәӷәараан абжьаратәи апытҟәыр аемулиациа ."
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:69
 msgid "Double click time"
-msgstr ""
+msgstr "Ҩынтәны ахыкәласлара аамҭа"
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:70
 msgid "Length of a double click in milliseconds."
@@ -200,7 +203,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:15
 msgid "Wacom tablet area"
-msgstr ""
+msgstr "Апланшет Wacom аргьежьра"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:16
 msgid "Set this to x1, y1 and x2, y2 of the area usable by the tools."
@@ -208,7 +211,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:20
 msgid "Wacom tablet aspect ratio"
-msgstr ""
+msgstr "Апланшет Wacom аргьежьра"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:21
 msgid ""
@@ -218,7 +221,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:25
 msgid "Wacom tablet rotation"
-msgstr ""
+msgstr "Апланшет Wacom аргьежьра"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:26
 msgid ""
@@ -236,7 +239,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:37
 msgid "Wacom stylus pressure curve"
-msgstr ""
+msgstr "Ииашахаҭоу астилус Wacom арежим"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:38
 msgid ""
@@ -245,7 +248,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:42
 msgid "Wacom stylus button mapping"
-msgstr ""
+msgstr "Ииашахаҭоу астилус Wacom арежим"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:43
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:60
@@ -254,7 +257,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:47
 msgid "Wacom stylus pressure threshold"
-msgstr ""
+msgstr "Ииашахаҭоу астилус Wacom арежим"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:48
 msgid ""
@@ -285,7 +288,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:71
 msgid "Wacom button action type"
-msgstr ""
+msgstr "Апланшет Wacom аргьежьра"
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:72
 msgid "The type of action triggered by the button being pressed."
@@ -373,7 +376,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:31
 msgid "The start time"
-msgstr ""
+msgstr "Адәыкәҵара аамҭа"
 
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:32
 msgid ""
@@ -383,7 +386,7 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:36
 msgid "The end time"
-msgstr ""
+msgstr "Ахырқәшара аамҭа"
 
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:37
 msgid ""
@@ -480,7 +483,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:12
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:160
 msgid "Binding to launch GNOME Settings."
-msgstr ""
+msgstr "Арыдқәа реилаҵа GNOME ахышәарақәа рҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:16
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:164
@@ -491,7 +494,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:17
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:165
 msgid "Binding to launch the email client."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аԥошьҭа ахархәаҩ аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:21
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:169
@@ -502,7 +505,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:22
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:170
 msgid "Binding to eject an optical disc."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аоптикатә санҭыр аҭыгаразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:26
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:174
@@ -512,7 +515,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:27
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:175
 msgid "Binding to launch the help browser."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аилыркааратә система аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:31
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:179
@@ -523,7 +526,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:32
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:180
 msgid "Binding to open the Home folder."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аҩнытәи аҭаӡ аартразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:36
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:184
@@ -534,7 +537,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:37
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:185
 msgid "Binding to launch the media player."
-msgstr ""
+msgstr "Арыдқәа реилаҵа амультимедиатә рҳәага аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:41
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:189
@@ -545,7 +548,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:42
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:190
 msgid "Binding to skip to next track."
-msgstr ""
+msgstr "Арыдқәа реилаҵа анаҩстәи амҩахәасҭахь аиасразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:46
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:194
@@ -556,7 +559,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:47
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:195
 msgid "Binding to pause playback."
-msgstr ""
+msgstr "Арыдқәа реилаҵа арҳәара аамҭала аанкыларазы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:51
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:199
@@ -567,17 +570,17 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:52
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:200
 msgid "Binding to start playback (or toggle play/pause)."
-msgstr ""
+msgstr "Арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:56
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:204
 msgid "Log out"
-msgstr ""
+msgstr "Асеанс ахырқәшара"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:57
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:205
 msgid "Binding to log out."
-msgstr ""
+msgstr "Арыдқәа реилаҵа асистема аҟынтә аҭыҵразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:61
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:209
@@ -588,7 +591,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:62
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:210
 msgid "Binding to skip to previous track."
-msgstr ""
+msgstr "Арыдқәа реилаҵа иапхьааиуа амҩахәасҭа ахь аиасразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:66
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:214
@@ -599,18 +602,18 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:67
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:215
 msgid "Binding to lock the screen."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аекран амҩакразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:71
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:219
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:501
 msgid "Search"
-msgstr ""
+msgstr "Аҧшаара"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:72
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:220
 msgid "Binding to launch the search tool."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аԥшаара амаруга аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:76
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:224
@@ -621,7 +624,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:77
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:225
 msgid "Binding to stop playback."
-msgstr ""
+msgstr "Арыдқәа реилаҵа аҿакра аанкыларазы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:81
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:231
@@ -632,7 +635,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:82
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:232
 msgid "Binding to lower the volume."
-msgstr ""
+msgstr "Арыдқәа реилаҵа абжьы архәҷразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:86
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:236
@@ -643,7 +646,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:87
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:237
 msgid "Binding to mute/unmute the volume."
-msgstr ""
+msgstr "Арыдқәа реилаҵа абжьы аҿакра/аҿыхра азы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:91
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:241
@@ -654,7 +657,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:92
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:242
 msgid "Binding to raise the volume."
-msgstr ""
+msgstr "Арыдқәа реилаҵа абжьы ардуразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:96
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:282
@@ -665,7 +668,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:97
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:283
 msgid "Binding to mute/unmute the microphone."
-msgstr ""
+msgstr "Арыдқәа реилаҵа амикрофон аҿакра/аҿыхра азы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:101
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:287
@@ -676,7 +679,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:102
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:288
 msgid "Binding to launch the web browser."
-msgstr ""
+msgstr "Арыдқәа реилаҵа авеб-браузер аҿакразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:106
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:317
@@ -686,7 +689,7 @@ msgstr "Аекрантә еизырҳага аҿакра, мамзар аҿых�
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:107
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:318
 msgid "Binding to show the screen magnifier"
-msgstr ""
+msgstr "Арыдқәа реилаҵа аекрантә еизырҳага аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:111
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:292
@@ -696,7 +699,7 @@ msgstr " Аекран аҟынтә аԥхьара  аҿакра, мамзар а
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:112
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:293
 msgid "Binding to start the screen reader"
-msgstr ""
+msgstr "Арыдқәа реилаҵа аекран аҟынтә аԥхьара аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:116
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:297
@@ -706,7 +709,7 @@ msgstr "Аекрантә рыдыркыра  аҿакра, мамзар аҿых
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:117
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:298
 msgid "Binding to show the on-screen keyboard"
-msgstr ""
+msgstr "Аекрантә рыдыркыра аҿакра, мамзар аҿыхра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:121
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:302
@@ -716,7 +719,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:122
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:303
 msgid "Binding to increase the text size"
-msgstr ""
+msgstr "Арыдқәа реилаҵа атекст ашәагаа ардуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:126
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:307
@@ -726,7 +729,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:127
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:308
 msgid "Binding to decrease the text size"
-msgstr ""
+msgstr "Арыдқәа реилаҵа атекст ашәагаа архәыҷразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:131
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:312
@@ -736,40 +739,40 @@ msgstr "Аиҿагылара аҿакра, мамзар аҿыхра"
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:132
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:313
 msgid "Binding to toggle the interface contrast"
-msgstr ""
+msgstr "Арыдқәа реилаҵа аиҿагылара аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:136
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:322
 msgid "Magnifier zoom in"
-msgstr ""
+msgstr "Ардуга азааигәатәра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:137
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:323
 msgid "Binding for the magnifier to zoom in"
-msgstr ""
+msgstr "Арыдқәа реилаҵа аекрантә рдуга азаагәатәразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:141
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:327
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:569
 msgid "Magnifier zoom out"
-msgstr ""
+msgstr "Ардуга архарара"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:142
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:328
 msgid "Binding for the magnifier to zoom out"
-msgstr ""
+msgstr "Арыдқәа реилаҵа аекрантә рдуга архараразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:149
 msgid "Custom keybindings"
-msgstr ""
+msgstr "Ахархәаҩ ирыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:150
 msgid "List of custom keybindings"
-msgstr ""
+msgstr "Арыдкәа рреилаҵа рыхьӡынҵа "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:247
 msgid "Size of volume step"
-msgstr ""
+msgstr "Абжьы аԥсахра ашьаҿа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:248
 msgid "Size of the volume step for each volume change"
@@ -778,78 +781,78 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:254
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:530
 msgid "Quiet volume down"
-msgstr ""
+msgstr "Ҭынч абжьы архәыҷра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:255
 msgid "Binding to lower the volume without emitting a sound effect."
-msgstr ""
+msgstr "Абыжьтәы еффект ада абжьы ырхәыҷразы аилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:259
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:535
 msgid "Quiet volume mute/unmute"
-msgstr ""
+msgstr "Ҭынч абжьы аҿыхра/аҿакра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:260
 msgid "Binding to mute/unmute the volume without emitting a sound effect."
-msgstr ""
+msgstr "Абыжьтәы аеффект ада абжьы аҿаҵара/аҿыхразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:264
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:540
 msgid "Quiet volume up"
-msgstr ""
+msgstr "Ҭынч абжьы ардура"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:265
 msgid "Binding to raise the volume without emitting a sound effect."
-msgstr ""
+msgstr "Абыжьтәы аеффект ада абжьы ардуразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:271
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:547
 msgid "Precise volume down"
-msgstr ""
+msgstr "Ииашаны абжьы архәыҷра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:272
 msgid "Binding to lower the volume with higher precision."
-msgstr ""
+msgstr "Еиҳа ииашаны абжьы архәычразы арыдқәа реилаҵа "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:276
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:552
 msgid "Precise volume up"
-msgstr ""
+msgstr "Ииашаны абжьы ардура"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:277
 msgid "Binding to raise the volume with higher precision."
-msgstr ""
+msgstr "Еиҳа ииашаны абжьы ардуразы арыдқәа реилаҵа "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:332
 msgid "Toggle touchpad on/off"
-msgstr ""
+msgstr "Акьыснырратә панель аҿакра/аҿыхра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:333
 msgid "Binding to toggle the touchpad on/off."
-msgstr ""
+msgstr "Акьыснырратә панель аҿакра/аҿыхразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:337
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:574
 msgid "Switch touchpad on"
-msgstr ""
+msgstr "Акьыснырратә панель аҿакра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:338
 msgid "Binding to switch the touchpad on."
-msgstr ""
+msgstr "Акьыснырратә панель аҿакразы арыдқәа реилаҵа."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:342
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:579
 msgid "Switch touchpad off"
-msgstr ""
+msgstr "Акьыснырратә панель аҿыхра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:343
 msgid "Binding to switch the touchpad off."
-msgstr ""
+msgstr "Акьыснырратә панель аҿыхразы арыдқәа реилаҵа."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:348
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:585
 msgid "Skip backward in current track"
-msgstr ""
+msgstr "Мҩахәасҭак шьҭахьҟа арҵәҩра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:349
 msgid "Binding to skip backward in current track."
@@ -885,7 +888,7 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:369
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:606
 msgid "Toggle automatic screen orientation"
-msgstr ""
+msgstr "Аекран аҟынтә аԥхьара аҿакра, мамзар аҿыхра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:370
 msgid "Binding to toggle automatic screen orientation."
@@ -894,92 +897,92 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:374
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:611
 msgid "Power button"
-msgstr ""
+msgstr "Афымцамч апытҟәыр"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:375
 msgid "Binding for power button."
-msgstr ""
+msgstr "Афымцамч апытҟәыр аусурақәа рзы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:379
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:616
 msgid "Hibernate button"
-msgstr ""
+msgstr "Агибернациа апытҟәыр"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:380
 msgid "Binding to hibernate the machine."
-msgstr ""
+msgstr "Аиҿартәыра агибернациазы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:384
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:621
 msgid "Suspend button"
-msgstr ""
+msgstr "Азԥшра арежим апытҟәыр"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:385
 msgid "Binding to suspend the machine."
-msgstr ""
+msgstr "Аиҿартәыра азԥшра арежим ахь аиагаразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:390
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:627
 msgid "Screen brightness up"
-msgstr ""
+msgstr "Аекран ашеишеира ардура"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:391
 msgid "Binding to increase the screen brightness."
-msgstr ""
+msgstr "Аекран ашеишеира ардурзы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:395
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:632
 msgid "Screen brightness down"
-msgstr ""
+msgstr "Аекран ашеишеира архәыҷра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:396
 msgid "Binding to decrease the screen brightness."
-msgstr ""
+msgstr "Аекран ашеишеира архәыҷразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:400
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:637
 msgid "Screen brightness cycle"
-msgstr ""
+msgstr "Аекран ашеишеира "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:401
 msgid "Binding to cycle the screen brightness."
-msgstr ""
+msgstr "Аекран ашеишеиразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:406
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:643
 msgid "Keyboard brightness up"
-msgstr ""
+msgstr "Арыдыркыра апытҟәыр, апытҟәыр арлашара аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:407
 msgid "Binding to increase the keyboard brightness."
-msgstr ""
+msgstr "Арыдыркыра апытҟәыр, апытҟәыр арлашара ардуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:411
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:648
 msgid "Keyboard brightness down"
-msgstr ""
+msgstr "Арыдыркыра арлашара аҿакра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:412
 msgid "Binding to decrease the keyboard brightness."
-msgstr ""
+msgstr "Арыдыркыра апытҟәыр, апытҟәыр арлашара ардуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:416
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:653
 msgid "Keyboard brightness toggle"
-msgstr ""
+msgstr "Арыдыркыра арлашара аиагара"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:417
 msgid "Binding to toggle the keyboard brightness."
-msgstr ""
+msgstr "Арыдыркыра арлашара аиагаразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:422
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:659
 msgid "Show battery status"
-msgstr ""
+msgstr "Абатареиа аиҵаҵара аҭагылазаашьа рабара"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:423
 msgid "Binding to show current battery status."
-msgstr ""
+msgstr "Абатареиа аиҵаҵара арбаразы арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:428
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:665
@@ -1001,188 +1004,189 @@ msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:447
 msgid "Static binding to launch the calculator."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа акалькулятор аҿакразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:452
 msgid "Static binding to launch GNOME Settings."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа GNOME ахышәарақәа рҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:457
 msgid "Static binding to launch the email client."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аԥошьҭа ахархәаҩ аҿакразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:462
 msgid "Static binding to eject an optical disc."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аоптикатә санҭыр аҭыгаразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:467
 msgid "Static binding to open the Home folder."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аҩнытәи аҭаӡ аартразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:472
 msgid "Static binding to launch the media player."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа амультмедиатә рҳәага арҳәага"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:477
 msgid "Static binding to skip to next track."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа анаҩстәи амҩахәасҭа ахь аисразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:482
 msgid "Static binding to pause playback."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аиҭаҿакра аанкыларазы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:487
 msgid "Static binding to start playback (or toggle play/pause)."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:492
 msgid "Static binding to skip to previous track."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа иаԥхьааиуа амҩахәасҭахь аиасразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:497
 msgid "Static binding to lock the screen."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аекран аанкыларазы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:502
 msgid "Static binding to launch the search tool."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аҧшаар амаруга аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:507
 msgid "Static binding to stop playback."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа арҳәара аанкыларазы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:514
 msgid "Static binding to lower the volume."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абжьы архәҷразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:519
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:536
 msgid "Static binding to mute/unmute the volume."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абжьы аҿакра/аҿыхразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:524
 msgid "Static binding to raise the volume."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа ииашацәҟьаны абжьы ардуразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:531
 msgid "Static binding to lower the volume without emitting a sound effect."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абыжьтәы еффект ада абжьы архәҷразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:541
 msgid "Static binding to raise the volume without emitting a sound effect."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абыжьтәы еффект ада абжьы ардуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:548
 msgid "Static binding to lower the volume with higher precision."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абжьы еиҳа ииашаны архәыҷразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:553
 msgid "Static binding to raise the volume with higher precision."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абжьы еиҳа ииашаны ардурзы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:559
 msgid "Static binding to mute/unmute the microphone."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа амикрофон аҿакразы/аҿыхразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:564
 msgid "Static binding to launch the web browser."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа веб-браузер аҿакразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:570
 msgid "Static binding to toggle the touchpad on/off."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа акьыснырратә панель аҿакразы/аҿыхразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:575
 msgid "Static binding to switch the touchpad on."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа акьыснырратә панель аҿакразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:580
 msgid "Static binding to switch the touchpad off."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа акьыснырратә панель аҿыхразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:586
 msgid "Static binding to skip backward in current track."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа изаамҭанытәиу амҩахәасҭазы шьҭахьҟа арҵәҩра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:591
 msgid "Static binding to skip forward in current track."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа изаамҭанытәиу амҩахәасҭазы ҧхьаҟа арҵәҩра"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:596
 msgid "Static binding to toggle repeat mode in media player."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:601
 msgid "Static binding to toggle random playback mode in media player."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:607
 msgid "Static binding to toggle automatic screen orientation."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аекран автоматикла аарҳәра арежим аиагаразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:612
 msgid "Static binding for power button."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа афымцамч апытҟәыр аусуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:617
 msgid "Static binding to hibernate the machine."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аиҿартәыра агибернациа азуразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:622
 msgid "Static binding to suspend the machine."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аиҿартәыра азԥшра арежим ахь аиагаразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:628
 msgid "Static binding to increase the screen brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аекран ашеишеира архәыҷразы "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:633
 msgid "Static binding to decrease the screen brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аекран ашеишеира ардуразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:638
 msgid "Static binding to cycle the screen brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа аекран ашеишеира ацикл аарҧшразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:644
 msgid "Static binding to increase the keyboard brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа арыдыркыра ашеишеира ардуразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:649
 msgid "Static binding to decrease the keyboard brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа арыдыркыра ашеишеира архәыҷразы ."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:654
 msgid "Static binding to toggle the keyboard brightness."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа арыдыркыра арлашара аиагаразы."
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:660
 msgid "Static binding to show current battery status."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа абатареиа аиҵаҵа аарҧшразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:666
 msgid "Static binding to toggle airplane mode."
-msgstr ""
+msgstr "Арыдқәа рыстатикатә еилаҵа авиахыҧраара арежим ахь аиасразы "
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:671
 msgid "Static binding to toggle bluetooth airplane mode."
 msgstr ""
+"Арыдқәа рыстатикатә еилаҵа авиахыҧраара bluetooth. арежим ахь аиагаразы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:678
 msgid "Name"
-msgstr ""
+msgstr "Ахьӡ"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:679
 msgid "Name of the custom binding"
-msgstr ""
+msgstr "Ахархәаҩ ирыдқәа реилаҵа ахьӡ"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:683
 msgid "Binding"
-msgstr ""
+msgstr "Арыдқәа реилаҵа"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:684
 msgid "Binding for the custom binding"
-msgstr ""
+msgstr "Арыдқәа реилаҵа ахархәаҩ ирыдқәа реилаҵазы"
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:688
 msgid "Command"
@@ -1208,6 +1212,8 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:12
 msgid "If the screen should be dimmed to save power when the computer is idle."
 msgstr ""
+"Ирлашьцазароума аекран афымцамчра аиҷаҳараан , акомпиутер азԥшра арежим "
+"ианықәгылоу."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:16
 msgid "Sleep timeout computer when on AC"
@@ -1218,6 +1224,9 @@ msgid ""
 "The amount of time in seconds the computer on AC power needs to be inactive "
 "before it goes to sleep. A value of 0 means never."
 msgstr ""
+"Аамҭа аҭагылазаашьа секундала иалакны аиҵаҵага\n"
+"аиҿартәыра аҟынтә аус зуа акомпиутер ацәара арежим ахь ииасаанӡа "
+"иактивамзароуп, .Аҵакы 0 иаанаго ахаангьы ауп ."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:21
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:31
@@ -1229,6 +1238,8 @@ msgstr ""
 msgid ""
 "The type of sleeping that should be performed when the computer is inactive."
 msgstr ""
+"Ирлашьцазароума аекран афымцамчра аиҷаҳараан , акомпиутер азԥшра арежим "
+"ианықәгылоу."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:26
 msgid "Sleep timeout computer when on battery"
@@ -1239,6 +1250,9 @@ msgid ""
 "The amount of time in seconds the computer on battery power needs to be "
 "inactive before it goes to sleep. A value of 0 means never."
 msgstr ""
+"Аамҭа аҭагылазаашьа секундала иалакны аиҵаҵага\n"
+"еиҿартәыра аҟынтә аус зуаакомпиутер ацәара арежим ахь ииасаанӡа "
+"иактивамзароуп, .Аҵакы 0 иаанаго ахаангьы ауп ."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:36
 msgid "Enable the ALS sensor"
@@ -1262,6 +1276,8 @@ msgstr ""
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:46
 msgid "Enable power-saver profile when battery is low"
 msgstr ""
+"Абатареиа тәаны иҟазар автоматла иаҿанакуеит @% \"Афымцахьчаратә режим@%м\" "
+"афымцамч аҷыдахәра асервис ахы иархәаны ."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:47
 msgid ""
@@ -1407,7 +1423,7 @@ msgstr ""
 
 #: plugins/datetime/gsd-datetime-manager.c:108
 msgid "Settings"
-msgstr ""
+msgstr "Архиарақәа"
 
 #: plugins/datetime/gsd-datetime-manager.c:118
 msgid "Date & Time Settings"
@@ -1427,7 +1443,7 @@ msgstr ""
 
 #: plugins/housekeeping/gsd-disk-space.c:660
 msgid "Ignore"
-msgstr ""
+msgstr "Азхьамԥшра"
 
 #: plugins/housekeeping/gsd-disk-space.c:691
 #, c-format
@@ -1460,6 +1476,48 @@ msgstr ""
 #: plugins/housekeeping/gsd-disk-space.c:707
 #, c-format
 msgid "This computer has only %s disk space remaining."
+msgstr ""
+
+#. TRANSLATORS: %s is the application name.
+#: plugins/housekeeping/gsd-systemd-notify.c:82
+#, c-format
+msgid "%s Stopped"
+msgstr ""
+
+#. TRANSLATORS: %s is the application name.
+#: plugins/housekeeping/gsd-systemd-notify.c:85
+#, c-format
+msgid ""
+"Device memory is nearly full. %s was using a lot of memory and was forced to "
+"stop."
+msgstr ""
+
+#. TRANSLATORS: A terminal tab/window was killed.
+#: plugins/housekeeping/gsd-systemd-notify.c:89
+#, c-format
+msgid "Virtual Terminal Stopped"
+msgstr ""
+
+#. TRANSLATORS: A terminal tab/window was killed.
+#: plugins/housekeeping/gsd-systemd-notify.c:91
+#, c-format
+msgid ""
+"Device memory is nearly full. Virtual Terminal processes were using a lot of "
+"memory and were forced to stop."
+msgstr ""
+
+#. TRANSLATORS: We don't have a good description of what was killed.
+#: plugins/housekeeping/gsd-systemd-notify.c:94
+#, c-format
+msgid "Application Stopped"
+msgstr ""
+
+#. TRANSLATORS: We don't have a good description of what was killed.
+#: plugins/housekeeping/gsd-systemd-notify.c:96
+#, c-format
+msgid ""
+"Device memory is nearly full. An Application that was using a lot of memory "
+"and was forced to stop."
 msgstr ""
 
 #: plugins/media-keys/gsd-media-keys-manager.c:2250
@@ -2582,15 +2640,15 @@ msgstr ""
 
 #: plugins/wwan/cc-wwan-errors-private.h:40
 msgid "Phone failure"
-msgstr ""
+msgstr "Ателефон шьақәҟьеит"
 
 #: plugins/wwan/cc-wwan-errors-private.h:41
 msgid "No connection to phone"
-msgstr ""
+msgstr "Атефон аҿакӡам"
 
 #: plugins/wwan/cc-wwan-errors-private.h:43
 msgid "Operation not allowed"
-msgstr ""
+msgstr "Аоперациа зиндоуп"
 
 #: plugins/wwan/cc-wwan-errors-private.h:44
 msgid "Operation not supported"
@@ -2598,23 +2656,23 @@ msgstr ""
 
 #: plugins/wwan/cc-wwan-errors-private.h:48
 msgid "SIM not inserted"
-msgstr ""
+msgstr "SIM-карта ҭаргылаӡам"
 
 #: plugins/wwan/cc-wwan-errors-private.h:49
 msgid "SIM PIN required"
-msgstr ""
+msgstr "Иаҭахуп SIM апин код"
 
 #: plugins/wwan/cc-wwan-errors-private.h:50
 msgid "SIM PUK required"
-msgstr ""
+msgstr "Иаҭахуп SIM PUK-акод"
 
 #: plugins/wwan/cc-wwan-errors-private.h:51
 msgid "SIM failure"
-msgstr ""
+msgstr " SIM карта мап ацәкуп"
 
 #: plugins/wwan/cc-wwan-errors-private.h:52
 msgid "SIM busy"
-msgstr ""
+msgstr " SIM карта нкылоуп"
 
 #: plugins/wwan/cc-wwan-errors-private.h:53
 msgid "SIM wrong"
@@ -2622,31 +2680,31 @@ msgstr ""
 
 #: plugins/wwan/cc-wwan-errors-private.h:54
 msgid "Incorrect password"
-msgstr ""
+msgstr "Акод иашаӡам"
 
 #: plugins/wwan/cc-wwan-errors-private.h:55
 msgid "SIM PIN2 required"
-msgstr ""
+msgstr "Иаҭахуп SIM PIN2-акод"
 
 #: plugins/wwan/cc-wwan-errors-private.h:56
 msgid "SIM PUK2 required"
-msgstr ""
+msgstr "Иаҭахуп SIM PUK2-акод"
 
 #: plugins/wwan/cc-wwan-errors-private.h:72
 msgid "Unknown error"
-msgstr ""
+msgstr "Еилкаам агха"
 
 #: plugins/wwan/cc-wwan-errors-private.h:91
 msgid "Action Cancelled"
-msgstr ""
+msgstr "Аҟаҵара аԥыхуп"
 
 #: plugins/wwan/cc-wwan-errors-private.h:94
 msgid "Access denied"
-msgstr ""
+msgstr "Анеира мап ацәкуп"
 
 #: plugins/wwan/cc-wwan-errors-private.h:103
 msgid "Unknown Error"
-msgstr ""
+msgstr "Еилкаам агха"
 
 #: plugins/wwan/gsd-wwan-manager.c:121
 msgid "New PIN for SIM"
@@ -2654,11 +2712,11 @@ msgstr ""
 
 #: plugins/wwan/gsd-wwan-manager.c:122
 msgid "Set"
-msgstr ""
+msgstr "Ашьақәыргылара"
 
 #: plugins/wwan/gsd-wwan-manager.c:124
 msgid "Unlock SIM card"
-msgstr ""
+msgstr "SIM-карта аужьра"
 
 #: plugins/wwan/gsd-wwan-manager.c:125
 msgid "Unlock"
@@ -2666,7 +2724,7 @@ msgstr ""
 
 #: plugins/wwan/gsd-wwan-manager.c:128
 msgid "Cancel"
-msgstr ""
+msgstr "Аԥыхры"
 
 #: plugins/wwan/gsd-wwan-manager.c:133
 #, c-format
@@ -2684,7 +2742,7 @@ msgstr ""
 
 #: plugins/wwan/gsd-wwan-manager.c:139
 msgid "Enter PIN to unlock your SIM card"
-msgstr ""
+msgstr "Иҭажәгал PIN шә-SIM карта аужьразы "
 
 #: plugins/wwan/gsd-wwan-manager.c:142
 #, c-format
@@ -2693,7 +2751,7 @@ msgstr ""
 
 #: plugins/wwan/gsd-wwan-manager.c:144
 msgid "Enter PUK to unlock your SIM card"
-msgstr ""
+msgstr "Иҭажәгал акод PUK шә- SIM карта аужьразы"
 
 #. msg is already localised
 #: plugins/wwan/gsd-wwan-manager.c:160
