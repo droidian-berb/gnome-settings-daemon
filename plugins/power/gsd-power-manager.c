@@ -1186,10 +1186,48 @@ action_hibernate (GsdPowerManager *manager)
                            "Error calling Hibernate");
 }
 
+
+static void
+light_claimed_cb (GObject      *source_object,
+                  GAsyncResult *res,
+                  gpointer      user_data)
+{
+        GsdPowerManager *manager = user_data;
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GVariant) result = NULL;
+
+        result = g_dbus_proxy_call_finish (G_DBUS_PROXY (source_object),
+                                           res,
+                                           &error);
+        if (result == NULL) {
+                g_warning ("Claiming light sensor failed: %s", error->message);
+                return;
+        }
+        iio_proxy_changed (manager);
+}
+
+
+static void
+light_released_cb (GObject      *source_object,
+                   GAsyncResult *res,
+                   gpointer      user_data)
+{
+        g_autoptr(GError) error = NULL;
+        g_autoptr(GVariant) result = NULL;
+
+        result = g_dbus_proxy_call_finish (G_DBUS_PROXY (source_object),
+                                           res,
+                                           &error);
+        if (result == NULL) {
+                g_warning ("Release of light sensors failed: %s", error->message);
+                return;
+        }
+}
+
+
 static void
 iio_proxy_claim_light (GsdPowerManager *manager, gboolean active)
 {
-        GError *error = NULL;
         if (manager->iio_proxy == NULL)
                 return;
         if (!manager->backlight)
@@ -1211,19 +1249,14 @@ iio_proxy_claim_light (GsdPowerManager *manager, gboolean active)
                 g_signal_connect (manager->iio_proxy, "g-properties-changed",
                                   G_CALLBACK (iio_proxy_changed_cb), manager);
 
-        if (!g_dbus_proxy_call_sync (manager->iio_proxy,
-                                     active ? "ClaimLight" : "ReleaseLight",
-                                     NULL,
-                                     G_DBUS_CALL_FLAGS_NONE,
-                                     -1,
-                                     NULL,
-                                     &error)) {
-                g_warning ("Call to iio-proxy failed: %s", error->message);
-                g_error_free (error);
-        }
-
-        if (active)
-                iio_proxy_changed (manager);
+        g_dbus_proxy_call (manager->iio_proxy,
+                           active ? "ClaimLight" : "ReleaseLight",
+                           NULL,
+                           G_DBUS_CALL_FLAGS_NONE,
+                           -1,
+                           manager->cancellable,
+                           active ? light_claimed_cb : light_released_cb,
+                           manager);
 }
 
 static void
@@ -2871,9 +2904,6 @@ on_rr_screen_acquired (GObject      *object,
         if (!gnome_settings_is_wayland ())
                 manager->xscreensaver_watchdog_timer_id = gsd_power_enable_screensaver_watchdog ();
 
-        /* don't blank inside a VM */
-        manager->is_virtual_machine = gsd_power_is_hardware_a_vm ();
-
         /* queue a signal in case the proxy from gnome-shell was created before we got here
            (likely, considering that to get here we need a reply from gnome-shell)
         */
@@ -3002,6 +3032,9 @@ gsd_power_manager_start (GsdPowerManager *manager,
 {
         g_debug ("Starting power manager");
         gnome_settings_profile_start (NULL);
+
+        /* Check whether we are running in a VM */
+        manager->is_virtual_machine = gsd_power_is_hardware_a_vm ();
 
         /* Check whether we have a lid first */
         manager->up_client = up_client_new ();
