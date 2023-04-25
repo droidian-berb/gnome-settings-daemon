@@ -1,6 +1,17 @@
 gnome-settings-daemon (44.1-1) UNRELEASED; urgency=medium
 
   * New upstream release
+    - Power:
+      + Connect to light sensor asynchronously
+        (https://gitlab.gnome.org/World/Phosh/phosh/-/issues/915)
+      + Initialize check for VM environment earlier
+        (https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/issues/736)
+    - Rfkill:
+      + Monitor WwanEnabled property changes properly
+    - Smartcards:
+      + Check for the addition of new smartcard readers
+    - Xsettings:
+      + Do not force deprecated High Contrast icon theme
 
  -- Amin Bandali <bandali@ubuntu.com>  Mon, 24 Apr 2023 15:13:50 -0400
 
