@@ -12,6 +12,7 @@ gnome-settings-daemon (44.1-1) UNRELEASED; urgency=medium
       + Check for the addition of new smartcard readers
     - Xsettings:
       + Do not force deprecated High Contrast icon theme
+  * Drop gitlab_nmsignal_deprecated.patch, already included in 44.1.
 
  -- Amin Bandali <bandali@ubuntu.com>  Mon, 24 Apr 2023 15:13:50 -0400
 
