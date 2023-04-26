@@ -1,4 +1,4 @@
-gnome-settings-daemon (44.1-1) UNRELEASED; urgency=medium
+gnome-settings-daemon (44.1-1) experimental; urgency=medium
 
   * New upstream release
     - Power:
