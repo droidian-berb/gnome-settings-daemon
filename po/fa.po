@@ -15,8 +15,8 @@ msgstr ""
 "Project-Id-Version: gnome-control-center HEAD\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-settings-daemon/"
 "issues\n"
-"POT-Creation-Date: 2023-03-18 01:06+0000\n"
-"PO-Revision-Date: 2023-04-03 16:32+0330\n"
+"POT-Creation-Date: 2023-07-21 10:16+0000\n"
+"PO-Revision-Date: 2023-07-31 03:46+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <translate@ifsug.org>\n"
 "Language: fa\n"
@@ -24,33 +24,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-DamnedLies-Scope: partial\n"
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:11
 msgid "Smartcard removal action"
 msgstr "کنش برداشتن کارت هوشمند"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:12
-msgid ""
-"Set this to one of “none”, “lock-screen”, or “force-logout”. The action will "
-"get performed when the smartcard used for log in is removed."
-msgstr ""
-"تنظیم به یکی از مقدارهای none، lock-screen یا force-logout. کنش هنگامی که کارت "
-"هوشمند برای ورود برداشته می‌شود انجام خواهد شد."
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:24
-msgid "Possible values are “on”, “off”, and “custom”."
-msgstr "مقدارهای ممکن عبارتند از: on، off و custom"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:34
-msgid "Keyboard Bell Custom Filename"
-msgstr "نام پروندهٔ شخصی زنگ صفحه‌کلید"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:35
-msgid "File name of the bell sound to be played."
-msgstr "نام پروندهٔ صدای زنگی که باید پخش شود."
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:41
 msgid "Whether the tablet’s orientation is locked, or rotated automatically."
@@ -60,45 +40,14 @@ msgstr "این که جهت رایانک قفل شده باشد، یا به طو�
 msgid "Mouse button orientation"
 msgstr "جهت دکمهٔ موشی"
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:50
-msgid "Swap left and right mouse buttons for left-handed mice."
-msgstr "جابه‌جایی دکمه‌های راست و چپ برای موشی‌های چپ‌دست."
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:54
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:131
-msgid "Single Click"
-msgstr "تک کلیک"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:55
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:132
-msgid ""
-"Acceleration multiplier for mouse motion. A value of -1 is the system default."
-msgstr "ضریب شتاب برای حرکت موشی. پیش‌گزیدهٔ سامانه ‪-1‬ است."
-
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:59
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:136
 msgid "Motion Threshold"
 msgstr "آستانهٔ حرکت"
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:60
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:137
-msgid ""
-"Distance in pixels the pointer must move before accelerated mouse motion is "
-"activated. A value of -1 is the system default."
-msgstr ""
-"فاصله به پیکسل که نشانگر باید پیش از فعّال شدن شتاب حرکت موشی بپیماید. پیش‌گزیدهٔ "
-"سامانه ‪-1‬ است."
-
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:64
 msgid "Middle button emulation"
 msgstr "شبیه‌سازی کلیک وسط"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:65
-msgid ""
-"Enables middle mouse button emulation through simultaneous left and right "
-"button click."
-msgstr ""
-"شبیه‌سازی دکمهٔ وسط موسی با کلیک هم‌زمان دکمه‌های راست و چپ را به کار می‌اندازد."
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:69
 msgid "Double click time"
@@ -132,16 +81,6 @@ msgstr "تأخیر نخستین تکرار کلید"
 msgid "Initial key repeat delay in milliseconds."
 msgstr "تأخیر نخستین تکرار کلید به میلی‌ثانیه."
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:94
-msgid "Remember NumLock state"
-msgstr "به خاطر سپردن وضعیت قفل رقم"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:95
-msgid ""
-"When set to true, GNOME will remember the state of the NumLock LED between "
-"sessions."
-msgstr "گنوم هنگام درست بودنش وضعیت LED قفل رقم را بین نشست‌ها به خاطر خواهد سپرد."
-
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:101
 msgid "Disable touchpad while typing"
 msgstr "غیرفعال کردن صفحه‌لمسی در هنگام تایپ"
@@ -157,21 +96,9 @@ msgstr ""
 msgid "Enable horizontal scrolling"
 msgstr "فعال کردن لغزش افقی"
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:107
-msgid ""
-"Set this to TRUE to allow horizontal scrolling by the same method selected with "
-"the scroll_method key."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:111
 msgid "Select the touchpad scroll method"
 msgstr "انتخاب روش لغزش صفحه‌لمسی"
-
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:112
-msgid ""
-"Select the touchpad scroll method. Supported values are: “disabled”, “edge-"
-"scrolling”, “two-finger-scrolling”."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:116
 msgid "Enable mouse clicks with touchpad"
@@ -194,12 +121,6 @@ msgstr "روی TRUE تنظیم کنید تا تمام صفحه‌های لمسی
 msgid "Touchpad button orientation"
 msgstr "جهت دکمهٔ صفحه‌لمسی"
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:127
-msgid ""
-"Swap left and right mouse buttons for left-handed mice with “left”, “right” for "
-"right-handed, “mouse” to follow the mouse setting."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:141
 msgid "Natural scrolling"
 msgstr "لغرش طبیعی"
@@ -209,86 +130,41 @@ msgid "Set this to TRUE to enable natural (reverse) scrolling for touchpads."
 msgstr ""
 "برای به کار انداختن لغزش طبیعی (معکوس) برای صفحه‌لمسی‌ها، روی درست تنظیم کنید."
 
-#: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:149
-msgid "Mouse wheel emulation button. 0 to disable the feature."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:10
 msgid "Wacom stylus absolute mode"
 msgstr "حالت مطلق قلم وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:11
-msgid "Enable this to set the tablet to absolute mode."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:15
 msgid "Wacom tablet area"
 msgstr "ناحیهٔ رایانک وکوم"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:16
-msgid "Set this to x1, y1 and x2, y2 of the area usable by the tools."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:20
 msgid "Wacom tablet aspect ratio"
 msgstr "نسبت تصویر رایانک وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:21
-msgid ""
-"Enable this to restrict the Wacom tablet area to match the aspect ratio of the "
-"output."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:25
 msgid "Wacom tablet rotation"
 msgstr "شرخش رایانک وکوم"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:26
-msgid ""
-"Set this to “none”, “cw” for 90 degree clockwise, “half” for 180 degree, and "
-"“ccw” for 90 degree counterclockwise."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:30
 msgid "Wacom touch feature"
 msgstr "امکانات لمسی وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:31
-msgid "Enable this to move the cursor when the user touches the tablet."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:37
 msgid "Wacom stylus pressure curve"
 msgstr "منحنی فشار قلم وکوم"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:38
-msgid "Set this to x1, y1 and x2, y2 of the pressure curve applied to the stylus."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:42
 msgid "Wacom stylus button mapping"
 msgstr "نگاشت دکمهٔ قلم وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:43
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:60
-msgid "Set this to the logical button mapping."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:47
 msgid "Wacom stylus pressure threshold"
 msgstr "آستانهٔ فشار قلم وکوم"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:48
-msgid "Set this to the pressure value at which a stylus click event is generated."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:54
 msgid "Wacom eraser pressure curve"
 msgstr "منحنی فشار پاک‌کن وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:55
-msgid "Set this to x1, y1 and x2, y2 of the pressure curve applied to the eraser."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:59
 msgid "Wacom eraser button mapping"
@@ -298,47 +174,17 @@ msgstr "نگاشت دکمهٔ پاک‌کن وکوم"
 msgid "Wacom eraser pressure threshold"
 msgstr "آستانهٔ فشار پاک‌کن وکوم"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:65
-msgid ""
-"Set this to the pressure value at which an eraser click event is generated."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:71
 msgid "Wacom button action type"
 msgstr "گونهٔ کنش دکمهٔ وکوم"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:72
-msgid "The type of action triggered by the button being pressed."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:76
 msgid "Key combination for the custom action"
 msgstr "ترکیب کلید برای کنش شخصی"
 
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:77
-msgid ""
-"The keyboard shortcut generated when the button is pressed for custom actions."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:81
 msgid "Key combinations for a touchring or touchstrip custom action"
 msgstr "ترکیب کلید برای کنش شخصی حلقه یا نوار لمسی"
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:82
-msgid ""
-"The keyboard shortcuts generated when a touchring or touchstrip is used for "
-"custom actions (up followed by down)."
-msgstr ""
-
-#. Translators: This is the OLED display on an Intuos4 tablet:
-#. http://eu.shop.wacom.eu/images/articles/d9abd9f2d4d88aa0649cda97a8077e2b_8.jpg
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:88
-msgid "Button label for OLED display."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.peripherals.wacom.gschema.xml.in:89
-msgid "Label will be rendered to OLED display belonging to the button"
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:6
 msgid "The duration a display profile is valid"
@@ -363,125 +209,43 @@ msgid ""
 msgstr ""
 "این تعداد روزهایی است که پس از آن، نمایهٔ رنگ چاپگر نامعتبر درنظر گرفته می‌شود."
 
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:16
-msgid "If the night light mode is enabled"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:17
-msgid ""
-"Night light mode changes the color temperature of your display when the sun has "
-"gone down or at preset times."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:21
-msgid "Temperature of the display when enabled"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:22
-msgid ""
-"This temperature in Kelvin is used to modify the screen tones when night light "
-"mode is enabled. Higher values are bluer, lower redder."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:26
-msgid "Use the sunrise and sunset"
-msgstr "استفاده از طلوع و غروب"
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:27
-msgid ""
-"Calculate the sunrise and sunset times automatically, from the current location."
-msgstr ""
-
 # ../capplets/common/gconf-property-editor.:c:183
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:31
 msgid "The start time"
 msgstr "زمان آغاز"
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:32
-msgid ""
-"When “night-light-schedule-automatic” is disabled, use this start time in hours "
-"from midnight."
-msgstr ""
 
 # ../capplets/common/gconf-property-editor.:c:183
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:36
 msgid "The end time"
 msgstr "زمان پایان"
 
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:37
-msgid ""
-"When “night-light-schedule-automatic” is disabled, use this end time in hours "
-"from midnight."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:41
 msgid "The last detected position"
 msgstr "آخرین موقعیت تشخیصی"
-
-#: data/org.gnome.settings-daemon.plugins.color.gschema.xml.in:42
-msgid ""
-"When location services are available this represents the last detected "
-"location. The default value is an invalid value to ensure it is always updated "
-"at startup."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.gschema.xml.in:6
 msgid "List of plugins that are allowed to be loaded"
 msgstr "سیاههٔ افزایه‌هایی که اجازهٔ بار شدن دارند"
 
-#: data/org.gnome.settings-daemon.plugins.gschema.xml.in:7
-msgid ""
-"A list of strings representing the plugins that are allowed to be loaded "
-"(default: “all”). This is only evaluated on startup."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:6
 msgid "Mount paths to ignore"
 msgstr "مسیر‌های سوار کردن جهت نادیده گرفتن"
-
-#: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:7
-msgid "Specify a list of mount paths to ignore when they run low on space."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:12
 msgid "Free percentage notify threshold"
 msgstr "آستانهٔ آگاهی درصد آزاد"
 
-#: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:13
-msgid ""
-"Percentage free space threshold for initial warning of low disk space. If the "
-"percentage free space drops below this, a warning will be shown."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:18
 msgid "Subsequent free space percentage notify threshold"
 msgstr "آستانهٔ آگاهی درصد فضای آزاد"
-
-#: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:19
-msgid ""
-"Specify the percentage that the free disk space should reduce by before issuing "
-"a subsequent warning."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:23
 msgid "Free space notify threshold"
 msgstr "آستانهٔ آگاهی فضای آزاد"
 
-#: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:24
-msgid ""
-"Specify an amount in GB. If the amount of free space is more than this, no "
-"warning will be shown."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:28
 msgid "Minimum notify period for repeated warnings"
 msgstr "حداقل دوره اعلان برای اخطارهای تکرار شده"
-
-#: data/org.gnome.settings-daemon.plugins.housekeeping.gschema.xml.in:29
-msgid ""
-"Specify a time in minutes. Subsequent warnings for a volume will not appear "
-"more often than this period."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:6
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:154
@@ -794,10 +558,6 @@ msgstr "کلیدهای مقیدفهرست کلیدهای میان‌بر شخص�
 msgid "Size of volume step"
 msgstr "اندازهٔ گام حجم صدا"
 
-#: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:248
-msgid "Size of the volume step for each volume change"
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:254
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:530
 msgid "Quiet volume down"
@@ -1003,11 +763,6 @@ msgstr "نمایش وضعیت باتری"
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:423
 msgid "Binding to show current battery status."
 msgstr "مربوط به نمایش وضعیت کنونی باتری."
-
-#: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:428
-#: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:665
-msgid "RF kill"
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.media-keys.gschema.xml.in:429
 msgid "Binding to toggle airplane mode."
@@ -1215,162 +970,25 @@ msgstr "فرمان"
 msgid "Command to run when the binding is invoked"
 msgstr "فرمان اجرایی هنگام زدن میان‌بر"
 
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:6
-msgid "The brightness of the screen when idle"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:7
-msgid "This is the laptop panel screen brightness used when the session is idle."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:11
-msgid "Dim the screen after a period of inactivity"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:12
-msgid "If the screen should be dimmed to save power when the computer is idle."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:16
-msgid "Sleep timeout computer when on AC"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:17
-msgid ""
-"The amount of time in seconds the computer on AC power needs to be inactive "
-"before it goes to sleep. A value of 0 means never."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:21
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:31
-msgid "Whether to hibernate, suspend or do nothing when inactive"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:22
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:32
-msgid ""
-"The type of sleeping that should be performed when the computer is inactive."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:26
-msgid "Sleep timeout computer when on battery"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:27
-msgid ""
-"The amount of time in seconds the computer on battery power needs to be "
-"inactive before it goes to sleep. A value of 0 means never."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:36
-msgid "Enable the ALS sensor"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:37
-msgid "If the ambient light sensor functionality is enabled."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:41
 msgid "Power button action"
 msgstr "کنش دکمهٔ روشن"
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:42
-msgid ""
-"The action to take when the system power button is pressed. This action is hard-"
-"coded (and the setting ignored) on virtual machines (power off) and tablets "
-"(suspend)."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:46
-msgid "Enable power-saver profile when battery is low"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:47
-msgid ""
-"Automatically enable the \"power-saver\" profile using power-profiles-daemon if "
-"the battery is low."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.sharing.gschema.xml.in:6
-msgid "On which connections the service is enabled"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.sharing.gschema.xml.in:7
-msgid ""
-"The list of NetworkManager connections (each one represented with its UUID) on "
-"which this service is enabled and started."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:6
 msgid "List of explicitly disabled GTK+ modules"
 msgstr "فهرست ماژول‌های غیرفعال شده GTK+"
 
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:7
-msgid ""
-"A list of strings representing the GTK+ modules that will not be loaded, even "
-"if enabled by default in their configuration."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:11
 msgid "List of explicitly enabled GTK+ modules"
 msgstr "فهرست ماژول‌های فعال شده GTK+"
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:12
-msgid ""
-"A list of strings representing the GTK+ modules that will be loaded, usually in "
-"addition to conditional and forcibly disabled ones."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:16
-msgid "A dictionary of XSETTINGS to override"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:17
-msgid ""
-"This dictionary maps XSETTINGS names to overrides values. The values must be "
-"either strings, signed int32s or (in the case of colors), 4-tuples of uint16 "
-"(red, green, blue, alpha; 65535 is fully opaque)."
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:23
-msgid "Antialiasing"
-msgstr ""
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:24
-msgid ""
-"The type of antialiasing to use when rendering fonts. Possible values are: "
-"“none” for no antialiasing, “grayscale” for standard grayscale antialiasing, "
-"and “rgba” for subpixel antialiasing (LCD screens only)."
-msgstr ""
 
 #: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:28
 msgid "Hinting"
 msgstr "راهنمایی"
 
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:29
-msgid ""
-"The type of hinting to use when rendering fonts. Possible values are: “none” "
-"for no hinting and “slight” for fitting only to the Y-axis like Microsoft’s "
-"ClearType, DirectWrite and Adobe’s proprietary font rendering engine. Ignores "
-"native hinting within the font, generates hints algorithmically. Used on Ubuntu "
-"by default. Recommended. The meaning of “medium” and “full” depends on the font "
-"format (.ttf, .otf, .pfa/.pfb) and the installed version of FreeType. They "
-"usually try to fit glyphs to both the X and the Y axis (except for .otf: Y-"
-"only). This can lead to distortion and/or inconsistent rendering depending on "
-"the quality of the font, the font format and the state of FreeType’s font "
-"engines."
-msgstr ""
-
 #: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:33
 msgid "RGBA order"
 msgstr "ترتیب RGBA"
-
-#: data/org.gnome.settings-daemon.plugins.xsettings.gschema.xml.in:34
-msgid ""
-"The order of subpixel elements on an LCD screen; only used when antialiasing is "
-"set to “rgba”. Possible values are: “rgb” for red on left (most common), “bgr” "
-"for blue on left, “vrgb” for red on top, “vbgr” for red on bottom."
-msgstr ""
 
 #: plugins/color/gsd-color-calibrate.c:138
 msgid "Color"
@@ -1533,23 +1151,23 @@ msgstr ""
 "حافظهٔ افزاره تقریباً پر شده. برنامه‌ای داشت مقدار زیادی حافظه مصرف می‌کرد و به زور "
 "متوقّف شد."
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2250
+#: plugins/media-keys/gsd-media-keys-manager.c:2254
 msgid "Bluetooth disabled"
 msgstr "بلوتوث از کار افتاد"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2253
+#: plugins/media-keys/gsd-media-keys-manager.c:2257
 msgid "Bluetooth enabled"
 msgstr "بلوتوث به کار افتاد"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2257
+#: plugins/media-keys/gsd-media-keys-manager.c:2261
 msgid "Airplane mode enabled"
 msgstr "حالت هواپیما به کار افتاد"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2260
+#: plugins/media-keys/gsd-media-keys-manager.c:2264
 msgid "Airplane mode disabled"
 msgstr "حالت هواپیما از کار افتاد"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2299
+#: plugins/media-keys/gsd-media-keys-manager.c:2303
 msgid "Hardware Airplane Mode"
 msgstr "حالت هواپیمای سخت‌افزاری"
 
@@ -1591,48 +1209,48 @@ msgstr[0] "دقیقه"
 msgstr[1] "دقیقه"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gpm-common.c:424 plugins/power/gsd-power-manager.c:921
-#: plugins/power/gsd-power-manager.c:1005
+#: plugins/power/gpm-common.c:424 plugins/power/gsd-power-manager.c:922
+#: plugins/power/gsd-power-manager.c:1006
 msgid "Battery is critically low"
 msgstr "باتری رایانه کیفی به طرز بحرانی کم است"
 
 #. TRANSLATORS: this is the notification application name
-#: plugins/power/gsd-power-manager.c:366
+#: plugins/power/gsd-power-manager.c:367
 msgid "Power"
 msgstr "انرژی"
 
 #. TRANSLATORS: UPS is now discharging
-#: plugins/power/gsd-power-manager.c:404
+#: plugins/power/gsd-power-manager.c:405
 msgid "UPS Discharging"
 msgstr "برق اضطراری درحال تخلیه است"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: plugins/power/gsd-power-manager.c:409
+#: plugins/power/gsd-power-manager.c:410
 #, c-format
 msgid "%s of UPS backup power remaining"
 msgstr "میزان %s از انرژی پشتیبان باقی‌مانده است"
 
-#: plugins/power/gsd-power-manager.c:412
+#: plugins/power/gsd-power-manager.c:413
 msgid "Unknown amount of UPS backup power remaining"
 msgstr "میزان نامشخّصی از انرژی پشتیبان باقی‌مانده"
 
 #. TRANSLATORS: notification title, a wireless mouse is low or very low on power
-#: plugins/power/gsd-power-manager.c:512
+#: plugins/power/gsd-power-manager.c:513
 msgid "Mouse battery low"
 msgstr "باتری موشی کم است"
 
 #. TRANSLATORS: notification body, a wireless mouse is low on power
-#: plugins/power/gsd-power-manager.c:515
+#: plugins/power/gsd-power-manager.c:516
 #, c-format
 msgid "Wireless mouse is low on power (%.0f%%)"
 msgstr "نیروی موشی بی‌سیم کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:516
+#: plugins/power/gsd-power-manager.c:517
 msgid "Wireless mouse is low on power"
 msgstr "نیروی موشی بی‌سیم کم است"
 
 #. TRANSLATORS: notification body, a wireless mouse is very low on power
-#: plugins/power/gsd-power-manager.c:518
+#: plugins/power/gsd-power-manager.c:519
 #, c-format
 msgid ""
 "Wireless mouse is very low on power (%.0f%%). This device will soon stop "
@@ -1641,7 +1259,7 @@ msgstr ""
 "نیروی موشی بی‌سیم خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:520
+#: plugins/power/gsd-power-manager.c:521
 msgid ""
 "Wireless mouse is very low on power. This device will soon stop functioning if "
 "not charged."
@@ -1650,22 +1268,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a wireless keyboard is low or very low on power
-#: plugins/power/gsd-power-manager.c:525
+#: plugins/power/gsd-power-manager.c:526
 msgid "Keyboard battery low"
 msgstr "باتری صفحه‌کلید کم است"
 
 #. TRANSLATORS: notification body, a wireless keyboard is low on power
-#: plugins/power/gsd-power-manager.c:528
+#: plugins/power/gsd-power-manager.c:529
 #, c-format
 msgid "Wireless keyboard is low on power (%.0f%%)"
 msgstr "نیروی صفحه‌کلید بی‌سیم کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:529
+#: plugins/power/gsd-power-manager.c:530
 msgid "Wireless keyboard is low on power"
 msgstr "نیروی صفحه‌کلید بی‌سیم کم است"
 
 #. TRANSLATORS: notification body, a wireless keyboard is very low on power
-#: plugins/power/gsd-power-manager.c:531
+#: plugins/power/gsd-power-manager.c:532
 #, c-format
 msgid ""
 "Wireless keyboard is very low on power (%.0f%%). This device will soon stop "
@@ -1674,7 +1292,7 @@ msgstr ""
 "نیروی صفحه‌کلید بی‌سیم خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از "
 "کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:533
+#: plugins/power/gsd-power-manager.c:534
 msgid ""
 "Wireless keyboard is very low on power. This device will soon stop functioning "
 "if not charged."
@@ -1683,22 +1301,22 @@ msgstr ""
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, a PDA (Personal Digital Assistance device) is low or very on power
-#: plugins/power/gsd-power-manager.c:538
+#: plugins/power/gsd-power-manager.c:539
 msgid "PDA battery low"
 msgstr "باتری پی‌دی‌ای کم است"
 
 #. TRANSLATORS: notification body, a PDA (Personal Digital Assistance device) is low on power
-#: plugins/power/gsd-power-manager.c:541
+#: plugins/power/gsd-power-manager.c:542
 #, c-format
 msgid "PDA is low on power (%.0f%%)"
 msgstr "نیروی پی‌دی‌ای کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:542
+#: plugins/power/gsd-power-manager.c:543
 msgid "PDA is low on power"
 msgstr "نیروی پی‌دی‌ای کم است"
 
 #. TRANSLATORS: notification body, a PDA (Personal Digital Assistance device) is very low on power
-#: plugins/power/gsd-power-manager.c:544
+#: plugins/power/gsd-power-manager.c:545
 #, c-format
 msgid ""
 "PDA is very low on power (%.0f%%). This device will soon stop functioning if "
@@ -1707,7 +1325,7 @@ msgstr ""
 "نیروی پی‌دی‌ای کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار خواهد "
 "افتاد."
 
-#: plugins/power/gsd-power-manager.c:546
+#: plugins/power/gsd-power-manager.c:547
 msgid ""
 "PDA is very low on power. This device will soon stop functioning if not charged."
 msgstr ""
@@ -1715,22 +1333,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a cell phone (mobile phone) is low or very low on power
-#: plugins/power/gsd-power-manager.c:551
+#: plugins/power/gsd-power-manager.c:552
 msgid "Cell phone battery low"
 msgstr "باتری تلفن همراه کم است"
 
 #. TRANSLATORS: notification body, a cell phone (mobile phone) is low on power
-#: plugins/power/gsd-power-manager.c:554
+#: plugins/power/gsd-power-manager.c:555
 #, c-format
 msgid "Cell phone is low on power (%.0f%%)"
 msgstr "نیروی تلفن همراه کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:555
+#: plugins/power/gsd-power-manager.c:556
 msgid "Cell phone is low on power"
 msgstr "نیروی تلفن همراه کم است (٪%I.0f)"
 
 #. TRANSLATORS: notification body, a cell phone (mobile phone) is very low on power
-#: plugins/power/gsd-power-manager.c:557
+#: plugins/power/gsd-power-manager.c:558
 #, c-format
 msgid ""
 "Cell phone is very low on power (%.0f%%). This device will soon stop "
@@ -1739,7 +1357,7 @@ msgstr ""
 "نیروی تلفن همراه کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:559
+#: plugins/power/gsd-power-manager.c:560
 msgid ""
 "Cell phone is very low on power. This device will soon stop functioning if not "
 "charged."
@@ -1748,22 +1366,22 @@ msgstr ""
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, a media player (e.g. mp3 player) is low or very low on power
-#: plugins/power/gsd-power-manager.c:564
+#: plugins/power/gsd-power-manager.c:565
 msgid "Media player battery low"
 msgstr "باتری پخش‌کنندهٔ رسانه کم است"
 
 #. TRANSLATORS: notification body, a media player (e.g. mp3 player) is low on power
-#: plugins/power/gsd-power-manager.c:567
+#: plugins/power/gsd-power-manager.c:568
 #, c-format
 msgid "Media player is low on power (%.0f%%)"
 msgstr "نیروی پخش‌کنندهٔ رسانه کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:568
+#: plugins/power/gsd-power-manager.c:569
 msgid "Media player is low on power"
 msgstr "نیروی پخش‌کنندهٔ رسانه کم است"
 
 #. TRANSLATORS: notification body, a media player (e.g. mp3 player) is very low on power
-#: plugins/power/gsd-power-manager.c:570
+#: plugins/power/gsd-power-manager.c:571
 #, c-format
 msgid ""
 "Media player is very low on power (%.0f%%). This device will soon stop "
@@ -1772,7 +1390,7 @@ msgstr ""
 "نیروی پخش‌کنندهٔ رسانه کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:572
+#: plugins/power/gsd-power-manager.c:573
 msgid ""
 "Media player is very low on power. This device will soon stop functioning if "
 "not charged."
@@ -1781,22 +1399,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a graphics tablet (e.g. wacom) is low or very low on power
-#: plugins/power/gsd-power-manager.c:577
+#: plugins/power/gsd-power-manager.c:578
 msgid "Tablet battery low"
 msgstr "باتری رایانک کم است"
 
 #. TRANSLATORS: notification body, a graphics tablet (e.g. wacom) is low on power
-#: plugins/power/gsd-power-manager.c:580
+#: plugins/power/gsd-power-manager.c:581
 #, c-format
 msgid "Tablet is low on power (%.0f%%)"
 msgstr "نیروی رایانک کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:581
+#: plugins/power/gsd-power-manager.c:582
 msgid "Tablet is low on power"
 msgstr "نیروی رایانک کم است"
 
 #. TRANSLATORS: notification body, a graphics tablet (e.g. wacom) is very low on power
-#: plugins/power/gsd-power-manager.c:583
+#: plugins/power/gsd-power-manager.c:584
 #, c-format
 msgid ""
 "Tablet is very low on power (%.0f%%). This device will soon stop functioning if "
@@ -1805,7 +1423,7 @@ msgstr ""
 "نیروی رایانک خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:585
+#: plugins/power/gsd-power-manager.c:586
 msgid ""
 "Tablet is very low on power. This device will soon stop functioning if not "
 "charged."
@@ -1813,22 +1431,22 @@ msgstr ""
 "نیروی رایانک خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, an attached computer (e.g. ipad) is low or very low on power
-#: plugins/power/gsd-power-manager.c:590
+#: plugins/power/gsd-power-manager.c:591
 msgid "Attached computer battery low"
 msgstr "باتری رایانهٔ وصل شده کم است"
 
 #. TRANSLATORS: notification body, an attached computer (e.g. ipad) is low on power
-#: plugins/power/gsd-power-manager.c:593
+#: plugins/power/gsd-power-manager.c:594
 #, c-format
 msgid "Attached computer is low on power (%.0f%%)"
 msgstr "نیروی رایانهٔ وصل شده کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:594
+#: plugins/power/gsd-power-manager.c:595
 msgid "Attached computer is low on power"
 msgstr "نیروی رایانهٔ وصل شده کم است"
 
 #. TRANSLATORS: notification body, an attached computer (e.g. ipad) is very low on power
-#: plugins/power/gsd-power-manager.c:596
+#: plugins/power/gsd-power-manager.c:597
 #, c-format
 msgid ""
 "Attached computer is very low on power (%.0f%%). The device will soon shutdown "
@@ -1837,7 +1455,7 @@ msgstr ""
 "نیروی رایانه وصل شده خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از "
 "کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:598
+#: plugins/power/gsd-power-manager.c:599
 msgid ""
 "Attached computer is very low on power. The device will soon shutdown if not "
 "charged."
@@ -1846,22 +1464,22 @@ msgstr ""
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, a game controller (e.g. joystick or joypad) is low or very low on power
-#: plugins/power/gsd-power-manager.c:603
+#: plugins/power/gsd-power-manager.c:604
 msgid "Game controller battery low"
 msgstr "باتری دستهٔ بازی کم است"
 
 #. TRANSLATORS: notification body, a game controller (e.g. joystick or joypad) is low on power
-#: plugins/power/gsd-power-manager.c:606
+#: plugins/power/gsd-power-manager.c:607
 #, c-format
 msgid "Game controller is low on power (%.0f%%)"
 msgstr "نیروی دستهٔ بازی کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:607
+#: plugins/power/gsd-power-manager.c:608
 msgid "Game controller is low on power"
 msgstr "نیروی دستهٔ بازی کم است"
 
 #. TRANSLATORS: notification body, an attached game controller (e.g. joystick or joypad) is very low on power
-#: plugins/power/gsd-power-manager.c:609
+#: plugins/power/gsd-power-manager.c:610
 #, c-format
 msgid ""
 "Game controller is very low on power (%.0f%%). The device will soon shutdown if "
@@ -1870,7 +1488,7 @@ msgstr ""
 "نیروی دستهٔ وصل شده خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از "
 "کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:611
+#: plugins/power/gsd-power-manager.c:612
 msgid ""
 "Game controller is very low on power. The device will soon shutdown if not "
 "charged."
@@ -1879,22 +1497,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a pen is low or very low on power
-#: plugins/power/gsd-power-manager.c:616
+#: plugins/power/gsd-power-manager.c:617
 msgid "Pen battery low"
 msgstr "باتری قلم کم است"
 
 #. TRANSLATORS: notification body, a pen is low on power
-#: plugins/power/gsd-power-manager.c:619
+#: plugins/power/gsd-power-manager.c:620
 #, c-format
 msgid "Pen is low on power (%.0f%%)"
 msgstr "نیروی قلم کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:620
+#: plugins/power/gsd-power-manager.c:621
 msgid "Pen is low on power"
 msgstr "نیروی قلم کم است"
 
 #. TRANSLATORS: notification body, a pen is very low on power
-#: plugins/power/gsd-power-manager.c:622
+#: plugins/power/gsd-power-manager.c:623
 #, c-format
 msgid ""
 "Pen is very low on power (%.0f%%). The device will soon shutdown if not charged."
@@ -1902,28 +1520,28 @@ msgstr ""
 "نیروی قلم خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار خواهد "
 "افتاد."
 
-#: plugins/power/gsd-power-manager.c:624
+#: plugins/power/gsd-power-manager.c:625
 msgid "Pen is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی قلم خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, an external touchpad is low or very low on power
-#: plugins/power/gsd-power-manager.c:629
+#: plugins/power/gsd-power-manager.c:630
 msgid "Touchpad battery low"
 msgstr "باتری صفحه‌لمسی کم است"
 
 #. TRANSLATORS: notification body, an external touchpad is low on power
-#: plugins/power/gsd-power-manager.c:632
+#: plugins/power/gsd-power-manager.c:633
 #, c-format
 msgid "Touchpad is low on power (%.0f%%)"
 msgstr "نیروی صفحه‌‌لمسی کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:633
+#: plugins/power/gsd-power-manager.c:634
 msgid "Touchpad is low on power"
 msgstr "نیروی صفحه‌‌لمسی کم است"
 
 #. TRANSLATORS: notification body, an external touchpad is very low on power
-#: plugins/power/gsd-power-manager.c:635
+#: plugins/power/gsd-power-manager.c:636
 #, c-format
 msgid ""
 "Touchpad is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -1932,7 +1550,7 @@ msgstr ""
 "نیروی صفحه‌لمسی خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:637
+#: plugins/power/gsd-power-manager.c:638
 msgid ""
 "Touchpad is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -1940,22 +1558,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a headset (headphones + microphone) is low or very low on power
-#: plugins/power/gsd-power-manager.c:642
+#: plugins/power/gsd-power-manager.c:643
 msgid "Headset battery low"
 msgstr "باتری هدست کم است"
 
 #. TRANSLATORS: notification body, a headset (headphones + microphone) is low on power
-#: plugins/power/gsd-power-manager.c:645
+#: plugins/power/gsd-power-manager.c:646
 #, c-format
 msgid "Headset is low on power (%.0f%%)"
 msgstr "نیروی هدست کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:646
+#: plugins/power/gsd-power-manager.c:647
 msgid "Headset is low on power"
 msgstr "نیروی هدست کم است"
 
 #. TRANSLATORS: notification body, a headset (headphones + microphone) is very low on power
-#: plugins/power/gsd-power-manager.c:648
+#: plugins/power/gsd-power-manager.c:649
 #, c-format
 msgid ""
 "Headset is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -1964,29 +1582,29 @@ msgstr ""
 "نیروی هدست خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار خواهد "
 "افتاد."
 
-#: plugins/power/gsd-power-manager.c:650
+#: plugins/power/gsd-power-manager.c:651
 msgid ""
 "Headset is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی هدست خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, speaker is low or very low on power
-#: plugins/power/gsd-power-manager.c:655
+#: plugins/power/gsd-power-manager.c:656
 msgid "Speaker battery low"
 msgstr "باتری بلندگو کم است"
 
 #. TRANSLATORS: notification body, a speaker is low on power
-#: plugins/power/gsd-power-manager.c:658
+#: plugins/power/gsd-power-manager.c:659
 #, c-format
 msgid "Speaker is low on power (%.0f%%)"
 msgstr "نیروی بلندگو کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:659
+#: plugins/power/gsd-power-manager.c:660
 msgid "Speaker is low on power"
 msgstr "نیروی بلندگو کم است"
 
 #. TRANSLATORS: notification body, a speaker is very low on power
-#: plugins/power/gsd-power-manager.c:661
+#: plugins/power/gsd-power-manager.c:662
 #, c-format
 msgid ""
 "Speaker is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -1995,29 +1613,29 @@ msgstr ""
 "نیروی بلندگو خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:663
+#: plugins/power/gsd-power-manager.c:664
 msgid ""
 "Speaker is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی بلندگو خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, headphones (no microphone) are low or very low on power
-#: plugins/power/gsd-power-manager.c:668
+#: plugins/power/gsd-power-manager.c:669
 msgid "Headphones battery low"
 msgstr "باتری هدفون کم است"
 
 #. TRANSLATORS: notification body, headphones (no microphone) are low on power
-#: plugins/power/gsd-power-manager.c:671
+#: plugins/power/gsd-power-manager.c:672
 #, c-format
 msgid "Headphones are low on power (%.0f%%)"
 msgstr "نیروی هدفون کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:672
+#: plugins/power/gsd-power-manager.c:673
 msgid "Headphones are low on power"
 msgstr "نیروی هدفون کم است"
 
 #. TRANSLATORS: notification body, headphones (no microphone) are very low on power
-#: plugins/power/gsd-power-manager.c:674
+#: plugins/power/gsd-power-manager.c:675
 #, c-format
 msgid ""
 "Headphones are very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2026,29 +1644,29 @@ msgstr ""
 "نیروی هدفون خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:676
+#: plugins/power/gsd-power-manager.c:677
 msgid ""
 "Headphones are very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی هدفون خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, an audio device is low or very low on power
-#: plugins/power/gsd-power-manager.c:681
+#: plugins/power/gsd-power-manager.c:682
 msgid "Audio device battery low"
 msgstr "باتری افزارهٔ صوتی کم است"
 
 #. TRANSLATORS: notification body, an audio device is low on power
-#: plugins/power/gsd-power-manager.c:684
+#: plugins/power/gsd-power-manager.c:685
 #, c-format
 msgid "Audio device is low on power (%.0f%%)"
 msgstr "نیروی افزارهٔ‌ صوتی کم است (%.0f٪)"
 
-#: plugins/power/gsd-power-manager.c:685
+#: plugins/power/gsd-power-manager.c:686
 msgid "Audio device is low on power"
 msgstr "نیروی افزارهٔ‌ صوتی کم است"
 
 #. TRANSLATORS: notification body, an audio device is very low on power
-#: plugins/power/gsd-power-manager.c:687
+#: plugins/power/gsd-power-manager.c:688
 #, c-format
 msgid ""
 "Audio device is very low on power (%.0f%%). The device will soon shutdown if "
@@ -2057,7 +1675,7 @@ msgstr ""
 "نیروی افزارهٔ صوتی خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از "
 "کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:689
+#: plugins/power/gsd-power-manager.c:690
 msgid ""
 "Audio device is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2065,22 +1683,22 @@ msgstr ""
 "افتاد."
 
 #. TRANSLATORS: notification title, a remote control is low or very low on power
-#: plugins/power/gsd-power-manager.c:694
+#: plugins/power/gsd-power-manager.c:695
 msgid "Remote battery low"
 msgstr "باتری کنترل از راه دور کم است"
 
 #. TRANSLATORS: notification body, an remote control is low on power
-#: plugins/power/gsd-power-manager.c:697
+#: plugins/power/gsd-power-manager.c:698
 #, c-format
 msgid "Remote is low on power (%.0f%%)"
 msgstr "نیروی کنترل از راه دور کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:698
+#: plugins/power/gsd-power-manager.c:699
 msgid "Remote is low on power"
 msgstr "نیروی کنترل از راه دور کم است"
 
 #. TRANSLATORS: notification body, a remote control is very low on power
-#: plugins/power/gsd-power-manager.c:700
+#: plugins/power/gsd-power-manager.c:701
 #, c-format
 msgid ""
 "Remote is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2089,29 +1707,29 @@ msgstr ""
 "نیروی کنترل از راه دور خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی "
 "از کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:702
+#: plugins/power/gsd-power-manager.c:703
 msgid "Remote is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی کنترل از راه دور خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, a printer is low or very low on power
-#: plugins/power/gsd-power-manager.c:707
+#: plugins/power/gsd-power-manager.c:708
 msgid "Printer battery low"
 msgstr "باتری چاپگر کم است"
 
 #. TRANSLATORS: notification body, a printer is low on power
-#: plugins/power/gsd-power-manager.c:710
+#: plugins/power/gsd-power-manager.c:711
 #, c-format
 msgid "Printer is low on power (%.0f%%)"
 msgstr "نیروی چاپگر کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:711
+#: plugins/power/gsd-power-manager.c:712
 msgid "Printer is low on power"
 msgstr "نیروی چاپگر کم است"
 
 #. TRANSLATORS: notification body, a printer is very low on power
-#: plugins/power/gsd-power-manager.c:713
+#: plugins/power/gsd-power-manager.c:714
 #, c-format
 msgid ""
 "Printer is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2120,29 +1738,29 @@ msgstr ""
 "نیروی چاپگر خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:715
+#: plugins/power/gsd-power-manager.c:716
 msgid ""
 "Printer is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی چاپگر خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, a scanner is low or very low on power
-#: plugins/power/gsd-power-manager.c:720
+#: plugins/power/gsd-power-manager.c:721
 msgid "Scanner battery low"
 msgstr "باتری پویشگر کم است"
 
 #. TRANSLATORS: notification body, a scanner is low on power
-#: plugins/power/gsd-power-manager.c:723
+#: plugins/power/gsd-power-manager.c:724
 #, c-format
 msgid "Scanner is low on power (%.0f%%)"
 msgstr "نیروی پویشگر کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:724
+#: plugins/power/gsd-power-manager.c:725
 msgid "Scanner is low on power"
 msgstr "نیروی پویشگر کم است"
 
 #. TRANSLATORS: notification body, a scanner is very low on power
-#: plugins/power/gsd-power-manager.c:726
+#: plugins/power/gsd-power-manager.c:727
 #, c-format
 msgid ""
 "Scanner is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2151,29 +1769,29 @@ msgstr ""
 "نیروی پویشگر خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:728
+#: plugins/power/gsd-power-manager.c:729
 msgid ""
 "Scanner is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی پویشگر خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, a camera is low or very low on power
-#: plugins/power/gsd-power-manager.c:733
+#: plugins/power/gsd-power-manager.c:734
 msgid "Camera battery low"
 msgstr "باتری دوربین کم است"
 
 #. TRANSLATORS: notification body, a camera is low on power
-#: plugins/power/gsd-power-manager.c:736
+#: plugins/power/gsd-power-manager.c:737
 #, c-format
 msgid "Camera is low on power (%.0f%%)"
 msgstr "نیروی دوربین کم است (٪%I.0f)"
 
-#: plugins/power/gsd-power-manager.c:737
+#: plugins/power/gsd-power-manager.c:738
 msgid "Camera is low on power"
 msgstr "نیروی دوربین کم است"
 
 #. TRANSLATORS: notification body, a camera is very low on power
-#: plugins/power/gsd-power-manager.c:739
+#: plugins/power/gsd-power-manager.c:740
 #, c-format
 msgid ""
 "Camera is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2182,28 +1800,28 @@ msgstr ""
 "نیروی دوربین خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از کار "
 "خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:741
+#: plugins/power/gsd-power-manager.c:742
 msgid "Camera is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "نیروی دوربین خیلی کم است. اگر این افزاره شارژ نشود، به زودی از کار خواهد افتاد."
 
 #. TRANSLATORS: notification title, a Bluetooth device is low or very low on power
-#: plugins/power/gsd-power-manager.c:746
+#: plugins/power/gsd-power-manager.c:747
 msgid "Bluetooth device battery low"
 msgstr "باتری افزارهٔ بلوتوثی کم است"
 
 #. TRANSLATORS: notification body, a Bluetooth device is low on power
-#: plugins/power/gsd-power-manager.c:749
+#: plugins/power/gsd-power-manager.c:750
 #, c-format
 msgid "Bluetooth device is low on power (%.0f%%)"
 msgstr "نیروی افزارهٔ‌ بلوتوثی کم است (%.0f٪)"
 
-#: plugins/power/gsd-power-manager.c:750
+#: plugins/power/gsd-power-manager.c:751
 msgid "Bluetooth device is low on power"
 msgstr "نیروی افزارهٔ‌ بلوتوثی کم است"
 
 #. TRANSLATORS: notification body, a Bluetooth device is very low on power
-#: plugins/power/gsd-power-manager.c:752
+#: plugins/power/gsd-power-manager.c:753
 #, c-format
 msgid ""
 "Bluetooth device is very low on power (%.0f%%). The device will soon shutdown "
@@ -2212,7 +1830,7 @@ msgstr ""
 "نیروی افزارهٔ بلوتوثی خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی از "
 "کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:754
+#: plugins/power/gsd-power-manager.c:755
 msgid ""
 "Bluetooth device is very low on power. The device will soon shutdown if not "
 "charged."
@@ -2221,22 +1839,22 @@ msgstr ""
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, a connected (wireless) device or peripheral of unhandled type is low or very on power
-#: plugins/power/gsd-power-manager.c:760
+#: plugins/power/gsd-power-manager.c:761
 msgid "Connected device battery is low"
 msgstr "باتری افزارهٔ وصل شده کم است"
 
 #. TRANSLATORS: notification body, a connected (wireless) device or peripheral of unhandled type is low on power
-#: plugins/power/gsd-power-manager.c:763
+#: plugins/power/gsd-power-manager.c:764
 #, c-format
 msgid "A connected device is low on power (%.0f%%)"
 msgstr "نیروی افزارهٔ‌ وصل شده‌ای پایین است (%.0f٪)"
 
-#: plugins/power/gsd-power-manager.c:764
+#: plugins/power/gsd-power-manager.c:765
 msgid "A connected device is low on power"
 msgstr "نیروی افزارهٔ‌ وصل شده‌ای پایین است"
 
 #. TRANSLATORS: notification body, a connected (wireless) device or peripheral of unhandled type is very low on power
-#: plugins/power/gsd-power-manager.c:766
+#: plugins/power/gsd-power-manager.c:767
 #, c-format
 msgid ""
 "A connected device is very low on power (%.0f%%). The device will soon shutdown "
@@ -2245,7 +1863,7 @@ msgstr ""
 "نیروی افزارهٔ وصل شده‌ای خیلی کم است (٪%I.0f). اگر این افزاره شارژ نشود، به زودی "
 "از کار خواهد افتاد."
 
-#: plugins/power/gsd-power-manager.c:768
+#: plugins/power/gsd-power-manager.c:769
 msgid ""
 "A connected device is very low on power. The device will soon shutdown if not "
 "charged."
@@ -2254,106 +1872,106 @@ msgstr ""
 "خواهد افتاد."
 
 #. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is running low, shows percentage remaining
-#: plugins/power/gsd-power-manager.c:794
+#: plugins/power/gsd-power-manager.c:795
 msgid "Low Battery"
 msgstr "باتری کم است"
 
 #. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is running low, shows percentage remaining
-#: plugins/power/gsd-power-manager.c:797
+#: plugins/power/gsd-power-manager.c:798
 #, c-format
 msgid "%.0f%% battery remaining"
 msgstr "%I.0f٪ مانده"
 
 #. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining
-#: plugins/power/gsd-power-manager.c:800
+#: plugins/power/gsd-power-manager.c:801
 msgid "UPS Low"
 msgstr "برق اضطراری کم است"
 
 #. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining
 #. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon
-#: plugins/power/gsd-power-manager.c:803 plugins/power/gsd-power-manager.c:876
+#: plugins/power/gsd-power-manager.c:804 plugins/power/gsd-power-manager.c:877
 #, c-format
 msgid "%.0f%% UPS power remaining"
 msgstr "%I.0f٪ نیروی برق اضطراری مانده"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:841
+#: plugins/power/gsd-power-manager.c:842
 msgid "Battery is low"
 msgstr "باتری کم است"
 
 #. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, advice on what the user should do
-#: plugins/power/gsd-power-manager.c:867
+#: plugins/power/gsd-power-manager.c:868
 msgid "Battery Almost Empty"
 msgstr "باتری تقریباً خالی است"
 
 #. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically running low, advice on what the user should do
-#: plugins/power/gsd-power-manager.c:870
+#: plugins/power/gsd-power-manager.c:871
 #, c-format
 msgid "Connect power now"
 msgstr "اکنون نیرو وصل شود"
 
 #. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon
-#: plugins/power/gsd-power-manager.c:873
+#: plugins/power/gsd-power-manager.c:874
 msgid "UPS Almost Empty"
 msgstr "برق اضطراری تقریباً خالی است"
 
 #. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening now
-#: plugins/power/gsd-power-manager.c:944
+#: plugins/power/gsd-power-manager.c:945
 msgid "Battery is Empty"
 msgstr "باتری خالی است"
 
 #. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action about to happen
 #. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen
-#: plugins/power/gsd-power-manager.c:951 plugins/power/gsd-power-manager.c:971
+#: plugins/power/gsd-power-manager.c:952 plugins/power/gsd-power-manager.c:972
 msgid "This device is about to hibernate"
 msgstr "افزاره در حال رفتن به خواب زمستانی است"
 
-#: plugins/power/gsd-power-manager.c:953 plugins/power/gsd-power-manager.c:973
+#: plugins/power/gsd-power-manager.c:954 plugins/power/gsd-power-manager.c:974
 msgid "This device is about to shutdown"
 msgstr "افزاره در حال خاموش شدن است"
 
 #. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen
-#: plugins/power/gsd-power-manager.c:964
+#: plugins/power/gsd-power-manager.c:965
 msgid "UPS is Empty"
 msgstr "برق اضطراری خالی است"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:1459
+#: plugins/power/gsd-power-manager.c:1493
 msgid "Lid has been opened"
 msgstr "در باز شده است"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:1493
+#: plugins/power/gsd-power-manager.c:1527
 msgid "Lid has been closed"
 msgstr "در بسته شده است"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:2144
+#: plugins/power/gsd-power-manager.c:2178
 msgid "On battery power"
 msgstr "در حال استفاده از باتری"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:2149
+#: plugins/power/gsd-power-manager.c:2183
 msgid "On AC power"
 msgstr "روی برق متناوب"
 
-#: plugins/power/gsd-power-manager.c:2397
+#: plugins/power/gsd-power-manager.c:2452
 msgid "Automatic logout"
 msgstr "خروج خودکار"
 
-#: plugins/power/gsd-power-manager.c:2397
+#: plugins/power/gsd-power-manager.c:2452
 msgid "You will soon log out because of inactivity."
 msgstr "به زودی به دلیل غیرفعّال بودن، خارج خواهید شد."
 
-#: plugins/power/gsd-power-manager.c:2402
+#: plugins/power/gsd-power-manager.c:2457
 msgid "Automatic suspend"
 msgstr "تعلیق خودکار"
 
-#: plugins/power/gsd-power-manager.c:2402 plugins/power/gsd-power-manager.c:2407
+#: plugins/power/gsd-power-manager.c:2457 plugins/power/gsd-power-manager.c:2462
 msgid "Suspending soon because of inactivity."
 msgstr "به زودی به خاطر فعّال نبودن، معلّق خواهد شد."
 
-#: plugins/power/gsd-power-manager.c:2407
+#: plugins/power/gsd-power-manager.c:2462
 msgid "Automatic hibernation"
 msgstr "خواب زمستانی خودکار"
 
@@ -2559,7 +2177,7 @@ msgstr "چاپگر اضافه شد"
 #: plugins/print-notifications/gsd-print-notifications-manager.c:754
 msgctxt "print job state"
 msgid "Printing stopped"
-msgstr "چاپ متوقف شد"
+msgstr "چاپ متوقّف شد"
 
 #. Translators: "print-job xy" on a printer
 #: plugins/print-notifications/gsd-print-notifications-manager.c:718
@@ -2625,15 +2243,15 @@ msgstr "چاپگر «%s»: «%s»."
 msgid "User was not logged in with smartcard."
 msgstr "کاربر با کار هوشمند وارد نشده بود."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:388
+#: plugins/usb-protection/gsd-usb-protection-manager.c:415
 msgid "USB Protection"
 msgstr "محافظت یواس‌بی"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:512
+#: plugins/usb-protection/gsd-usb-protection-manager.c:544
 msgid "New USB device"
 msgstr "افزارهٔ یواس‌بی جدید"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:513
+#: plugins/usb-protection/gsd-usb-protection-manager.c:545
 msgid ""
 "New device has been detected while the session was not locked. If you did not "
 "plug anything, check your system for any suspicious device."
@@ -2641,11 +2259,11 @@ msgstr ""
 "هنگام قفل نبودن نشست، افزارهٔ‌جدیدی شناسایی شد. اگر چیزی وصل نکردید، سامانه‌تان را "
 "برای افزاره‌های مشکوک بررسی کنید."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:601
+#: plugins/usb-protection/gsd-usb-protection-manager.c:687
 msgid "New device detected"
 msgstr "افزاره‌ای جدید شناسایی شد"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:602
+#: plugins/usb-protection/gsd-usb-protection-manager.c:688
 msgid ""
 "Either one of your existing devices has been reconnected or a new one has been "
 "plugged in. If you did not do it, check your system for any suspicious device."
@@ -2653,11 +2271,11 @@ msgstr ""
 "یکی از افزاره‌های پیشین یا افزارهٔ جدیدی وصل شده. اگر چنین کاری نکردید، سامانه را "
 "برای افزاره‌های مشکوک بررسی کنید."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:609
+#: plugins/usb-protection/gsd-usb-protection-manager.c:695
 msgid "Reconnect USB device"
 msgstr "اتّصال دوبارهٔ افزارهٔ یواس‌بی"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:610
+#: plugins/usb-protection/gsd-usb-protection-manager.c:696
 msgid ""
 "New device has been detected while you were away. Please disconnect and "
 "reconnect the device to start using it."
@@ -2665,12 +2283,12 @@ msgstr ""
 "هنگام نبودنتان، افزارهٔ جدید شناسایی شد. لطفاً برای شروع به استفاده از آن، قطعش "
 "کرده و دوباره وصل کنید."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:616
-#: plugins/usb-protection/gsd-usb-protection-manager.c:641
+#: plugins/usb-protection/gsd-usb-protection-manager.c:702
+#: plugins/usb-protection/gsd-usb-protection-manager.c:729
 msgid "USB device blocked"
 msgstr "افزارهٔ یواس‌بی مسدود شد"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:617
+#: plugins/usb-protection/gsd-usb-protection-manager.c:703
 msgid ""
 "New device has been detected while you were away. It has been blocked because "
 "the USB protection is active."
@@ -2678,10 +2296,15 @@ msgstr ""
 "هنگام نبودنتان، افزارهٔ جدید شناسایی شد. به خاطر روشن بودن محافظت یواس‌بی،‌مسدود "
 "شد."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:642
+#: plugins/usb-protection/gsd-usb-protection-manager.c:730
 msgid ""
-"The new inserted device has been blocked because the USB protection is active."
-msgstr "افزارهٔ وصل شدهٔ جدید به حاطر روشن بودن مخافظت یواس‌بی،‌مسدود شد."
+"The new inserted device has been blocked because the USB protection is active. "
+"If you want to activate the device, disable the USB protection and re-plug the "
+"device."
+msgstr ""
+"افزارهٔ وصل شدهٔ جدید به خاطر روشن بودن مخافظت یواس‌بی مسدود شد. اگر می‌خواهید "
+"افزاره را فعّال کنید، محافظت یواس‌بی را از کار انداخته و افزاره را دوباره وصل "
+"کنید."
 
 #. SECURITY:
 #. - A normal active user on the local machine does not need permission
