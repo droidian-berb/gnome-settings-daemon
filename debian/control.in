@@ -51,6 +51,7 @@ Build-Depends: debhelper-compat (= 13),
                xserver-xorg-input-wacom [!hurd-any !kfreebsd-any !s390 !s390x],
                xvfb <!nocheck>
 Standards-Version: 4.6.1
+Homepage: https://gitlab.gnome.org/GNOME/gnome-settings-daemon
 Vcs-Git: https://salsa.debian.org/gnome-team/gnome-settings-daemon.git
 Vcs-Browser: https://salsa.debian.org/gnome-team/gnome-settings-daemon
 Rules-Requires-Root: no
