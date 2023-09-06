@@ -21,12 +21,15 @@
 #define __GSD_SMARTCARD_UTILS_H
 
 #include <glib-object.h>
+#include <gck/gck.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 void             gsd_smartcard_utils_register_error_domain             (GQuark error_domain,
                                                                         GType error_enum);
 char *           gsd_smartcard_utils_escape_object_path                (const char *unescaped_string);
+
+const char *     gsd_smartcard_utils_get_login_token_name              (void);
 
 G_END_DECLS
 
