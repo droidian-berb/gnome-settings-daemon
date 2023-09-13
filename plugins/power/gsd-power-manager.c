@@ -110,6 +110,7 @@ static const gchar introspection_xml[] =
 "  </interface>"
 "  <interface name='org.gnome.SettingsDaemon.Power.Keyboard'>"
 "    <property name='Brightness' type='i' access='readwrite'/>"
+"    <property name='Steps' type='i' access='read'/>"
 "    <method name='StepUp'>"
 "      <arg type='i' name='new_percentage' direction='out'/>"
 "    </method>"
@@ -383,7 +384,6 @@ engine_ups_discharging (GsdPowerManager *manager, UpDevice *device)
         const gchar *title;
         gchar *remaining_text = NULL;
         gdouble percentage;
-        char *icon_name;
         gint64 time_to_empty;
         GString *message;
         UpDeviceKind kind;
@@ -393,7 +393,6 @@ engine_ups_discharging (GsdPowerManager *manager, UpDevice *device)
                       "kind", &kind,
                       "percentage", &percentage,
                       "time-to-empty", &time_to_empty,
-                      "icon-name", &icon_name,
                       NULL);
 
         if (kind != UP_DEVICE_KIND_UPS)
@@ -421,7 +420,8 @@ engine_ups_discharging (GsdPowerManager *manager, UpDevice *device)
 
         /* create a new notification */
         create_notification (title, message->str,
-                             icon_name, NOTIFICATION_PRIVACY_SYSTEM,
+                             "battery-low-symbolic",
+                             NOTIFICATION_PRIVACY_SYSTEM,
                              &manager->notification_ups_discharging);
         notify_notification_set_timeout (manager->notification_ups_discharging,
                                          GSD_POWER_MANAGER_NOTIFY_TIMEOUT_LONG);
@@ -431,7 +431,6 @@ engine_ups_discharging (GsdPowerManager *manager, UpDevice *device)
         notify_notification_show (manager->notification_ups_discharging, NULL);
 
         g_string_free (message, TRUE);
-        g_free (icon_name);
         g_free (remaining_text);
 }
 
@@ -778,48 +777,32 @@ engine_charge_low (GsdPowerManager *manager, UpDevice *device)
 {
         const gchar *title = NULL;
         gchar *message = NULL;
-        gchar *tmp;
-        gchar *remaining_text;
         gdouble percentage;
         guint battery_level;
-        char *icon_name;
-        gint64 time_to_empty;
         UpDeviceKind kind;
 
         /* get device properties */
         g_object_get (device,
                       "kind", &kind,
                       "percentage", &percentage,
-                      "time-to-empty", &time_to_empty,
                       "battery-level", &battery_level,
-                      "icon-name", &icon_name,
                       NULL);
 
         if (battery_level == UP_DEVICE_LEVEL_UNKNOWN)
                 battery_level = UP_DEVICE_LEVEL_NONE;
 
         if (kind == UP_DEVICE_KIND_BATTERY) {
-                /* TRANSLATORS: notification title, the battery of this laptop/tablet/phone is running low, shows time remaining */
-                title = _("Battery low");
-                tmp = gpm_get_timestring (time_to_empty);
-                remaining_text = g_strconcat ("<b>", tmp, "</b>", NULL);
-                g_free (tmp);
+                /* TRANSLATORS: notification title, the battery of this laptop/tablet/phone is running low, shows percentage remaining */
+                title = _("Low Battery");
 
-                /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is running low, shows time remaining */
-                message = g_strdup_printf (_("Approximately %s remaining (%.0f%%)"), remaining_text, percentage);
-                g_free (remaining_text);
-
+                /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is running low, shows percentage remaining */
+                message = g_strdup_printf (_("%.0f%% battery remaining"), percentage);
         } else if (kind == UP_DEVICE_KIND_UPS) {
-                /* TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, shows time remaining */
-                title = _("UPS low");
-                tmp = gpm_get_timestring (time_to_empty);
-                remaining_text = g_strconcat ("<b>", tmp, "</b>", NULL);
-                g_free (tmp);
+                /* TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining */
+                title = _("UPS Low");
 
-                /* TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, shows time remaining */
-                message = g_strdup_printf (_("Approximately %s of remaining UPS backup power (%.0f%%)"),
-                                           remaining_text, percentage);
-                g_free (remaining_text);
+                /* TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining */
+                message = g_strdup_printf (_("%.0f%% UPS power remaining"), percentage);
         } else {
                 guint i;
 
@@ -843,7 +826,8 @@ engine_charge_low (GsdPowerManager *manager, UpDevice *device)
 
         /* create a new notification */
         create_notification (title, message,
-                             icon_name, NOTIFICATION_PRIVACY_SYSTEM,
+                             "battery-low-symbolic",
+                             NOTIFICATION_PRIVACY_SYSTEM,
                              &manager->notification_low);
         notify_notification_set_timeout (manager->notification_low,
                                          GSD_POWER_MANAGER_NOTIFY_TIMEOUT_LONG);
@@ -858,7 +842,6 @@ engine_charge_low (GsdPowerManager *manager, UpDevice *device)
                          /* TRANSLATORS: this is the sound description */
                          CA_PROP_EVENT_DESCRIPTION, _("Battery is low"), NULL);
 
-        g_free (icon_name);
         g_free (message);
 }
 
@@ -869,9 +852,6 @@ engine_charge_critical (GsdPowerManager *manager, UpDevice *device)
         gchar *message = NULL;
         gdouble percentage;
         guint battery_level;
-        char *icon_name;
-        gint64 time_to_empty;
-        GsdPowerActionType policy;
         UpDeviceKind kind;
 
         /* get device properties */
@@ -879,42 +859,23 @@ engine_charge_critical (GsdPowerManager *manager, UpDevice *device)
                       "kind", &kind,
                       "percentage", &percentage,
                       "battery-level", &battery_level,
-                      "time-to-empty", &time_to_empty,
-                      "icon-name", &icon_name,
                       NULL);
 
         if (battery_level == UP_DEVICE_LEVEL_UNKNOWN)
                 battery_level = UP_DEVICE_LEVEL_NONE;
 
         if (kind == UP_DEVICE_KIND_BATTERY) {
-                /* TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening soon */
-                title = _("Battery critically low");
+                /* TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, advice on what the user should do */
+                title = _("Battery Almost Empty");
 
-                /* we have to do different warnings depending on the policy */
-                policy = manager_critical_action_get (manager);
-
-                if (policy == GSD_POWER_ACTION_HIBERNATE) {
-                        /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action happening soon */
-                        message = g_strdup_printf (_("Hibernating soon unless plugged in."));
-                } else if (policy == GSD_POWER_ACTION_SHUTDOWN) {
-                        message = g_strdup_printf (_("Shutting down soon unless plugged in."));
-                }
-
+                /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically running low, advice on what the user should do */
+                message = g_strdup_printf (_("Connect power now"));
         } else if (kind == UP_DEVICE_KIND_UPS) {
-                gchar *remaining_text;
-                gchar *tmp;
-
                 /* TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon */
-                title = _("UPS critically low");
-                tmp = gpm_get_timestring (time_to_empty);
-                remaining_text = g_strconcat ("<b>", tmp, "</b>", NULL);
-                g_free (tmp);
+                title = _("UPS Almost Empty");
 
                 /* TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon */
-                message = g_strdup_printf (_("Approximately %s of remaining UPS power (%.0f%%). "
-                                             "Restore AC power to your computer to avoid losing data."),
-                                           remaining_text, percentage);
-                g_free (remaining_text);
+                message = g_strdup_printf (_("%.0f%% UPS power remaining"), percentage);
         } else {
                 guint i;
 
@@ -938,7 +899,8 @@ engine_charge_critical (GsdPowerManager *manager, UpDevice *device)
 
         /* create a new notification */
         create_notification (title, message,
-                             icon_name, NOTIFICATION_PRIVACY_SYSTEM,
+                             "battery-caution-symbolic",
+                             NOTIFICATION_PRIVACY_SYSTEM,
                              &manager->notification_low);
         notify_notification_set_timeout (manager->notification_low,
                                          NOTIFY_EXPIRES_NEVER);
@@ -962,7 +924,6 @@ engine_charge_critical (GsdPowerManager *manager, UpDevice *device)
                 break;
         }
 
-        g_free (icon_name);
         g_free (message);
 }
 
@@ -971,7 +932,6 @@ engine_charge_action (GsdPowerManager *manager, UpDevice *device)
 {
         const gchar *title = NULL;
         gchar *message = NULL;
-        char *icon_name;
         GsdPowerActionType policy;
         guint timer_id;
         UpDeviceKind kind;
@@ -979,24 +939,20 @@ engine_charge_action (GsdPowerManager *manager, UpDevice *device)
         /* get device properties */
         g_object_get (device,
                       "kind", &kind,
-                      "icon-name", &icon_name,
                       NULL);
 
         if (kind == UP_DEVICE_KIND_BATTERY) {
                 /* TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening now */
-                title = _("Battery critically low");
+                title = _("Battery is Empty");
 
                 /* we have to do different warnings depending on the policy */
                 policy = manager_critical_action_get (manager);
 
                 if (policy == GSD_POWER_ACTION_HIBERNATE) {
-                        /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action happening now */
-                        message = g_strdup (_("The battery is below the critical level and "
-                                              "this computer is about to hibernate."));
-
+                        /* TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action about to happen */
+                        message = g_strdup (_("This device is about to hibernate"));
                 } else if (policy == GSD_POWER_ACTION_SHUTDOWN) {
-                        message = g_strdup (_("The battery is below the critical level and "
-                                              "this computer is about to shutdown."));
+                        message = g_strdup (_("This device is about to shutdown"));
                 }
 
                 /* wait 20 seconds for user-panic */
@@ -1006,20 +962,17 @@ engine_charge_action (GsdPowerManager *manager, UpDevice *device)
                 g_source_set_name_by_id (timer_id, "[GsdPowerManager] battery critical-action");
 
         } else if (kind == UP_DEVICE_KIND_UPS) {
-                /* TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, warning about action happening now */
-                title = _("UPS critically low");
+                /* TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen */
+                title = _("UPS is Empty");
 
                 /* we have to do different warnings depending on the policy */
                 policy = manager_critical_action_get (manager);
 
                 if (policy == GSD_POWER_ACTION_HIBERNATE) {
-                        /* TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening now */
-                        message = g_strdup (_("UPS is below the critical level and "
-                                              "this computer is about to hibernate."));
-
+                        /* TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen */
+                        message = g_strdup (_("This device is about to hibernate"));
                 } else if (policy == GSD_POWER_ACTION_SHUTDOWN) {
-                        message = g_strdup (_("UPS is below the critical level and "
-                                              "this computer is about to shutdown."));
+                        message = g_strdup (_("This device is about to shutdown"));
                 }
 
                 /* wait 20 seconds for user-panic */
@@ -1038,7 +991,8 @@ engine_charge_action (GsdPowerManager *manager, UpDevice *device)
 
         /* create a new notification */
         create_notification (title, message,
-                             icon_name, NOTIFICATION_PRIVACY_SYSTEM,
+                             "battery-action-symbolic",
+                             NOTIFICATION_PRIVACY_SYSTEM,
                              &manager->notification_low);
         notify_notification_set_timeout (manager->notification_low,
                                          NOTIFY_EXPIRES_NEVER);
@@ -1052,7 +1006,6 @@ engine_charge_action (GsdPowerManager *manager, UpDevice *device)
                          /* TRANSLATORS: this is the sound description */
                          CA_PROP_EVENT_DESCRIPTION, _("Battery is critically low"), NULL);
 
-        g_free (icon_name);
         g_free (message);
 }
 
@@ -2381,6 +2334,16 @@ power_profiles_proxy_ready_cb (GObject             *source_object,
         update_active_power_profile (manager);
 }
 
+static int
+backlight_get_n_steps (GsdPowerManager *manager)
+{
+        int step;
+
+        step = BRIGHTNESS_STEP_AMOUNT (manager->kbd_brightness_max);
+
+        return (manager->kbd_brightness_max / step) + 1;
+}
+
 static void
 power_keyboard_proxy_ready_cb (GObject             *source_object,
                                GAsyncResult        *res,
@@ -2388,6 +2351,7 @@ power_keyboard_proxy_ready_cb (GObject             *source_object,
 {
         GVariant *k_now = NULL;
         GVariant *k_max = NULL;
+        GVariant *params = NULL;
         GError *error = NULL;
         GsdPowerManager *manager = GSD_POWER_MANAGER (user_data);
         gint percentage;
@@ -2461,6 +2425,16 @@ power_keyboard_proxy_ready_cb (GObject             *source_object,
                                         manager->kbd_brightness_max,
                                         manager->kbd_brightness_now);
         backlight_iface_emit_changed (manager, GSD_POWER_DBUS_INTERFACE_KEYBOARD, percentage, "initial value");
+
+        /* Same for "Steps" */
+        params = g_variant_new_parsed ("(%s, [{'Steps', <%i>}], @as [])",
+                                       GSD_POWER_DBUS_INTERFACE_KEYBOARD, backlight_get_n_steps (manager));
+        g_dbus_connection_emit_signal (manager->connection,
+                                       NULL,
+                                       GSD_POWER_DBUS_PATH,
+                                       "org.freedesktop.DBus.Properties",
+                                       "PropertiesChanged",
+                                       params, NULL);
 
 out:
         if (k_now != NULL)
@@ -2967,9 +2941,6 @@ on_rr_screen_acquired (GObject      *object,
         if (!gnome_settings_is_wayland ())
                 manager->xscreensaver_watchdog_timer_id = gsd_power_enable_screensaver_watchdog ();
 
-        /* don't blank inside a VM */
-        manager->is_virtual_machine = gsd_power_is_hardware_a_vm ();
-
         /* queue a signal in case the proxy from gnome-shell was created before we got here
            (likely, considering that to get here we need a reply from gnome-shell)
         */
@@ -3098,6 +3069,9 @@ gsd_power_manager_start (GsdPowerManager *manager,
 {
         g_debug ("Starting power manager");
         gnome_settings_profile_start (NULL);
+
+        /* Check whether we are running in a VM */
+        manager->is_virtual_machine = gsd_power_is_hardware_a_vm ();
 
         /* Check whether we have a lid first */
         manager->up_client = up_client_new ();
@@ -3400,13 +3374,14 @@ handle_get_property_other (GsdPowerManager *manager,
         GVariant *retval = NULL;
         gint32 value;
 
-        if (g_strcmp0 (property_name, "Brightness") != 0) {
-                g_set_error (error, G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
-                             "No such property: %s", property_name);
-                return NULL;
-        }
 
         if (g_strcmp0 (interface_name, GSD_POWER_DBUS_INTERFACE_SCREEN) == 0) {
+                if (g_strcmp0 (property_name, "Brightness") != 0) {
+                        g_set_error (error, G_DBUS_ERROR, G_DBUS_ERROR_FAILED,
+                                     "No such property: %s", property_name);
+                        return NULL;
+                }
+
                 if (manager->backlight)
                         value = gsd_backlight_get_brightness (manager->backlight, NULL);
                 else
@@ -3415,10 +3390,15 @@ handle_get_property_other (GsdPowerManager *manager,
                 retval = g_variant_new_int32 (value);
         } else if (manager->upower_kbd_proxy &&
                    g_strcmp0 (interface_name, GSD_POWER_DBUS_INTERFACE_KEYBOARD) == 0) {
-                value = ABS_TO_PERCENTAGE (0,
-                                           manager->kbd_brightness_max,
-                                           manager->kbd_brightness_now);
-                retval =  g_variant_new_int32 (value);
+                if (g_strcmp0 (property_name, "Brightness") == 0) {
+                        value = ABS_TO_PERCENTAGE (0,
+                                                   manager->kbd_brightness_max,
+                                                   manager->kbd_brightness_now);
+                        retval =  g_variant_new_int32 (value);
+                } else if (g_strcmp0 (property_name, "Steps") == 0) {
+                        value = backlight_get_n_steps (manager);
+                        retval =  g_variant_new_int32 (value);
+                }
         }
 
         if (retval == NULL) {

@@ -1,5 +1,5 @@
 # Hungarian translation for gnome-settings-daemon.
-# Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 Free Software Foundation, Inc.
+# Copyright (C) 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023 Free Software Foundation, Inc.
 # This file is distributed under the same license as the gnome-settings-daemon package.
 #
 # Szabolcs Ban <shooby at gnome dot hu>, 1998, 1999, 2000.
@@ -10,23 +10,23 @@
 # Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
 # Gabor Kelemen <kelemeng at gnome dot hu>, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2016, 2017.
 # Mate ORY <orymate at gmail d0t com>, 2006.
-# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022.
+# Balázs Úr <ur.balazs at fsf dot hu>, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023.
 # Balázs Meskó <mesko.balazs at fsf dot hu>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-settings-daemon master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-settings-daemon/iss"
 "ues\n"
-"POT-Creation-Date: 2022-09-06 16:42+0000\n"
-"PO-Revision-Date: 2022-09-07 00:51+0200\n"
+"POT-Creation-Date: 2023-07-21 10:16+0000\n"
+"PO-Revision-Date: 2023-07-28 01:30+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
-"Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 19.12.3\n"
+"X-Generator: Lokalize 23.04.1\n"
 
 #: data/org.gnome.settings-daemon.peripherals.gschema.xml.in:11
 msgid "Smartcard removal action"
@@ -1365,14 +1365,19 @@ msgid "Power button action"
 msgstr "Bekapcsoló gomb művelete"
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:42
+#| msgid ""
+#| "The action to take when the system power button is pressed. This action "
+#| "is hard-coded (and the setting ignored) on virtual machines (power off) "
+#| "and tablets (suspend)."
 msgid ""
-"The action to take when the system power button is pressed. This action is "
-"hard-coded (and the setting ignored) on virtual machines (power off) and "
-"tablets (suspend)."
+"The action to take when the system power button is pressed. Virtual machines "
+"only honor the 'nothing' action, and will shutdown otherwise. Tablets always "
+"suspend, ignoring all the other action options."
 msgstr ""
-"Az elvégzendő művelet, amikor a rendszer bekapcsológombját megnyomják. Ez a "
-"művelet előre meghatározott (és a beállítás figyelmen kívül lesz hagyva) "
-"virtuális gépeken (kikapcsolás) és táblagépeken (felfüggesztés)."
+"A rendszer bekapcsológombjának megnyomásakor elvégzendő művelet. A virtuális"
+" gépek csak a „semmi” műveletet tartják tiszteletben, és egyébként leállnak."
+" A táblagépek mindig felfüggesztik a működést, figyelmen kívül hagyva az"
+" összes többi műveleti lehetőséget."
 
 #: data/org.gnome.settings-daemon.plugins.power.gschema.xml.in:46
 msgid "Enable power-saver profile when battery is low"
@@ -1621,8 +1626,8 @@ msgid ""
 "Device memory is nearly full. %s was using a lot of memory and was forced to "
 "stop."
 msgstr ""
-"Az eszköz memóriája majdnem megtelt. A(z) %s sok memóriát használt, és"
-" kénytelen volt leállni."
+"Az eszköz memóriája majdnem megtelt. A(z) %s sok memóriát használt, és "
+"kénytelen volt leállni."
 
 #. TRANSLATORS: A terminal tab/window was killed.
 #: plugins/housekeeping/gsd-systemd-notify.c:89
@@ -1634,17 +1639,15 @@ msgstr "Virtuális terminál leállítva"
 #: plugins/housekeeping/gsd-systemd-notify.c:91
 #, c-format
 msgid ""
-"Device memory is nearly full. Virtual Terminal processes were using a lot of "
+"Device memory is nearly full. Virtual terminal processes were using a lot of "
 "memory and were forced to stop."
 msgstr ""
-"Az eszköz memóriája majdnem megtelt. A virtuális terminál folyamatai sok"
-" memóriát használtak, és kénytelenek voltak leállni."
+"Az eszköz memóriája majdnem megtelt. A virtuális terminál folyamatai sok "
+"memóriát használtak, és kénytelenek voltak leállni."
 
 #. TRANSLATORS: We don't have a good description of what was killed.
 #: plugins/housekeeping/gsd-systemd-notify.c:94
 #, c-format
-#| msgctxt "print job state"
-#| msgid "Printing stopped"
 msgid "Application Stopped"
 msgstr "Alkalmazás leállítva"
 
@@ -1652,29 +1655,29 @@ msgstr "Alkalmazás leállítva"
 #: plugins/housekeeping/gsd-systemd-notify.c:96
 #, c-format
 msgid ""
-"Device memory is nearly full. An Application that was using a lot of memory "
+"Device memory is nearly full. An application that was using a lot of memory "
 "and was forced to stop."
 msgstr ""
-"Az eszköz memóriája majdnem megtelt. Egy alkalmazás sok memóriát használt, és"
-" kénytelen volt leállni."
+"Az eszköz memóriája majdnem megtelt. Egy alkalmazás sok memóriát használt, "
+"és kénytelen volt leállni."
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2250
+#: plugins/media-keys/gsd-media-keys-manager.c:2254
 msgid "Bluetooth disabled"
 msgstr "Bluetooth letiltva"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2253
+#: plugins/media-keys/gsd-media-keys-manager.c:2257
 msgid "Bluetooth enabled"
 msgstr "Bluetooth engedélyezve"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2257
+#: plugins/media-keys/gsd-media-keys-manager.c:2261
 msgid "Airplane mode enabled"
 msgstr "Repülőgép-üzemmód engedélyezve"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2260
+#: plugins/media-keys/gsd-media-keys-manager.c:2264
 msgid "Airplane mode disabled"
 msgstr "Repülőgép-üzemmód letiltva"
 
-#: plugins/media-keys/gsd-media-keys-manager.c:2299
+#: plugins/media-keys/gsd-media-keys-manager.c:2303
 msgid "Hardware Airplane Mode"
 msgstr "Hardveres repülőgép-üzemmód"
 
@@ -1716,48 +1719,48 @@ msgstr[0] "perc"
 msgstr[1] "perc"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gpm-common.c:424 plugins/power/gsd-power-manager.c:960
-#: plugins/power/gsd-power-manager.c:1052
+#: plugins/power/gpm-common.c:424 plugins/power/gsd-power-manager.c:922
+#: plugins/power/gsd-power-manager.c:1006
 msgid "Battery is critically low"
 msgstr "Az akkumulátor kritikusan gyenge"
 
 #. TRANSLATORS: this is the notification application name
-#: plugins/power/gsd-power-manager.c:366
+#: plugins/power/gsd-power-manager.c:367
 msgid "Power"
 msgstr "Energiagazdálkodás"
 
 #. TRANSLATORS: UPS is now discharging
-#: plugins/power/gsd-power-manager.c:406
+#: plugins/power/gsd-power-manager.c:405
 msgid "UPS Discharging"
 msgstr "A szünetmentes táp kisül"
 
 #. TRANSLATORS: tell the user how much time they have got
-#: plugins/power/gsd-power-manager.c:411
+#: plugins/power/gsd-power-manager.c:410
 #, c-format
 msgid "%s of UPS backup power remaining"
 msgstr "%s szünetmentes tápellátás van hátra"
 
-#: plugins/power/gsd-power-manager.c:414
+#: plugins/power/gsd-power-manager.c:413
 msgid "Unknown amount of UPS backup power remaining"
 msgstr "Ismeretlen a szünetmentes tápellátás hátralévő mennyisége"
 
 #. TRANSLATORS: notification title, a wireless mouse is low or very low on power
-#: plugins/power/gsd-power-manager.c:514
+#: plugins/power/gsd-power-manager.c:513
 msgid "Mouse battery low"
 msgstr "Az egér akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a wireless mouse is low on power
-#: plugins/power/gsd-power-manager.c:517
+#: plugins/power/gsd-power-manager.c:516
 #, c-format
 msgid "Wireless mouse is low on power (%.0f%%)"
 msgstr "A vezeték nélküli egér akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:518
+#: plugins/power/gsd-power-manager.c:517
 msgid "Wireless mouse is low on power"
 msgstr "A vezeték nélküli egér akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a wireless mouse is very low on power
-#: plugins/power/gsd-power-manager.c:520
+#: plugins/power/gsd-power-manager.c:519
 #, c-format
 msgid ""
 "Wireless mouse is very low on power (%.0f%%). This device will soon stop "
@@ -1766,7 +1769,7 @@ msgstr ""
 "A vezeték nélküli egér akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti "
 "fel, az eszköz hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:522
+#: plugins/power/gsd-power-manager.c:521
 msgid ""
 "Wireless mouse is very low on power. This device will soon stop functioning "
 "if not charged."
@@ -1775,22 +1778,22 @@ msgstr ""
 "eszköz hamarosan nem fog működni."
 
 #. TRANSLATORS: notification title, a wireless keyboard is low or very low on power
-#: plugins/power/gsd-power-manager.c:527
+#: plugins/power/gsd-power-manager.c:526
 msgid "Keyboard battery low"
 msgstr "A billentyűzet akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a wireless keyboard is low on power
-#: plugins/power/gsd-power-manager.c:530
+#: plugins/power/gsd-power-manager.c:529
 #, c-format
 msgid "Wireless keyboard is low on power (%.0f%%)"
 msgstr "A vezeték nélküli billentyűzet akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:531
+#: plugins/power/gsd-power-manager.c:530
 msgid "Wireless keyboard is low on power"
 msgstr "A vezeték nélküli billentyűzet akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a wireless keyboard is very low on power
-#: plugins/power/gsd-power-manager.c:533
+#: plugins/power/gsd-power-manager.c:532
 #, c-format
 msgid ""
 "Wireless keyboard is very low on power (%.0f%%). This device will soon stop "
@@ -1799,7 +1802,7 @@ msgstr ""
 "A vezeték nélküli billentyűzet akkumulátora nagyon gyenge (%.0f%%). Ha nem "
 "tölti fel, az eszköz hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:535
+#: plugins/power/gsd-power-manager.c:534
 msgid ""
 "Wireless keyboard is very low on power. This device will soon stop "
 "functioning if not charged."
@@ -1808,22 +1811,22 @@ msgstr ""
 "az eszköz hamarosan nem fog működni."
 
 #. TRANSLATORS: notification title, a PDA (Personal Digital Assistance device) is low or very on power
-#: plugins/power/gsd-power-manager.c:540
+#: plugins/power/gsd-power-manager.c:539
 msgid "PDA battery low"
 msgstr "A PDA akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a PDA (Personal Digital Assistance device) is low on power
-#: plugins/power/gsd-power-manager.c:543
+#: plugins/power/gsd-power-manager.c:542
 #, c-format
 msgid "PDA is low on power (%.0f%%)"
 msgstr "A PDA akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:544
+#: plugins/power/gsd-power-manager.c:543
 msgid "PDA is low on power"
 msgstr "A PDA akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a PDA (Personal Digital Assistance device) is very low on power
-#: plugins/power/gsd-power-manager.c:546
+#: plugins/power/gsd-power-manager.c:545
 #, c-format
 msgid ""
 "PDA is very low on power (%.0f%%). This device will soon stop functioning if "
@@ -1832,7 +1835,7 @@ msgstr ""
 "A PDA akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:548
+#: plugins/power/gsd-power-manager.c:547
 msgid ""
 "PDA is very low on power. This device will soon stop functioning if not "
 "charged."
@@ -1841,22 +1844,22 @@ msgstr ""
 "fog működni."
 
 #. TRANSLATORS: notification title, a cell phone (mobile phone) is low or very low on power
-#: plugins/power/gsd-power-manager.c:553
+#: plugins/power/gsd-power-manager.c:552
 msgid "Cell phone battery low"
 msgstr "A mobiltelefon akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a cell phone (mobile phone) is low on power
-#: plugins/power/gsd-power-manager.c:556
+#: plugins/power/gsd-power-manager.c:555
 #, c-format
 msgid "Cell phone is low on power (%.0f%%)"
 msgstr "A mobiltelefon akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:557
+#: plugins/power/gsd-power-manager.c:556
 msgid "Cell phone is low on power"
 msgstr "A mobiltelefon akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a cell phone (mobile phone) is very low on power
-#: plugins/power/gsd-power-manager.c:559
+#: plugins/power/gsd-power-manager.c:558
 #, c-format
 msgid ""
 "Cell phone is very low on power (%.0f%%). This device will soon stop "
@@ -1865,7 +1868,7 @@ msgstr ""
 "A mobiltelefon akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:561
+#: plugins/power/gsd-power-manager.c:560
 msgid ""
 "Cell phone is very low on power. This device will soon stop functioning if "
 "not charged."
@@ -1874,22 +1877,22 @@ msgstr ""
 "hamarosan nem fog működni."
 
 #. TRANSLATORS: notification title, a media player (e.g. mp3 player) is low or very low on power
-#: plugins/power/gsd-power-manager.c:566
+#: plugins/power/gsd-power-manager.c:565
 msgid "Media player battery low"
 msgstr "A médialejátszó akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a media player (e.g. mp3 player) is low on power
-#: plugins/power/gsd-power-manager.c:569
+#: plugins/power/gsd-power-manager.c:568
 #, c-format
 msgid "Media player is low on power (%.0f%%)"
 msgstr "A médialejátszó akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:570
+#: plugins/power/gsd-power-manager.c:569
 msgid "Media player is low on power"
 msgstr "A médialejátszó akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a media player (e.g. mp3 player) is very low on power
-#: plugins/power/gsd-power-manager.c:572
+#: plugins/power/gsd-power-manager.c:571
 #, c-format
 msgid ""
 "Media player is very low on power (%.0f%%). This device will soon stop "
@@ -1898,7 +1901,7 @@ msgstr ""
 "A médialejátszó akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:574
+#: plugins/power/gsd-power-manager.c:573
 msgid ""
 "Media player is very low on power. This device will soon stop functioning if "
 "not charged."
@@ -1907,22 +1910,22 @@ msgstr ""
 "hamarosan nem fog működni."
 
 #. TRANSLATORS: notification title, a graphics tablet (e.g. wacom) is low or very low on power
-#: plugins/power/gsd-power-manager.c:579
+#: plugins/power/gsd-power-manager.c:578
 msgid "Tablet battery low"
 msgstr "A táblagép akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a graphics tablet (e.g. wacom) is low on power
-#: plugins/power/gsd-power-manager.c:582
+#: plugins/power/gsd-power-manager.c:581
 #, c-format
 msgid "Tablet is low on power (%.0f%%)"
 msgstr "A táblagép akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:583
+#: plugins/power/gsd-power-manager.c:582
 msgid "Tablet is low on power"
 msgstr "A táblagép akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a graphics tablet (e.g. wacom) is very low on power
-#: plugins/power/gsd-power-manager.c:585
+#: plugins/power/gsd-power-manager.c:584
 #, c-format
 msgid ""
 "Tablet is very low on power (%.0f%%). This device will soon stop functioning "
@@ -1931,7 +1934,7 @@ msgstr ""
 "A táblagép akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan nem fog működni."
 
-#: plugins/power/gsd-power-manager.c:587
+#: plugins/power/gsd-power-manager.c:586
 msgid ""
 "Tablet is very low on power. This device will soon stop functioning if not "
 "charged."
@@ -1940,22 +1943,22 @@ msgstr ""
 "nem fog működni."
 
 #. TRANSLATORS: notification title, an attached computer (e.g. ipad) is low or very low on power
-#: plugins/power/gsd-power-manager.c:592
+#: plugins/power/gsd-power-manager.c:591
 msgid "Attached computer battery low"
 msgstr "A csatlakozó számítógép akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an attached computer (e.g. ipad) is low on power
-#: plugins/power/gsd-power-manager.c:595
+#: plugins/power/gsd-power-manager.c:594
 #, c-format
 msgid "Attached computer is low on power (%.0f%%)"
 msgstr "A csatlakozó számítógép akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:596
+#: plugins/power/gsd-power-manager.c:595
 msgid "Attached computer is low on power"
 msgstr "A csatlakozó számítógép akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an attached computer (e.g. ipad) is very low on power
-#: plugins/power/gsd-power-manager.c:598
+#: plugins/power/gsd-power-manager.c:597
 #, c-format
 msgid ""
 "Attached computer is very low on power (%.0f%%). The device will soon "
@@ -1964,7 +1967,7 @@ msgstr ""
 "A csatlakozó számítógép akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti "
 "fel, az eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:600
+#: plugins/power/gsd-power-manager.c:599
 msgid ""
 "Attached computer is very low on power. The device will soon shutdown if not "
 "charged."
@@ -1973,22 +1976,22 @@ msgstr ""
 "eszköz hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a game controller (e.g. joystick or joypad) is low or very low on power
-#: plugins/power/gsd-power-manager.c:605
+#: plugins/power/gsd-power-manager.c:604
 msgid "Game controller battery low"
 msgstr "A játékvezérlő akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a game controller (e.g. joystick or joypad) is low on power
-#: plugins/power/gsd-power-manager.c:608
+#: plugins/power/gsd-power-manager.c:607
 #, c-format
 msgid "Game controller is low on power (%.0f%%)"
 msgstr "A játékvezérlő akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:609
+#: plugins/power/gsd-power-manager.c:608
 msgid "Game controller is low on power"
 msgstr "A játékvezérlő akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an attached game controller (e.g. joystick or joypad) is very low on power
-#: plugins/power/gsd-power-manager.c:611
+#: plugins/power/gsd-power-manager.c:610
 #, c-format
 msgid ""
 "Game controller is very low on power (%.0f%%). The device will soon shutdown "
@@ -1997,7 +2000,7 @@ msgstr ""
 "A játékvezérlő akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:613
+#: plugins/power/gsd-power-manager.c:612
 msgid ""
 "Game controller is very low on power. The device will soon shutdown if not "
 "charged."
@@ -2006,22 +2009,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a pen is low or very low on power
-#: plugins/power/gsd-power-manager.c:618
+#: plugins/power/gsd-power-manager.c:617
 msgid "Pen battery low"
 msgstr "A toll akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a pen is low on power
-#: plugins/power/gsd-power-manager.c:621
+#: plugins/power/gsd-power-manager.c:620
 #, c-format
 msgid "Pen is low on power (%.0f%%)"
 msgstr "A toll akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:622
+#: plugins/power/gsd-power-manager.c:621
 msgid "Pen is low on power"
 msgstr "A toll akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a pen is very low on power
-#: plugins/power/gsd-power-manager.c:624
+#: plugins/power/gsd-power-manager.c:623
 #, c-format
 msgid ""
 "Pen is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2030,29 +2033,29 @@ msgstr ""
 "A toll akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:626
+#: plugins/power/gsd-power-manager.c:625
 msgid "Pen is very low on power. The device will soon shutdown if not charged."
 msgstr ""
 "A toll akkumulátora nagyon gyenge. Ha nem tölti fel, az eszköz hamarosan le "
 "fog állni."
 
 #. TRANSLATORS: notification title, an external touchpad is low or very low on power
-#: plugins/power/gsd-power-manager.c:631
+#: plugins/power/gsd-power-manager.c:630
 msgid "Touchpad battery low"
 msgstr "Az érintőtábla akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an external touchpad is low on power
-#: plugins/power/gsd-power-manager.c:634
+#: plugins/power/gsd-power-manager.c:633
 #, c-format
 msgid "Touchpad is low on power (%.0f%%)"
 msgstr "Az érintőtábla akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:635
+#: plugins/power/gsd-power-manager.c:634
 msgid "Touchpad is low on power"
 msgstr "Az érintőtábla akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an external touchpad is very low on power
-#: plugins/power/gsd-power-manager.c:637
+#: plugins/power/gsd-power-manager.c:636
 #, c-format
 msgid ""
 "Touchpad is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2061,7 +2064,7 @@ msgstr ""
 "Az érintőtábla akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:639
+#: plugins/power/gsd-power-manager.c:638
 msgid ""
 "Touchpad is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2069,22 +2072,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a headset (headphones + microphone) is low or very low on power
-#: plugins/power/gsd-power-manager.c:644
+#: plugins/power/gsd-power-manager.c:643
 msgid "Headset battery low"
 msgstr "A fejhallgató akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a headset (headphones + microphone) is low on power
-#: plugins/power/gsd-power-manager.c:647
+#: plugins/power/gsd-power-manager.c:646
 #, c-format
 msgid "Headset is low on power (%.0f%%)"
 msgstr "A fejhallgató akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:648
+#: plugins/power/gsd-power-manager.c:647
 msgid "Headset is low on power"
 msgstr "A fejhallgató akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a headset (headphones + microphone) is very low on power
-#: plugins/power/gsd-power-manager.c:650
+#: plugins/power/gsd-power-manager.c:649
 #, c-format
 msgid ""
 "Headset is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2093,7 +2096,7 @@ msgstr ""
 "A fejhallgató akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:652
+#: plugins/power/gsd-power-manager.c:651
 msgid ""
 "Headset is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2101,22 +2104,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, speaker is low or very low on power
-#: plugins/power/gsd-power-manager.c:657
+#: plugins/power/gsd-power-manager.c:656
 msgid "Speaker battery low"
 msgstr "A hangszóró akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a speaker is low on power
-#: plugins/power/gsd-power-manager.c:660
+#: plugins/power/gsd-power-manager.c:659
 #, c-format
 msgid "Speaker is low on power (%.0f%%)"
 msgstr "A hangszóró akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:661
+#: plugins/power/gsd-power-manager.c:660
 msgid "Speaker is low on power"
 msgstr "A hangszóró akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a speaker is very low on power
-#: plugins/power/gsd-power-manager.c:663
+#: plugins/power/gsd-power-manager.c:662
 #, c-format
 msgid ""
 "Speaker is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2125,7 +2128,7 @@ msgstr ""
 "A hangszóró akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:665
+#: plugins/power/gsd-power-manager.c:664
 msgid ""
 "Speaker is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2133,22 +2136,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, headphones (no microphone) are low or very low on power
-#: plugins/power/gsd-power-manager.c:670
+#: plugins/power/gsd-power-manager.c:669
 msgid "Headphones battery low"
 msgstr "A fülhallgatók akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, headphones (no microphone) are low on power
-#: plugins/power/gsd-power-manager.c:673
+#: plugins/power/gsd-power-manager.c:672
 #, c-format
 msgid "Headphones are low on power (%.0f%%)"
 msgstr "A fülhallgatók akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:674
+#: plugins/power/gsd-power-manager.c:673
 msgid "Headphones are low on power"
 msgstr "A fülhallgatók akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, headphones (no microphone) are very low on power
-#: plugins/power/gsd-power-manager.c:676
+#: plugins/power/gsd-power-manager.c:675
 #, c-format
 msgid ""
 "Headphones are very low on power (%.0f%%). The device will soon shutdown if "
@@ -2157,7 +2160,7 @@ msgstr ""
 "A fülhallgatók akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:678
+#: plugins/power/gsd-power-manager.c:677
 msgid ""
 "Headphones are very low on power. The device will soon shutdown if not "
 "charged."
@@ -2166,22 +2169,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, an audio device is low or very low on power
-#: plugins/power/gsd-power-manager.c:683
+#: plugins/power/gsd-power-manager.c:682
 msgid "Audio device battery low"
 msgstr "A hangeszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an audio device is low on power
-#: plugins/power/gsd-power-manager.c:686
+#: plugins/power/gsd-power-manager.c:685
 #, c-format
 msgid "Audio device is low on power (%.0f%%)"
 msgstr "A hangeszköz akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:687
+#: plugins/power/gsd-power-manager.c:686
 msgid "Audio device is low on power"
 msgstr "A hangeszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an audio device is very low on power
-#: plugins/power/gsd-power-manager.c:689
+#: plugins/power/gsd-power-manager.c:688
 #, c-format
 msgid ""
 "Audio device is very low on power (%.0f%%). The device will soon shutdown if "
@@ -2190,7 +2193,7 @@ msgstr ""
 "A hangeszköz akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:691
+#: plugins/power/gsd-power-manager.c:690
 msgid ""
 "Audio device is very low on power. The device will soon shutdown if not "
 "charged."
@@ -2199,22 +2202,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a remote control is low or very low on power
-#: plugins/power/gsd-power-manager.c:696
+#: plugins/power/gsd-power-manager.c:695
 msgid "Remote battery low"
 msgstr "A távirányító akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, an remote control is low on power
-#: plugins/power/gsd-power-manager.c:699
+#: plugins/power/gsd-power-manager.c:698
 #, c-format
 msgid "Remote is low on power (%.0f%%)"
 msgstr "A távirányító akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:700
+#: plugins/power/gsd-power-manager.c:699
 msgid "Remote is low on power"
 msgstr "A távirányító akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a remote control is very low on power
-#: plugins/power/gsd-power-manager.c:702
+#: plugins/power/gsd-power-manager.c:701
 #, c-format
 msgid ""
 "Remote is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2223,7 +2226,7 @@ msgstr ""
 "A távirányító akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:704
+#: plugins/power/gsd-power-manager.c:703
 msgid ""
 "Remote is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2231,22 +2234,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a printer is low or very low on power
-#: plugins/power/gsd-power-manager.c:709
+#: plugins/power/gsd-power-manager.c:708
 msgid "Printer battery low"
 msgstr "A nyomtató akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a printer is low on power
-#: plugins/power/gsd-power-manager.c:712
+#: plugins/power/gsd-power-manager.c:711
 #, c-format
 msgid "Printer is low on power (%.0f%%)"
 msgstr "A nyomtató akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:713
+#: plugins/power/gsd-power-manager.c:712
 msgid "Printer is low on power"
 msgstr "A nyomtató akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a printer is very low on power
-#: plugins/power/gsd-power-manager.c:715
+#: plugins/power/gsd-power-manager.c:714
 #, c-format
 msgid ""
 "Printer is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2255,7 +2258,7 @@ msgstr ""
 "A nyomtató akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:717
+#: plugins/power/gsd-power-manager.c:716
 msgid ""
 "Printer is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2263,22 +2266,22 @@ msgstr ""
 "le fog állni."
 
 #. TRANSLATORS: notification title, a scanner is low or very low on power
-#: plugins/power/gsd-power-manager.c:722
+#: plugins/power/gsd-power-manager.c:721
 msgid "Scanner battery low"
 msgstr "A lapolvasó akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a scanner is low on power
-#: plugins/power/gsd-power-manager.c:725
+#: plugins/power/gsd-power-manager.c:724
 #, c-format
 msgid "Scanner is low on power (%.0f%%)"
 msgstr "A lapolvasó akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:726
+#: plugins/power/gsd-power-manager.c:725
 msgid "Scanner is low on power"
 msgstr "A lapolvasó akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a scanner is very low on power
-#: plugins/power/gsd-power-manager.c:728
+#: plugins/power/gsd-power-manager.c:727
 #, c-format
 msgid ""
 "Scanner is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2287,7 +2290,7 @@ msgstr ""
 "A lapolvasó akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:730
+#: plugins/power/gsd-power-manager.c:729
 msgid ""
 "Scanner is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2295,22 +2298,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a camera is low or very low on power
-#: plugins/power/gsd-power-manager.c:735
+#: plugins/power/gsd-power-manager.c:734
 msgid "Camera battery low"
 msgstr "A kamera akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a camera is low on power
-#: plugins/power/gsd-power-manager.c:738
+#: plugins/power/gsd-power-manager.c:737
 #, c-format
 msgid "Camera is low on power (%.0f%%)"
 msgstr "A kamera akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:739
+#: plugins/power/gsd-power-manager.c:738
 msgid "Camera is low on power"
 msgstr "A kamera akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a camera is very low on power
-#: plugins/power/gsd-power-manager.c:741
+#: plugins/power/gsd-power-manager.c:740
 #, c-format
 msgid ""
 "Camera is very low on power (%.0f%%). The device will soon shutdown if not "
@@ -2319,7 +2322,7 @@ msgstr ""
 "A kamera akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az eszköz "
 "hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:743
+#: plugins/power/gsd-power-manager.c:742
 msgid ""
 "Camera is very low on power. The device will soon shutdown if not charged."
 msgstr ""
@@ -2327,22 +2330,22 @@ msgstr ""
 "le fog állni."
 
 #. TRANSLATORS: notification title, a Bluetooth device is low or very low on power
-#: plugins/power/gsd-power-manager.c:748
+#: plugins/power/gsd-power-manager.c:747
 msgid "Bluetooth device battery low"
 msgstr "A Bluetooth-eszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a Bluetooth device is low on power
-#: plugins/power/gsd-power-manager.c:751
+#: plugins/power/gsd-power-manager.c:750
 #, c-format
 msgid "Bluetooth device is low on power (%.0f%%)"
 msgstr "A Bluetooth-eszköz akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:752
+#: plugins/power/gsd-power-manager.c:751
 msgid "Bluetooth device is low on power"
 msgstr "A Bluetooth-eszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a Bluetooth device is very low on power
-#: plugins/power/gsd-power-manager.c:754
+#: plugins/power/gsd-power-manager.c:753
 #, c-format
 msgid ""
 "Bluetooth device is very low on power (%.0f%%). The device will soon "
@@ -2351,7 +2354,7 @@ msgstr ""
 "A Bluetooth-eszköz akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:756
+#: plugins/power/gsd-power-manager.c:755
 msgid ""
 "Bluetooth device is very low on power. The device will soon shutdown if not "
 "charged."
@@ -2360,22 +2363,22 @@ msgstr ""
 "hamarosan le fog állni."
 
 #. TRANSLATORS: notification title, a connected (wireless) device or peripheral of unhandled type is low or very on power
-#: plugins/power/gsd-power-manager.c:762
+#: plugins/power/gsd-power-manager.c:761
 msgid "Connected device battery is low"
 msgstr "Egy csatlakoztatott eszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a connected (wireless) device or peripheral of unhandled type is low on power
-#: plugins/power/gsd-power-manager.c:765
+#: plugins/power/gsd-power-manager.c:764
 #, c-format
 msgid "A connected device is low on power (%.0f%%)"
 msgstr "Egy csatlakoztatott eszköz akkumulátora gyenge (%.0f%%)"
 
-#: plugins/power/gsd-power-manager.c:766
+#: plugins/power/gsd-power-manager.c:765
 msgid "A connected device is low on power"
 msgstr "Egy csatlakoztatott eszköz akkumulátora gyenge"
 
 #. TRANSLATORS: notification body, a connected (wireless) device or peripheral of unhandled type is very low on power
-#: plugins/power/gsd-power-manager.c:768
+#: plugins/power/gsd-power-manager.c:767
 #, c-format
 msgid ""
 "A connected device is very low on power (%.0f%%). The device will soon "
@@ -2384,7 +2387,7 @@ msgstr ""
 "Egy csatlakoztatott eszköz akkumulátora nagyon gyenge (%.0f%%). Ha nem tölti "
 "fel, az eszköz hamarosan le fog állni."
 
-#: plugins/power/gsd-power-manager.c:770
+#: plugins/power/gsd-power-manager.c:769
 msgid ""
 "A connected device is very low on power. The device will soon shutdown if "
 "not charged."
@@ -2392,138 +2395,108 @@ msgstr ""
 "Egy csatlakoztatott eszköz akkumulátora nagyon gyenge. Ha nem tölti fel, az "
 "eszköz hamarosan le fog állni."
 
-#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is running low, shows time remaining
-#: plugins/power/gsd-power-manager.c:802
-msgid "Battery low"
-msgstr "Az akkumulátor gyenge"
+#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is running low, shows percentage remaining
+#: plugins/power/gsd-power-manager.c:795
+msgid "Low Battery"
+msgstr "Alacsony akkumulátorfeszültség"
 
-#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is running low, shows time remaining
-#: plugins/power/gsd-power-manager.c:808
+#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is running low, shows percentage remaining
+#: plugins/power/gsd-power-manager.c:798
 #, c-format
-msgid "Approximately %s remaining (%.0f%%)"
-msgstr "Megközelítőleg %s van hátra (%.0lf%%)"
+msgid "%.0f%% battery remaining"
+msgstr "%.0f%% akkumulátor-üzemidő van hátra"
 
-#. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, shows time remaining
-#: plugins/power/gsd-power-manager.c:813
-msgid "UPS low"
+#. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining
+#: plugins/power/gsd-power-manager.c:801
+msgid "UPS Low"
 msgstr "A szünetmentes táp gyenge"
 
-#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, shows time remaining
-#: plugins/power/gsd-power-manager.c:819
+#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, shows percentage remaining
+#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon
+#: plugins/power/gsd-power-manager.c:804 plugins/power/gsd-power-manager.c:877
 #, c-format
-msgid "Approximately %s of remaining UPS backup power (%.0f%%)"
-msgstr ""
-"A szünetmentes táp áthidalási idejéből még megközelítőleg %s van hátra (%.0f"
-"%%)"
+msgid "%.0f%% UPS power remaining"
+msgstr "%.0f%% szünetmentes tápellátás van hátra"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:858
+#: plugins/power/gsd-power-manager.c:842
 msgid "Battery is low"
 msgstr "Az akkumulátor gyenge"
 
-#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening soon
-#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening now
-#: plugins/power/gsd-power-manager.c:890 plugins/power/gsd-power-manager.c:986
-msgid "Battery critically low"
-msgstr "Az akkumulátor kritikusan gyenge"
+#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, advice on what the user should do
+#: plugins/power/gsd-power-manager.c:868
+msgid "Battery Almost Empty"
+msgstr "Az akkumulátor majdnem üres"
 
-#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action happening soon
-#: plugins/power/gsd-power-manager.c:897
+#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically running low, advice on what the user should do
+#: plugins/power/gsd-power-manager.c:871
 #, c-format
-msgid "Hibernating soon unless plugged in."
-msgstr "Hamarosan hibernálva lesz, ha nem csatlakoztatja."
-
-#: plugins/power/gsd-power-manager.c:899
-#, c-format
-msgid "Shutting down soon unless plugged in."
-msgstr "Hamarosan leáll, ha nem csatlakoztatja."
+msgid "Connect power now"
+msgstr "Csatlakoztassa a hálózati áramot most"
 
 #. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon
-#. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is running low, warning about action happening now
-#: plugins/power/gsd-power-manager.c:907 plugins/power/gsd-power-manager.c:1009
-msgid "UPS critically low"
-msgstr "A szünetmentes táp kritikusan gyenge"
+#: plugins/power/gsd-power-manager.c:874
+msgid "UPS Almost Empty"
+msgstr "A szünetmentes táp majdnem üres"
 
-#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening soon
-#: plugins/power/gsd-power-manager.c:913
-#, c-format
-msgid ""
-"Approximately %s of remaining UPS power (%.0f%%). Restore AC power to your "
-"computer to avoid losing data."
-msgstr ""
-"A szünetmentes táp áthidalási idejéből még megközelítőleg %s van hátra (%.0f"
-"%%). Az adatvesztés elkerülése érdekében állítsa vissza a hálózati "
-"tápellátást."
+#. TRANSLATORS: notification title, the battery of this laptop/tablet/phone is critically low, warning about action happening now
+#: plugins/power/gsd-power-manager.c:945
+msgid "Battery is Empty"
+msgstr "Az akkumulátor üres"
 
-#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action happening now
-#: plugins/power/gsd-power-manager.c:993
-msgid ""
-"The battery is below the critical level and this computer is about to "
-"hibernate."
-msgstr ""
-"Az akkumulátor kapacitása a kritikus szint alá esett, és a gép hibernálásra "
-"készül."
+#. TRANSLATORS: notification body, the battery of this laptop/tablet/phone is critically low, warning about action about to happen
+#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen
+#: plugins/power/gsd-power-manager.c:952 plugins/power/gsd-power-manager.c:972
+msgid "This device is about to hibernate"
+msgstr "Ez az eszköz hamarosan hibernálódik"
 
-#: plugins/power/gsd-power-manager.c:997
-msgid ""
-"The battery is below the critical level and this computer is about to "
-"shutdown."
-msgstr ""
-"Az akkumulátor kapacitása a kritikus szint alá esett, és a gép leállni "
-"készül."
+#: plugins/power/gsd-power-manager.c:954 plugins/power/gsd-power-manager.c:974
+msgid "This device is about to shutdown"
+msgstr "Ez az eszköz hamarosan leáll"
 
-#. TRANSLATORS: notification body, an Uninterruptible Power Supply (UPS) is running low, warning about action happening now
-#: plugins/power/gsd-power-manager.c:1016
-msgid ""
-"UPS is below the critical level and this computer is about to hibernate."
-msgstr ""
-"A szünetmentes táp kapacitása a kritikus szint alá esett, és a gép "
-"hibernálásra készül."
-
-#: plugins/power/gsd-power-manager.c:1020
-msgid "UPS is below the critical level and this computer is about to shutdown."
-msgstr ""
-"A szünetmentes táp kapacitása a kritikus szint alá esett, és a gép leállni "
-"készül."
+#. TRANSLATORS: notification title, an Uninterruptible Power Supply (UPS) is critically low, warning about action about to happen
+#: plugins/power/gsd-power-manager.c:965
+msgid "UPS is Empty"
+msgstr "A szünetmentes táp üres"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:1507
+#: plugins/power/gsd-power-manager.c:1493
 msgid "Lid has been opened"
 msgstr "Fedél kinyitva"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:1541
+#: plugins/power/gsd-power-manager.c:1527
 msgid "Lid has been closed"
 msgstr "Fedél lezárva"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:2192
+#: plugins/power/gsd-power-manager.c:2178
 msgid "On battery power"
 msgstr "Akkumulátoron"
 
 #. TRANSLATORS: this is the sound description
-#: plugins/power/gsd-power-manager.c:2197
+#: plugins/power/gsd-power-manager.c:2183
 msgid "On AC power"
 msgstr "Hálózaton"
 
-#: plugins/power/gsd-power-manager.c:2445
+#: plugins/power/gsd-power-manager.c:2452
 msgid "Automatic logout"
 msgstr "Automatikus kijelentkezés"
 
-#: plugins/power/gsd-power-manager.c:2445
+#: plugins/power/gsd-power-manager.c:2452
 msgid "You will soon log out because of inactivity."
 msgstr "Hamarosan ki fog jelentkezni tétlenség miatt."
 
-#: plugins/power/gsd-power-manager.c:2450
+#: plugins/power/gsd-power-manager.c:2457
 msgid "Automatic suspend"
 msgstr "Automatikus felfüggesztés"
 
-#: plugins/power/gsd-power-manager.c:2450
-#: plugins/power/gsd-power-manager.c:2455
+#: plugins/power/gsd-power-manager.c:2457
+#: plugins/power/gsd-power-manager.c:2462
 msgid "Suspending soon because of inactivity."
 msgstr "Hamarosan fel lesz függesztve tétlenség miatt."
 
-#: plugins/power/gsd-power-manager.c:2455
+#: plugins/power/gsd-power-manager.c:2462
 msgid "Automatic hibernation"
 msgstr "Automatikus hibernálás"
 
@@ -2795,15 +2768,15 @@ msgstr "„%s” nyomtató: „%s”."
 msgid "User was not logged in with smartcard."
 msgstr "A felhasználó nem intelligens kártyával jelentkezett be."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:388
+#: plugins/usb-protection/gsd-usb-protection-manager.c:415
 msgid "USB Protection"
 msgstr "USB-védelem"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:512
+#: plugins/usb-protection/gsd-usb-protection-manager.c:544
 msgid "New USB device"
 msgstr "Új USB-s eszköz"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:513
+#: plugins/usb-protection/gsd-usb-protection-manager.c:545
 msgid ""
 "New device has been detected while the session was not locked. If you did "
 "not plug anything, check your system for any suspicious device."
@@ -2811,11 +2784,11 @@ msgstr ""
 "Új eszköz lett észlelve, miközben a munkamenet nem volt zárolva. Ha nem "
 "csatlakoztatott semmit, akkor ellenőrizze, hogy nincsenek-e gyanús eszközei."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:601
+#: plugins/usb-protection/gsd-usb-protection-manager.c:687
 msgid "New device detected"
 msgstr "Új eszköz észlelve"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:602
+#: plugins/usb-protection/gsd-usb-protection-manager.c:688
 msgid ""
 "Either one of your existing devices has been reconnected or a new one has "
 "been plugged in. If you did not do it, check your system for any suspicious "
@@ -2825,11 +2798,11 @@ msgstr ""
 "csatlakoztatott. Ha nem Ön tette, akkor ellenőrizze a rendszerét, hogy "
 "nincsenek-e gyanús eszközei."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:609
+#: plugins/usb-protection/gsd-usb-protection-manager.c:695
 msgid "Reconnect USB device"
 msgstr "USB-s eszköz újracsatlakoztatása"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:610
+#: plugins/usb-protection/gsd-usb-protection-manager.c:696
 msgid ""
 "New device has been detected while you were away. Please disconnect and "
 "reconnect the device to start using it."
@@ -2837,12 +2810,12 @@ msgstr ""
 "Új eszköz lett észlelve, amíg távol volt. Válassza le, és csatlakoztassa "
 "újra az eszközt, hogy megkezdhesse a használatát."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:616
-#: plugins/usb-protection/gsd-usb-protection-manager.c:641
+#: plugins/usb-protection/gsd-usb-protection-manager.c:702
+#: plugins/usb-protection/gsd-usb-protection-manager.c:729
 msgid "USB device blocked"
 msgstr "USB-s eszköz blokkolva"
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:617
+#: plugins/usb-protection/gsd-usb-protection-manager.c:703
 msgid ""
 "New device has been detected while you were away. It has been blocked "
 "because the USB protection is active."
@@ -2850,12 +2823,18 @@ msgstr ""
 "Új eszköz lett észlelve, amíg távol volt. Blokkolva lett, mert az USB-"
 "védelem aktív."
 
-#: plugins/usb-protection/gsd-usb-protection-manager.c:642
+#: plugins/usb-protection/gsd-usb-protection-manager.c:730
+#| msgid ""
+#| "The new inserted device has been blocked because the USB protection is "
+#| "active."
 msgid ""
 "The new inserted device has been blocked because the USB protection is "
-"active."
+"active. If you want to activate the device, disable the USB protection and "
+"re-plug the device."
 msgstr ""
-"Az újonnan behelyezett eszköz blokkolva lett, mert az USB-védelem aktív."
+"Az újonnan behelyezett eszköz blokkolva lett, mert az USB-védelem aktív. Ha"
+" aktiválni szeretné az eszközt, akkor tiltsa le az USB-védelmet, és"
+" csatlakoztassa újra az eszközt."
 
 #. SECURITY:
 #. - A normal active user on the local machine does not need permission

@@ -1,6 +1,6 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '43.0',
+  version: '45.rc',
   license: [ 'GPL2+', 'LGPLv2+' ],
   meson_version: '>= 0.57.0'
 )
@@ -100,7 +100,6 @@ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42'
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.15.3')
 gtk_x11_dep = dependency('gtk+-x11-3.0')
 gweather_dep = dependency('gweather4')
-lcms_dep = dependency('lcms2', version: '>= 2.2')
 libcanberra_gtk_dep = dependency('libcanberra-gtk3')
 libgeoclue_dep = dependency('libgeoclue-2.0', version: '>= 2.3.1')
 libnotify_dep = dependency('libnotify', version: '>= 0.7.3')
@@ -169,11 +168,10 @@ config_h.set10('HAVE_WACOM', enable_wacom)
 # smartcard section
 enable_smartcard = get_option('smartcard')
 if enable_smartcard
-  nss_dep = dependency('nss', version: '>= 3.11.2')
-
-  system_nssdb_dir = get_option('nssdb_dir')
-  if system_nssdb_dir == ''
-    system_nssdb_dir = join_paths(gsd_sysconfdir, 'pki', 'nssdb')
+  if get_option('gcr3')
+    smartcard_deps = dependency('gck-1', version: '>= 3.36')
+  else
+    smartcard_deps = dependency('gck-2')
   endif
 endif
 
@@ -282,9 +280,6 @@ output += '        Cups support:             ' + enable_cups.to_string() + '\n'
 output += '        Wayland support:          ' + enable_wayland.to_string() + '\n'
 output += '        Wacom support:            ' + enable_wacom.to_string() + '\n'
 output += '        RFKill support:           ' + enable_rfkill.to_string() + '\n'
-if enable_smartcard
-  output += '        System nssdb:             ' + system_nssdb_dir + '\n'
-endif
 if enable_systemd
   output += '        Systemd user unit dir:    ' + systemd_userunitdir + '\n'
 endif

@@ -12,7 +12,7 @@
       <description>If the screen should be dimmed to save power when the computer is idle.</description>
     </key>
     <key name="sleep-inactive-ac-timeout" type="i">
-      <default>1200</default>
+      <default>900</default>
       <summary>Sleep timeout computer when on AC</summary>
       <description>The amount of time in seconds the computer on AC power needs to be inactive before it goes to sleep. A value of 0 means never.</description>
     </key>
@@ -22,7 +22,7 @@
       <description>The type of sleeping that should be performed when the computer is inactive.</description>
     </key>
     <key name="sleep-inactive-battery-timeout" type="i">
-      <default>1200</default>
+      <default>900</default>
       <summary>Sleep timeout computer when on battery</summary>
       <description>The amount of time in seconds the computer on battery power needs to be inactive before it goes to sleep. A value of 0 means never.</description>
     </key>
@@ -39,7 +39,7 @@
     <key name="power-button-action" enum="org.gnome.settings-daemon.GsdPowerButtonActionType">
       <default>'suspend'</default>
       <summary>Power button action</summary>
-      <description>The action to take when the system power button is pressed. This action is hard-coded (and the setting ignored) on virtual machines (power off) and tablets (suspend).</description>
+      <description>The action to take when the system power button is pressed. Virtual machines only honor the 'nothing' action, and will shutdown otherwise. Tablets always suspend, ignoring all the other action options.</description>
     </key>
     <key name="power-saver-profile-on-low-battery" type="b">
       <default>true</default>
