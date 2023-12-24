@@ -70,8 +70,7 @@ Recommends: iio-sensor-proxy,
             pkexec,
             x11-xserver-utils
 Suggests: usbguard
-Breaks:
-        gnome-control-center (<< 1:41.4-2~),
+Breaks: gnome-control-center (<< 1:41.4-2~),
         libgtk-4-0 (<< 3.99.1~),
         libmutter-6-0 (<< 3.37),
         libmutter-7-0 (<< 3.39)
