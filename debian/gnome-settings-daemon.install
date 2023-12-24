@@ -1,5 +1,5 @@
-etc/xdg/autostart
 etc/xdg/Xwayland-session.d
+etc/xdg/autostart
 usr/lib/gnome-settings-daemon-${env:GSD_MAJOR_VERSION}
 usr/libexec
 usr/share/gnome-settings-daemon

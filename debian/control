@@ -2,7 +2,11 @@ Source: gnome-settings-daemon
 Section: gnome
 Priority: optional
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
-Uploaders: Amin Bandali <bandali@ubuntu.com>, Gunnar Hjalmarsson <gunnarhj@debian.org>, Jeremy Bícha <jbicha@ubuntu.com>, Laurent Bigonville <bigon@debian.org>, Marco Trevisan (Treviño) <marco@ubuntu.com>
+Uploaders: Amin Bandali <bandali@ubuntu.com>,
+           Gunnar Hjalmarsson <gunnarhj@debian.org>,
+           Jeremy Bícha <jbicha@ubuntu.com>,
+           Laurent Bigonville <bigon@debian.org>,
+           Marco Trevisan (Treviño) <marco@ubuntu.com>
 Build-Depends: debhelper-compat (= 13),
                dh-exec,
                dh-sequence-gnome,
@@ -26,9 +30,9 @@ Build-Depends: debhelper-compat (= 13),
                libgweather-4-dev (>= 4.1),
                libibus-1.0-dev,
                liblcms2-dev,
+               libmm-glib-dev [linux-any],
                libnm-dev [linux-any],
                libnotify-dev,
-               libmm-glib-dev [linux-any],
                libpackagekit-glib2-dev,
                libpolkit-gobject-1-dev (>= 0.114),
                libpulse-dev,
@@ -58,9 +62,9 @@ Rules-Requires-Root: no
 
 Package: gnome-settings-daemon
 Architecture: any
-Depends: gnome-settings-daemon-common (= ${source:Version}),
+Depends: default-logind [linux-any] | logind [linux-any],
+         gnome-settings-daemon-common (= ${source:Version}),
          gsettings-desktop-schemas (>= 42~),
-         default-logind [linux-any] | logind [linux-any],
          libspa-0.2-bluetooth | pulseaudio-module-bluetooth,
          pipewire-audio | pulseaudio,
          ${misc:Depends},
