@@ -1,2 +1,0 @@
-rm_conffile /etc/xdg/autostart/org.gnome.SettingsDaemon.Clipboard.desktop 3.33.90-2~ gnome-settings-daemon
-rm_conffile /etc/xdg/autostart/org.gnome.SettingsDaemon.Mouse.desktop 3.33.90-2~ gnome-settings-daemon
