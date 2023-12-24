@@ -1,4 +1,4 @@
-gnome-settings-daemon (45.0-2) UNRELEASED; urgency=medium
+gnome-settings-daemon (45.0-2) unstable; urgency=medium
 
   * Team upload
 
@@ -16,8 +16,22 @@ gnome-settings-daemon (45.0-2) UNRELEASED; urgency=medium
     - installed files
     - dependencies
     - Uploaders
+  * Standards-Version: 4.6.2 (no changes required)
+  * d/source/lintian-overrides: Suppress dh-exec-subst-unknown-variable
+    for env:deb_udevdir in the solution to #1057245
+  * d/gnome-settings-daemon.lintian-overrides: Suppress long-standing false
+    positive #1031037
+  * d/g-s-d-common.lintian-overrides: Suppress false positive for
+    appstream-metadata-missing-modalias-provide.
+    The purpose of <provides><modalias> is to get hardware support
+    packages to be installed on systems with specific categories
+    of hardware. gnome-settings-daemon is automatically installed on
+    systems that have the GNOME desktop environment, but doesn't make
+    much sense to install on systems that don't have GNOME, so it would
+    be inappropriate to ask for it to be installed on laptops that run
+    some other desktop environment and happen to have rfkill devices.
 
- -- Simon McVittie <smcv@debian.org>  Sun, 24 Dec 2023 13:36:48 +0000
+ -- Simon McVittie <smcv@debian.org>  Sun, 24 Dec 2023 14:06:34 +0000
 
 gnome-settings-daemon (45.0-1) unstable; urgency=medium
 
