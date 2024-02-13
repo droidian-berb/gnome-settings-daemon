@@ -1,6 +1,6 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '45.1',
+  version: '46.beta',
   license: [ 'GPL2+', 'LGPLv2+' ],
   meson_version: '>= 0.57.0'
 )
@@ -114,6 +114,9 @@ enable_systemd = get_option('systemd')
 if enable_systemd
   systemd_dep = dependency('systemd', version: '>= 243', required: false)
   assert(systemd_dep.found(), 'Systemd support explicitly required, but systemd not found')
+
+  libsystemd_dep = dependency('libsystemd', version: '>= 243', required: false)
+  assert(libsystemd_dep.found(), 'Systemd support explicitly required, but libsystemd not found')
 
    systemd_userunitdir = systemd_dep.get_pkgconfig_variable('systemduserunitdir',
                                                             define_variable: ['prefix', gsd_prefix])
