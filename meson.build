@@ -1,6 +1,6 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '45.0',
+  version: '46.0',
   license: [ 'GPL2+', 'LGPLv2+' ],
   meson_version: '>= 0.57.0'
 )
@@ -11,7 +11,7 @@ gsd_major_version = version_array[0].to_int()
 
 gsd_api_name = '@0@-@1@'.format(meson.project_name(), gsd_major_version)
 
-glib_min_version = '2.58'
+glib_min_version = '2.70'
 
 glib_version_def = 'GLIB_VERSION_@0@_@1@'.format(
     glib_min_version.split('.')[0], glib_min_version.split('.')[1])
@@ -96,7 +96,7 @@ endif
 gio_dep = dependency('gio-2.0', version: '>= 2.53.0')
 gio_unix_dep = dependency('gio-unix-2.0')
 gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.37.1')
-gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42')
+gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 46.beta')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.15.3')
 gtk_x11_dep = dependency('gtk+-x11-3.0')
 gweather_dep = dependency('gweather4')
@@ -111,13 +111,13 @@ x11_dep = dependency('x11')
 xfixes_dep = dependency('xfixes', version: '>= 6.0')
 
 enable_systemd = get_option('systemd')
-if enable_systemd
-  systemd_dep = dependency('systemd', version: '>= 243', required: false)
-  assert(systemd_dep.found(), 'Systemd support explicitly required, but systemd not found')
-
-   systemd_userunitdir = systemd_dep.get_pkgconfig_variable('systemduserunitdir',
-                                                            define_variable: ['prefix', gsd_prefix])
+systemd_dep = dependency('systemd', version: '>= 243', required: enable_systemd)
+if systemd_dep.found()
+  systemd_userunitdir = systemd_dep.get_variable(pkgconfig: 'systemduserunitdir',
+                                                 pkgconfig_define: ['prefix', gsd_prefix])
 endif
+libsystemd_dep = dependency('libsystemd', version: '>= 243', required: enable_systemd)
+
 
 m_dep = cc.find_library('m')
 
@@ -206,7 +206,7 @@ if enable_rfkill
 
   udev_dir = get_option('udev_dir')
   if udev_dir == ''
-    udev_dir = dependency('udev').get_pkgconfig_variable('udevdir')
+    udev_dir = dependency('udev').get_variable(pkgconfig: 'udevdir')
   endif
 endif
 
@@ -241,7 +241,7 @@ gnome = import('gnome')
 i18n = import('i18n')
 pkg = import('pkgconfig')
 
-po_dir = join_paths(meson.source_root(), 'po')
+po_dir = join_paths(meson.project_source_root(), 'po')
 
 top_inc = include_directories('.')
 
@@ -269,7 +269,7 @@ output += '        bindir:                   ' + gsd_bindir + '\n'
 output += '        sysconfdir:               ' + gsd_sysconfdir + '\n'
 output += '        datadir:                  ' + gsd_datadir + '\n\n'
 output += '        gtk modules dir:          ' + gsd_gtk_modules_directory + '\n\n'
-output += '        source code location:     ' + meson.source_root() + '\n'
+output += '        source code location:     ' + meson.project_source_root() + '\n'
 output += '        compiler:                 ' + cc.get_id() + '\n'
 output += '        cflags:                   ' + ' '.join(compiler_flags) + '\n\n'
 output += '        ALSA support:             ' + enable_alsa.to_string() + '\n'

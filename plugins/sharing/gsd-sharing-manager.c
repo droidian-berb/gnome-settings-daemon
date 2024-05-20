@@ -20,6 +20,7 @@
 #include "config.h"
 
 #include <locale.h>
+#include <systemd/sd-login.h>
 #include <glib.h>
 #include <gio/gio.h>
 #include <gio/gdesktopappinfo.h>
@@ -33,10 +34,29 @@
 #include "gsd-sharing-manager.h"
 #include "gsd-sharing-enums.h"
 
+#define SYSTEM_SERVICE_RESTART_TIMEOUT 10 /* seconds */
+
 typedef struct {
         const char  *name;
         GSettings   *settings;
-} ServiceInfo;
+} ConfigurableServiceInfo;
+
+typedef struct {
+        const char *system_bus_name;
+        const char *user_service_desktop_id;
+        const char *user_service_name;
+        const char *local_session_classes[3];
+        const char *remote_session_classes[3];
+} AssignedService;
+
+typedef struct {
+        AssignedService *service;
+        guint system_bus_name_watch;
+        gboolean system_service_running;
+        GPid pid;
+        guint child_watch_id;
+        GCancellable *cancellable;
+} AssignedServiceInfo;
 
 struct _GsdSharingManager
 {
@@ -51,12 +71,15 @@ struct _GsdSharingManager
         NMClient                *client;
 #endif /* HAVE_NETWORK_MANAGER */
 
-        GHashTable              *services;
+        GHashTable              *configurable_services;
+        GHashTable              *assigned_services;
 
         char                    *current_network;
         char                    *current_network_name;
         char                    *carrier_type;
         GsdSharingStatus         sharing_status;
+
+        gboolean                 is_systemd_managed;
 };
 
 #define GSD_DBUS_NAME "org.gnome.SettingsDaemon"
@@ -92,13 +115,30 @@ static void     gsd_sharing_manager_class_init  (GsdSharingManagerClass *klass);
 static void     gsd_sharing_manager_init        (GsdSharingManager      *manager);
 static void     gsd_sharing_manager_finalize    (GObject                *object);
 
+static void     gsd_sharing_manager_start_service (GsdSharingManager *manager,
+                                                   const char        *service_name);
+static void     gsd_sharing_manager_stop_service (GsdSharingManager *manager,
+                                                  const char        *service_name);
+
 G_DEFINE_TYPE (GsdSharingManager, gsd_sharing_manager, G_TYPE_OBJECT)
 
 static gpointer manager_object = NULL;
 
-static const char * const services[] = {
+static const char * const configurable_services[] = {
         "rygel",
         "gnome-user-share-webdav"
+};
+
+/* Services that are delegated to the user session by a system service
+ */
+static AssignedService assigned_services[] = {
+        {
+                .system_bus_name = "org.gnome.RemoteDesktop",
+                .user_service_desktop_id = "org.gnome.RemoteDesktop.Handover.desktop",
+                .user_service_name = "gnome-remote-desktop-handover",
+                .local_session_classes = { NULL },
+                .remote_session_classes = { "user", "greeter", NULL }
+        }
 };
 
 static void
@@ -129,11 +169,11 @@ handle_unit_cb (GObject      *source_object,
 static void
 gsd_sharing_manager_handle_service (GsdSharingManager   *manager,
                                     const char          *method,
-                                    ServiceInfo         *service)
+                                    const char          *service_name)
 {
         char *service_file;
 
-        service_file = g_strdup_printf ("%s.service", service->name);
+        service_file = g_strdup_printf ("%s.service", service_name);
         g_dbus_connection_call (manager->connection,
                                 "org.freedesktop.systemd1",
                                 "/org/freedesktop/systemd1",
@@ -151,29 +191,29 @@ gsd_sharing_manager_handle_service (GsdSharingManager   *manager,
 
 static void
 gsd_sharing_manager_start_service (GsdSharingManager *manager,
-                                   ServiceInfo       *service)
+                                   const char        *service_name)
 {
-        g_debug ("About to start %s", service->name);
+        g_debug ("About to start %s", service_name);
 
         /* We use StartUnit, not StartUnitReplace, since the latter would
          * cancel any pending start we already have going from an
          * earlier _start_service() call */
-        gsd_sharing_manager_handle_service (manager, "StartUnit", service);
+        gsd_sharing_manager_handle_service (manager, "StartUnit", service_name);
 }
 
 static void
 gsd_sharing_manager_stop_service (GsdSharingManager *manager,
-                                  ServiceInfo       *service)
+                                  const char        *service_name)
 {
-        g_debug ("About to stop %s", service->name);
+        g_debug ("About to stop %s", service_name);
 
-        gsd_sharing_manager_handle_service (manager, "StopUnit", service);
+        gsd_sharing_manager_handle_service (manager, "StopUnit", service_name);
 }
 
 #if HAVE_NETWORK_MANAGER
 static gboolean
-service_is_enabled_on_current_connection (GsdSharingManager *manager,
-                                          ServiceInfo       *service)
+service_is_enabled_on_current_connection (GsdSharingManager       *manager,
+                                          ConfigurableServiceInfo *service)
 {
         char **connections;
         int j;
@@ -192,22 +232,22 @@ service_is_enabled_on_current_connection (GsdSharingManager *manager,
 }
 #else
 static gboolean
-service_is_enabled_on_current_connection (GsdSharingManager *manager,
-                                          ServiceInfo       *service)
+service_is_enabled_on_current_connection (GsdSharingManager       *manager,
+                                          ConfigurableServiceInfo *service)
 {
         return FALSE;
 }
 #endif /* HAVE_NETWORK_MANAGER */
 
 static void
-gsd_sharing_manager_sync_services (GsdSharingManager *manager)
+gsd_sharing_manager_sync_configurable_services (GsdSharingManager *manager)
 {
         GList *services, *l;
 
-        services = g_hash_table_get_values (manager->services);
+        services = g_hash_table_get_values (manager->configurable_services);
 
         for (l = services; l != NULL; l = l->next) {
-                ServiceInfo *service = l->data;
+                ConfigurableServiceInfo *service = l->data;
                 gboolean should_be_started = FALSE;
 
                 if (manager->sharing_status == GSD_SHARING_STATUS_AVAILABLE &&
@@ -215,11 +255,178 @@ gsd_sharing_manager_sync_services (GsdSharingManager *manager)
                         should_be_started = TRUE;
 
                 if (should_be_started)
-                        gsd_sharing_manager_start_service (manager, service);
+                        gsd_sharing_manager_start_service (manager, service->name);
                 else
-                        gsd_sharing_manager_stop_service (manager, service);
+                        gsd_sharing_manager_stop_service (manager, service->name);
         }
         g_list_free (services);
+}
+
+
+static void
+on_assigned_service_finished (GPid     pid,
+                              int      exit_status,
+                              gpointer user_data)
+{
+        AssignedServiceInfo *info = user_data;
+        AssignedService *service = info->service;
+
+        g_debug ("%s with pid %d exited with status %d", service->user_service_name, (int) pid, exit_status);
+
+        info->pid = 0;
+        info->child_watch_id = 0;
+}
+
+static void
+on_assigned_service_started (GDesktopAppInfo *app_info,
+                             GPid             pid,
+                             gpointer         user_data)
+{
+        AssignedServiceInfo *info = user_data;
+        AssignedService *service = info->service;
+
+        g_debug ("%s started with pid %d", service->user_service_name, (int) pid);
+
+        info->pid = pid;
+        info->child_watch_id = g_child_watch_add (pid, on_assigned_service_finished, user_data);
+}
+
+static void
+start_assigned_service (GsdSharingManager   *manager,
+                        AssignedServiceInfo *info)
+{
+        AssignedService *service;
+
+        if (manager->sharing_status != GSD_SHARING_STATUS_AVAILABLE)
+                return;
+
+        if (!info->system_service_running)
+                return;
+
+        g_cancellable_cancel (info->cancellable);
+        g_clear_object (&info->cancellable);
+
+        service = info->service;
+
+        if (manager->is_systemd_managed) {
+                gsd_sharing_manager_start_service (manager, service->user_service_name);
+        } else {
+                g_autoptr(GDesktopAppInfo) app_info = NULL;
+                g_autoptr(GError) error = NULL;
+                guint spawn_flags = G_SPAWN_DO_NOT_REAP_CHILD | G_SPAWN_SEARCH_PATH;
+
+#if GLIB_CHECK_VERSION(2, 74, 0)
+                spawn_flags |= G_SPAWN_CHILD_INHERITS_STDERR | G_SPAWN_CHILD_INHERITS_STDOUT;
+#endif
+
+                if (info->pid != 0)
+                        return;
+
+                g_debug ("About to start %s directly", service->user_service_name);
+
+                app_info = g_desktop_app_info_new (service->user_service_desktop_id);
+                if (!g_desktop_app_info_launch_uris_as_manager (app_info,
+                                                                NULL,
+                                                                NULL,
+                                                                spawn_flags,
+                                                                NULL,
+                                                                NULL,
+                                                                on_assigned_service_started,
+                                                                info,
+                                                                &error)) {
+                        g_warning ("Could not start %s: %s", service->user_service_desktop_id, error->message);
+                }
+        }
+}
+
+static void
+stop_assigned_service (GsdSharingManager   *manager,
+                       AssignedServiceInfo *info)
+{
+        AssignedService *service = info->service;
+
+        if (manager->is_systemd_managed) {
+                gsd_sharing_manager_stop_service (manager, service->user_service_name);
+        } else {
+                if (info->pid == 0)
+                        return;
+
+                g_debug ("About to stop %s directly", service->user_service_name);
+
+                kill (info->pid, SIGTERM);
+        }
+}
+
+static void
+on_done_waiting_to_stop (GsdSharingManager   *manager,
+                         GTask               *task,
+                         AssignedServiceInfo *info)
+{
+        gboolean completed;
+
+        completed = g_task_propagate_boolean (task, NULL);
+
+        if (!completed)
+                return;
+
+        stop_assigned_service (manager, info);
+}
+
+static gboolean
+on_timeout_reached (GTask *task)
+{
+        if (!g_task_return_error_if_cancelled (task))
+                g_task_return_boolean (task, TRUE);
+
+        return G_SOURCE_REMOVE;
+}
+
+static void
+stop_assigned_service_after_timeout (GsdSharingManager   *manager,
+                                     AssignedServiceInfo *info)
+{
+        g_autoptr (GTask) wait_task = NULL;
+        g_autoptr (GSource) timeout_source = NULL;
+
+        g_cancellable_cancel (info->cancellable);
+        g_set_object (&info->cancellable, g_cancellable_new ());
+
+        wait_task = g_task_new (manager,
+                                info->cancellable,
+                                (GAsyncReadyCallback)
+                                on_done_waiting_to_stop,
+                                info);
+        timeout_source = g_timeout_source_new (SYSTEM_SERVICE_RESTART_TIMEOUT * 1000);
+        g_source_set_name (timeout_source, "[gnome-settings-daemon] on_done_waiting_to_stop");
+
+        g_task_attach_source (g_steal_pointer (&wait_task),
+                              timeout_source,
+                              G_SOURCE_FUNC (on_timeout_reached));
+}
+
+static void
+gsd_sharing_manager_sync_assigned_services (GsdSharingManager *manager)
+{
+        GList *services, *l;
+
+        services = g_hash_table_get_values (manager->assigned_services);
+
+        for (l = services; l != NULL; l = l->next) {
+                AssignedServiceInfo *info = l->data;
+
+                if (manager->sharing_status == GSD_SHARING_STATUS_AVAILABLE)
+                        start_assigned_service (manager, info);
+                else
+                        stop_assigned_service (manager, info);
+        }
+        g_list_free (services);
+}
+
+static void
+gsd_sharing_manager_sync_services (GsdSharingManager *manager)
+{
+        gsd_sharing_manager_sync_configurable_services (manager);
+        gsd_sharing_manager_sync_assigned_services (manager);
 }
 
 #if HAVE_NETWORK_MANAGER
@@ -260,9 +467,9 @@ static char **
 get_connections_for_service (GsdSharingManager *manager,
                              const char        *service_name)
 {
-        ServiceInfo *service;
+        ConfigurableServiceInfo *service;
 
-        service = g_hash_table_lookup (manager->services, service_name);
+        service = g_hash_table_lookup (manager->configurable_services, service_name);
         return g_settings_get_strv (service->settings, "enabled-connections");
 }
 #else
@@ -280,7 +487,7 @@ check_service (GsdSharingManager  *manager,
                const char         *service_name,
                GError            **error)
 {
-        if (g_hash_table_lookup (manager->services, service_name))
+        if (g_hash_table_lookup (manager->configurable_services, service_name))
                 return TRUE;
 
         g_set_error (error, G_DBUS_ERROR, G_DBUS_ERROR_INVALID_ARGS,
@@ -293,7 +500,7 @@ gsd_sharing_manager_enable_service (GsdSharingManager  *manager,
                                     const char         *service_name,
                                     GError            **error)
 {
-        ServiceInfo *service;
+        ConfigurableServiceInfo *service;
         char **connections;
         GPtrArray *array;
         guint i;
@@ -307,7 +514,7 @@ gsd_sharing_manager_enable_service (GsdSharingManager  *manager,
                 return FALSE;
         }
 
-        service = g_hash_table_lookup (manager->services, service_name);
+        service = g_hash_table_lookup (manager->configurable_services, service_name);
         connections = g_settings_get_strv (service->settings, "enabled-connections");
         array = g_ptr_array_new ();
         for (i = 0; connections[i] != NULL; i++) {
@@ -322,7 +529,7 @@ gsd_sharing_manager_enable_service (GsdSharingManager  *manager,
 
 bail:
 
-        gsd_sharing_manager_start_service (manager, service);
+        gsd_sharing_manager_start_service (manager, service->name);
 
         g_ptr_array_unref (array);
         g_strfreev (connections);
@@ -336,7 +543,7 @@ gsd_sharing_manager_disable_service (GsdSharingManager  *manager,
                                      const char         *network_name,
                                      GError            **error)
 {
-        ServiceInfo *service;
+        ConfigurableServiceInfo *service;
         char **connections;
         GPtrArray *array;
         guint i;
@@ -344,7 +551,7 @@ gsd_sharing_manager_disable_service (GsdSharingManager  *manager,
         if (!check_service (manager, service_name, error))
                 return FALSE;
 
-        service = g_hash_table_lookup (manager->services, service_name);
+        service = g_hash_table_lookup (manager->configurable_services, service_name);
         connections = g_settings_get_strv (service->settings, "enabled-connections");
         array = g_ptr_array_new ();
         for (i = 0; connections[i] != NULL; i++) {
@@ -358,7 +565,7 @@ gsd_sharing_manager_disable_service (GsdSharingManager  *manager,
         g_strfreev (connections);
 
         if (g_str_equal (network_name, manager->current_network))
-                gsd_sharing_manager_stop_service (manager, service);
+                gsd_sharing_manager_stop_service (manager, service->name);
 
         return TRUE;
 }
@@ -717,10 +924,25 @@ gsd_sharing_manager_start (GsdSharingManager *manager,
         return TRUE;
 }
 
+static void
+cancel_pending_wait_tasks (GsdSharingManager *manager)
+{
+        GHashTableIter iter;
+        gpointer key, value;
+
+        g_hash_table_iter_init (&iter, manager->assigned_services);
+        while (g_hash_table_iter_next (&iter, &key, &value)) {
+                AssignedServiceInfo *info = value;
+                g_cancellable_cancel (info->cancellable);
+        }
+}
+
 void
 gsd_sharing_manager_stop (GsdSharingManager *manager)
 {
         g_debug ("Stopping sharing manager");
+
+        cancel_pending_wait_tasks (manager);
 
         if (manager->sharing_status == GSD_SHARING_STATUS_AVAILABLE &&
             manager->connection != NULL) {
@@ -759,20 +981,161 @@ gsd_sharing_manager_class_init (GsdSharingManagerClass *klass)
 }
 
 static void
-service_free (gpointer pointer)
+configurable_service_free (gpointer pointer)
 {
-        ServiceInfo *service = pointer;
+        ConfigurableServiceInfo *service = pointer;
 
         g_clear_object (&service->settings);
         g_free (service);
 }
 
 static void
+assigned_service_free (gpointer pointer)
+{
+        AssignedServiceInfo *info = pointer;
+
+        g_cancellable_cancel (info->cancellable);
+        g_clear_object (&info->cancellable);
+
+        g_bus_unwatch_name (info->system_bus_name_watch);
+        g_free (info);
+}
+
+static void
+on_system_bus_name_appeared (GDBusConnection   *connection,
+                             const char        *system_bus_name,
+                             const char        *system_bus_name_owner,
+                             gpointer           user_data)
+{
+        GsdSharingManager *manager = user_data;
+        AssignedServiceInfo *info;
+
+        info = g_hash_table_lookup (manager->assigned_services, system_bus_name);
+
+        if (info == NULL)
+                return;
+
+        if (info->system_service_running)
+                return;
+
+        info->system_service_running = TRUE;
+
+        start_assigned_service (manager, info);
+}
+
+static void
+on_system_bus_name_vanished (GDBusConnection   *connection,
+                             const char        *system_bus_name,
+                             gpointer           user_data)
+{
+        GsdSharingManager *manager = user_data;
+        AssignedServiceInfo *info;
+
+        info = g_hash_table_lookup (manager->assigned_services, system_bus_name);
+
+        if (info == NULL)
+                return;
+
+        if (!info->system_service_running)
+                return;
+
+        info->system_service_running = FALSE;
+
+        stop_assigned_service_after_timeout (manager, info);
+}
+
+static void
+manage_configurable_services (GsdSharingManager *manager)
+{
+        size_t i;
+
+        for (i = 0; i < G_N_ELEMENTS (configurable_services); i++) {
+                ConfigurableServiceInfo *service;
+                char *path;
+
+                service = g_new0 (ConfigurableServiceInfo, 1);
+                service->name = configurable_services[i];
+                path = g_strdup_printf ("/org/gnome/settings-daemon/plugins/sharing/%s/", configurable_services[i]);
+                service->settings = g_settings_new_with_path ("org.gnome.settings-daemon.plugins.sharing.service", path);
+                g_free (path);
+
+                g_hash_table_insert (manager->configurable_services, (gpointer) configurable_services[i], service);
+        }
+}
+
+static void
+manage_assigned_services (GsdSharingManager *manager)
+{
+        size_t i;
+        int ret;
+        g_autofree char *session_id = NULL;
+        g_autofree char *session_class = NULL;
+        gboolean is_remote;
+
+        if (manager->is_systemd_managed)
+                ret = sd_uid_get_display (getuid (), &session_id);
+        else
+                ret = sd_pid_get_session (getpid (), &session_id);
+
+        if (ret != 0) {
+                g_warning ("Failed to find systemd session id: %s", g_strerror (-ret));
+                return;
+        }
+
+        ret = sd_session_get_class (session_id, &session_class);
+
+        if (ret != 0) {
+                g_warning ("Failed to find systemd session class for session %s: %s", session_id, g_strerror (-ret));
+                return;
+        }
+
+        ret = sd_session_is_remote (session_id);
+
+        if (ret < 0) {
+                g_warning ("Failed to find out if systemd session %s is remote: %s", session_id, g_strerror (-ret));
+                return;
+        }
+
+        is_remote = ret;
+
+        for (i = 0; i < G_N_ELEMENTS (assigned_services); i++) {
+                AssignedServiceInfo *info;
+                AssignedService *service;
+                const char * const *session_classes;
+
+                service = &assigned_services[i];
+
+                if (is_remote)
+                        session_classes = (const char * const *) service->remote_session_classes;
+                else
+                        session_classes = (const char * const *) service->local_session_classes;
+
+                if (!g_strv_contains (session_classes, session_class))
+                        continue;
+
+                info = g_new0 (AssignedServiceInfo, 1);
+                info->service = service;
+
+                info->system_bus_name_watch = g_bus_watch_name(G_BUS_TYPE_SYSTEM,
+                                                               service->system_bus_name,
+                                                               G_BUS_NAME_WATCHER_FLAGS_NONE,
+                                                               on_system_bus_name_appeared,
+                                                               on_system_bus_name_vanished,
+                                                               manager,
+                                                               NULL);
+
+                g_hash_table_insert (manager->assigned_services, (gpointer) service->system_bus_name, info);
+        }
+}
+
+static void
 gsd_sharing_manager_init (GsdSharingManager *manager)
 {
-        guint i;
+        int ret;
+        g_autofree char *systemd_unit = NULL;
 
-        manager->services = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, service_free);
+        manager->configurable_services = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, configurable_service_free);
+        manager->assigned_services = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, assigned_service_free);
 
         /* Default state */
         manager->current_network = g_strdup ("");
@@ -780,18 +1143,15 @@ gsd_sharing_manager_init (GsdSharingManager *manager)
         manager->carrier_type = g_strdup ("");
         manager->sharing_status = GSD_SHARING_STATUS_OFFLINE;
 
-        for (i = 0; i < G_N_ELEMENTS (services); i++) {
-                ServiceInfo *service;
-                char *path;
+        ret = sd_pid_get_user_unit (getpid (), &systemd_unit);
 
-                service = g_new0 (ServiceInfo, 1);
-                service->name = services[i];
-                path = g_strdup_printf ("/org/gnome/settings-daemon/plugins/sharing/%s/", services[i]);
-                service->settings = g_settings_new_with_path ("org.gnome.settings-daemon.plugins.sharing.service", path);
-                g_free (path);
+        if (ret < 0)
+                manager->is_systemd_managed = FALSE;
+        else
+                manager->is_systemd_managed = TRUE;
 
-                g_hash_table_insert (manager->services, (gpointer) services[i], service);
-        }
+        manage_configurable_services (manager);
+        manage_assigned_services (manager);
 }
 
 static void
@@ -808,7 +1168,8 @@ gsd_sharing_manager_finalize (GObject *object)
 
         gsd_sharing_manager_stop (manager);
 
-        g_hash_table_unref (manager->services);
+        g_hash_table_unref (manager->configurable_services);
+        g_hash_table_unref (manager->assigned_services);
 
         G_OBJECT_CLASS (gsd_sharing_manager_parent_class)->finalize (object);
 }
