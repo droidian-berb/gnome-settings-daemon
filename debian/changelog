@@ -1,3 +1,189 @@
+gnome-settings-daemon (46.0-1) unstable; urgency=medium
+
+  [ Jeremy Bícha ]
+  * New upstream release
+
+  [ Michael Biebl ]
+  * Build-depend on systemd-dev instead of systemd (Closes: #1060576)
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Thu, 21 Mar 2024 19:47:25 -0400
+
+gnome-settings-daemon (46~beta-2) unstable; urgency=high
+
+  * Build with gcr4
+  * Bump minimum gsettings-desktop-schemas to 46~beta (Closes: #1064438)
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 27 Feb 2024 15:36:39 -0500
+
+gnome-settings-daemon (46~beta-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 13 Feb 2024 09:03:35 -0500
+
+gnome-settings-daemon (45.1-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 02 Jan 2024 12:25:52 -0500
+
+gnome-settings-daemon (45.0-2) unstable; urgency=medium
+
+  * Team upload
+
+  [ Chris Hofstaedtler ]
+  * Use udevdir from udev.pc to determine udev rules install path
+    (Closes: #1057245)
+
+  [ Simon McVittie ]
+  * d/control, d/rules: Stop generating d/control from d/control.in
+  * d/control: Remove version constraints unnecessary since Debian 11
+    - remove versions from most versioned dependencies
+    - remove obsolete versioned Breaks/Replaces
+  * Remove obsolete maintscript handling unnecessary since Debian 11
+  * Canonicalize order of unordered lists (wrap-and-sort -ab)
+    - installed files
+    - dependencies
+    - Uploaders
+  * Standards-Version: 4.6.2 (no changes required)
+  * d/source/lintian-overrides: Suppress dh-exec-subst-unknown-variable
+    for env:deb_udevdir in the solution to #1057245
+  * d/gnome-settings-daemon.lintian-overrides: Suppress long-standing false
+    positive #1031037
+  * d/g-s-d-common.lintian-overrides: Suppress false positive for
+    appstream-metadata-missing-modalias-provide.
+    The purpose of <provides><modalias> is to get hardware support
+    packages to be installed on systems with specific categories
+    of hardware. gnome-settings-daemon is automatically installed on
+    systems that have the GNOME desktop environment, but doesn't make
+    much sense to install on systems that don't have GNOME, so it would
+    be inappropriate to ask for it to be installed on laptops that run
+    some other desktop environment and happen to have rfkill devices.
+
+ -- Simon McVittie <smcv@debian.org>  Sun, 24 Dec 2023 14:06:34 +0000
+
+gnome-settings-daemon (45.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Bump minimum libpolkit-gobject-1-dev to 0.114
+  * Drop obsolete patch that lowered required policykit to build
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Mon, 18 Sep 2023 14:32:16 -0400
+
+gnome-settings-daemon (45~rc-1) unstable; urgency=medium
+
+  [ Jeremy Bícha ]
+  * New upstream release
+    - Use p11-kit (via gck) as smartcards backend
+  * Remove 5 obsolete maintscript entries (before 3.28)
+  * Update upstream metadata fields: Bug-Database, Bug-Submit
+
+  [ Marco Trevisan (Treviño) ]
+  * debian/control: Build depend on libgck-1-dev and remove nss dependency
+
+  [ Simon McVittie ]
+  * d/clean: Clean up tests/__pycache__/ (Closes: #1044492)
+
+  [ Boud Roukema ]
+  * Add missing Homepage entry to debian/control*
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Wed, 06 Sep 2023 13:20:26 -0400
+
+gnome-settings-daemon (45~beta-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Thu, 10 Aug 2023 20:47:07 -0400
+
+gnome-settings-daemon (44.1-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Gunnar Hjalmarsson <gunnarhj@debian.org>  Tue, 20 Jun 2023 22:11:13 +0200
+
+gnome-settings-daemon (44.1-1) experimental; urgency=medium
+
+  * New upstream release
+    - Power:
+      + Connect to light sensor asynchronously
+        (https://gitlab.gnome.org/World/Phosh/phosh/-/issues/915)
+      + Initialize check for VM environment earlier
+        (https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/issues/736)
+    - Rfkill:
+      + Monitor WwanEnabled property changes properly
+    - Smartcards:
+      + Check for the addition of new smartcard readers
+    - Xsettings:
+      + Do not force deprecated High Contrast icon theme
+  * Drop gitlab_nmsignal_deprecated.patch, already included in 44.1.
+
+ -- Amin Bandali <bandali@ubuntu.com>  Mon, 24 Apr 2023 15:13:50 -0400
+
+gnome-settings-daemon (44.0-1) experimental; urgency=medium
+
+  [ Jeremy Bicha ]
+  * New upstream release
+
+  [ Sebastien Bacher ]
+  * Add gitlab_nmsignal_deprecated.patch:
+    - cherrypick a change in review upstream to fix airplane mode on some
+      Lenovo laptops (LP: #2011770)
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 27 Mar 2023 08:20:57 -0400
+
+gnome-settings-daemon (44~rc-1) experimental; urgency=medium
+
+  * New upstream release
+    - Change default sleep timeout from 20 minutes to 15 minutes
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 10 Mar 2023 07:49:14 -0500
+
+gnome-settings-daemon (44~beta-1) experimental; urgency=medium
+
+  * New upstream release
+  * Drop translation patches applied in new release
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Wed, 15 Feb 2023 10:51:12 -0500
+
+gnome-settings-daemon (43.0-4) unstable; urgency=medium
+
+  * Use the new pipewire-audio metapackage instead of listing the individual
+    components
+
+ -- Laurent Bigonville <bigon@debian.org>  Wed, 25 Jan 2023 13:52:38 +0100
+
+gnome-settings-daemon (43.0-3) unstable; urgency=medium
+
+  * Team upload
+  * d/control.in: Change Build-Depends from transitional policykit-1 to
+    polkitd
+  * d/control.in: Add Recommends on pkexec.
+    Two plugins (for laptop backlights and Wacom devices) run commands via
+    pkexec.
+  * d/patches: Update translations from upstream
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 14 Oct 2022 11:00:56 +0100
+
+gnome-settings-daemon (43.0-2) unstable; urgency=medium
+
+  * Depend on libspa-0.2-bluetooth, pipewire & wireplumber
+  * Allow alternate Depends on the pulseaudio equivalents
+  * Also add Recommends without the pulseaudio alternates
+    so that upgraders get the recommended default as long as
+    they install Recommends
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Mon, 26 Sep 2022 17:26:23 -0400
+
+gnome-settings-daemon (43.0-1) unstable; urgency=medium
+
+  [ Jeremy Bicha ]
+  * New upstream release
+
+  [ Simon McVittie ]
+  * d/control.in: Replace transitional libfontconfig1-dev with libfontconfig-dev
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 20 Sep 2022 08:33:27 -0400
+
 gnome-settings-daemon (43~rc-1) unstable; urgency=medium
 
   * New upstream release
