@@ -1,3 +1,9 @@
+gnome-settings-daemon (46.0-4) unstable; urgency=medium
+
+  * Fix Build-Depends for architectures missing some build test dependencies
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 09 Jul 2024 15:58:27 -0400
+
 gnome-settings-daemon (46.0-3) unstable; urgency=medium
 
   * Don't require build test dependencies on architectures where they
