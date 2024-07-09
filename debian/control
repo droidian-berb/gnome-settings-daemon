@@ -39,7 +39,7 @@ Build-Depends: debhelper-compat (= 13),
                libpulse-dev,
                libsystemd-dev [linux-any],
                libupower-glib-dev (>= 0.99.12),
-               libwacom-dev [!hurd-any !kfreebsd-any !s390 !s390x],
+               libwacom-dev [!hurd-any !s390 !s390x],
                libx11-dev,
                libxext-dev,
                libxfixes-dev (>= 1:6.0),
@@ -55,7 +55,7 @@ Build-Depends: debhelper-compat (= 13),
                umockdev <!nocheck>,
                xauth <!nocheck>,
                xkb-data,
-               xserver-xorg-input-wacom [!hurd-any !kfreebsd-any !s390 !s390x],
+               xserver-xorg-input-wacom [!hurd-any !s390 !s390x],
                xvfb <!nocheck>
 Standards-Version: 4.7.0
 Homepage: https://gitlab.gnome.org/GNOME/gnome-settings-daemon

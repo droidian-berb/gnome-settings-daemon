@@ -34,7 +34,7 @@ override_dh_auto_test:
 ifeq (,$(filter nocheck, $(DEB_BUILD_OPTIONS)))
 # The tests are not fatal on non-linux architectures
 # See: https://bugzilla.gnome.org/show_bug.cgi?id=770684#c2
-ifeq (,$(filter $(DEB_HOST_ARCH), hurd-i386 kfreebsd-i386 kfreebsd-amd64))
+ifeq (,$(filter $(DEB_HOST_ARCH), hurd-i386 hurd-amd64))
 	xvfb-run --auto-servernum dh_auto_test
 else
 	xvfb-run --auto-servernum dh_auto_test || true
