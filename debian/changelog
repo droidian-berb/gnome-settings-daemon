@@ -1,3 +1,13 @@
+gnome-settings-daemon (46.0-3) unstable; urgency=medium
+
+  * Don't require build test dependencies on architectures where they
+    aren't available
+  * Ignore build tests failures for mips64el & riscv64 since they
+    require working mutter. Similar skipping is done in mutter too.
+  * Drop references to freebsd
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 09 Jul 2024 10:39:36 -0400
+
 gnome-settings-daemon (46.0-2) unstable; urgency=medium
 
   [ Philip Withnall ]
