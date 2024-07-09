@@ -31,14 +31,13 @@ override_dh_auto_configure:
 		$(CONFFLAGS)
 
 override_dh_auto_test:
-ifeq (,$(filter nocheck, $(DEB_BUILD_OPTIONS)))
-# The tests are not fatal on non-linux architectures
-# See: https://bugzilla.gnome.org/show_bug.cgi?id=770684#c2
-ifeq (,$(filter $(DEB_HOST_ARCH), hurd-i386 hurd-amd64))
+# Ignore test failures on some architectures because they
+# require working mutter & gnome-session.
+# Similar skipping is being done in mutter
+ifeq (,$(filter $(DEB_HOST_ARCH), mips64el riscv64))
 	xvfb-run --auto-servernum dh_auto_test
 else
 	xvfb-run --auto-servernum dh_auto_test || true
-endif
 endif
 
 override_dh_installchangelogs:
