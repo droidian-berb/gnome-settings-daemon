@@ -1,3 +1,9 @@
+gnome-settings-daemon (46.0-5) unstable; urgency=medium
+
+  * Further adjust Build-Depends to fix build tests for several Debian ports
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Wed, 10 Jul 2024 11:05:08 -0400
+
 gnome-settings-daemon (46.0-4) unstable; urgency=medium
 
   * Fix Build-Depends for architectures missing some build test dependencies
