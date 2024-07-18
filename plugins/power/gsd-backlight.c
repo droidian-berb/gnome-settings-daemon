@@ -513,6 +513,7 @@ gsd_backlight_get_brightness (GsdBacklight *backlight, gint *target)
 static void
 gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
                                         int value,
+                                        gboolean save,
                                         GCancellable *cancellable,
                                         GAsyncReadyCallback callback,
                                         gpointer user_data)
@@ -545,7 +546,7 @@ gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
 
 #ifdef __linux__
         if (backlight->backend == BACKLIGHT_BACKEND_LIBDROID) {
-                if (droid_leds_set_backlight (backlight->droid_leds, value, TRUE)) {
+                if (droid_leds_set_backlight (backlight->droid_leds, value, save)) {
                     backlight->brightness_val = value;
                     g_object_notify_by_pspec (G_OBJECT (backlight), props[PROP_BRIGHTNESS]);
 
@@ -629,6 +630,7 @@ gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
 void
 gsd_backlight_set_brightness_async (GsdBacklight *backlight,
                                     gint percent,
+                                    gboolean save,
                                     GCancellable *cancellable,
                                     GAsyncReadyCallback callback,
                                     gpointer user_data)
@@ -636,6 +638,7 @@ gsd_backlight_set_brightness_async (GsdBacklight *backlight,
         /* Overflow/underflow is handled by gsd_backlight_set_brightness_val_async. */
         gsd_backlight_set_brightness_val_async (backlight,
                                                 percent,
+                                                save,
                                                 cancellable,
                                                 callback,
                                                 user_data);
@@ -677,6 +680,7 @@ gsd_backlight_step_up_async (GsdBacklight *backlight,
 
         gsd_backlight_set_brightness_val_async (backlight,
                                                 value,
+                                                FALSE,
                                                 cancellable,
                                                 callback,
                                                 user_data);
@@ -723,6 +727,7 @@ gsd_backlight_step_down_async (GsdBacklight *backlight,
 
         gsd_backlight_set_brightness_val_async (backlight,
                                                 value,
+                                                FALSE,
                                                 cancellable,
                                                 callback,
                                                 user_data);
@@ -781,6 +786,7 @@ gsd_backlight_cycle_up_async (GsdBacklight *backlight,
         else
                 gsd_backlight_set_brightness_val_async (backlight,
                                                         0,
+                                                        FALSE,
                                                         cancellable,
                                                         callback,
                                                         user_data);
