@@ -35,9 +35,9 @@ override_dh_auto_test:
 # require working mutter & gnome-session.
 # Similar skipping is being done in mutter
 ifeq (,$(filter $(DEB_HOST_ARCH), mips64el riscv64))
-	xvfb-run --auto-servernum dh_auto_test
+	dh_auto_test
 else
-	xvfb-run --auto-servernum dh_auto_test || true
+	dh_auto_test || true
 endif
 
 override_dh_installchangelogs:
