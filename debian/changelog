@@ -1,3 +1,9 @@
+gnome-settings-daemon (47~rc-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 09 Sep 2024 11:35:06 +0100
+
 gnome-settings-daemon (47~beta-1) unstable; urgency=medium
 
   * New upstream release
