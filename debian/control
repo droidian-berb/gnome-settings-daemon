@@ -46,7 +46,7 @@ Build-Depends: debhelper-compat (= 13),
                libxi-dev,
                libxt-dev,
                meson,
-               mutter [!hurd-any !alpha !hppa !loong64 !m68k !powerpc !ppc64] <!nocheck>,
+               mutter (>= 47~rc) [!hurd-any !alpha !hppa !loong64 !m68k !powerpc !ppc64] <!nocheck>,
                polkitd,
                python3-dbusmock <!nocheck>,
                python3-gi <!nocheck>,
@@ -78,9 +78,11 @@ Recommends: iio-sensor-proxy,
             x11-xserver-utils
 Suggests: usbguard
 Breaks: gnome-control-center (<< 1:41.4-2~),
+        gnome-shell (<< 47~rc),
         libgtk-4-0 (<< 3.99.1~),
         libmutter-6-0 (<< 3.37),
-        libmutter-7-0 (<< 3.39)
+        libmutter-7-0 (<< 3.39),
+        mutter-common (<< 47~rc),
 Description: daemon handling the GNOME session settings
  This package contains the daemon which is responsible for setting the
  various parameters of a GNOME session and the applications that run
