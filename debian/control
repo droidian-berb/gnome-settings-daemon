@@ -53,6 +53,7 @@ Build-Depends: debhelper-compat (= 13),
                systemd-dev [linux-any],
                udev [linux-any] <!nocheck>,
                umockdev [!hurd-any !alpha !hppa !loong64 !m68k !powerpc !ppc64] <!nocheck>,
+               xauth <!nocheck>,
                xkb-data,
                xserver-xorg-input-wacom [!hurd-any !s390 !s390x],
                xwayland <!nocheck>
