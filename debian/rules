@@ -31,6 +31,7 @@ override_dh_auto_configure:
 		$(CONFFLAGS)
 
 override_dh_auto_test:
+	mkdir -p -m 01777 /tmp/.X11-unix || true
 # Ignore test failures on some architectures because they
 # require working mutter & gnome-session.
 # Similar skipping is being done in mutter
