@@ -1,10 +1,22 @@
 gnome-settings-daemon (47~rc-1) UNRELEASED; urgency=medium
 
+  * Team upload
+
+  [ Simon McVittie ]
   * New upstream release
   * d/control: Add Breaks for gnome-shell/mutter older than 47.
     We now need the DisplayConfig and X11 D-Bus interfaces from mutter 47.
+  * d/control: Build-depend on a version of gnome-session that fixes
+    test suite assumptions
+  * Upload to experimental until we are ready for the
+    gnome-shell/mutter 47 transition
 
- -- Simon McVittie <smcv@debian.org>  Mon, 09 Sep 2024 11:45:11 +0100
+  [ Alessandro Astone ]
+  * d/control, d/rules: Adapt for tests running in mutter Wayland mode:
+    - build-depend on xwayland
+    - don't use xauth, xvfb
+
+ -- Simon McVittie <smcv@debian.org>  Tue, 10 Sep 2024 13:34:18 +0100
 
 gnome-settings-daemon (47~beta-1) unstable; urgency=medium
 
