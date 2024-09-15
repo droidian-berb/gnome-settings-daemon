@@ -31,6 +31,13 @@
 #include <gudev/gudev.h>
 #endif /* __linux__ */
 
+typedef enum
+{
+        BACKLIGHT_BACKEND_NONE = 0,
+        BACKLIGHT_BACKEND_UDEV,
+        BACKLIGHT_BACKEND_MUTTER,
+} BacklightBackend;
+
 struct _GsdBacklight
 {
         GObject object;
@@ -43,6 +50,8 @@ struct _GsdBacklight
 
         uint32_t backlight_serial;
         char *backlight_connector;
+
+        BacklightBackend backend;
 
 #ifdef __linux__
         GDBusProxy *logind_proxy;
@@ -264,6 +273,8 @@ gsd_backlight_udev_init (GsdBacklight *backlight)
                                  G_CALLBACK (gsd_backlight_udev_uevent),
                                  backlight, 0);
 
+        backlight->backend = BACKLIGHT_BACKEND_UDEV;
+
         return TRUE;
 }
 
@@ -461,9 +472,16 @@ gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
         backlight->brightness_target = value;
 
         task = g_task_new (backlight, cancellable, callback, user_data);
+        if (backlight->backend == BACKLIGHT_BACKEND_NONE) {
+                g_task_return_new_error (task, GSD_POWER_MANAGER_ERROR,
+                                         GSD_POWER_MANAGER_ERROR_FAILED,
+                                         "No backend initialized yet");
+                g_object_unref (task);
+                return;
+        }
 
 #ifdef __linux__
-        if (backlight->udev_device != NULL) {
+        if (backlight->backend == BACKLIGHT_BACKEND_UDEV) {
                 BacklightHelperData *task_data;
 
                 if (backlight->logind_proxy) {
@@ -496,6 +514,8 @@ gsd_backlight_set_brightness_val_async (GsdBacklight *backlight,
 #endif /* __linux__ */
 
         /* Fallback to setting via DisplayConfig (mutter) */
+        g_assert (backlight->backend == BACKLIGHT_BACKEND_MUTTER);
+
         monitor = gsd_backlight_mutter_find_monitor (backlight, TRUE);
         if (monitor) {
                 GsdDisplayConfig *display_config =
@@ -763,6 +783,8 @@ update_mutter_backlight (GsdBacklight *backlight)
         gboolean have_backlight = FALSE;
 
         backlights = gsd_display_config_get_backlight (display_config);
+        g_return_if_fail (backlights != NULL);
+
         g_variant_get (backlights, "(u@aa{sv})",
                        &backlight->backlight_serial,
                        &monitors);
@@ -780,18 +802,37 @@ update_mutter_backlight (GsdBacklight *backlight)
                 g_variant_lookup (monitor, "active", "b", &monitor_active);
                 backlight->builtin_display_disabled = !monitor_active;
 
-                if (g_variant_lookup (monitor, "value", "i", &backlight->brightness_val)) {
-                        g_variant_lookup (monitor, "min", "i", &backlight->brightness_min);
-                        g_variant_lookup (monitor, "max", "i", &backlight->brightness_max);
-                        have_backlight = TRUE;
+                switch (backlight->backend) {
+                case BACKLIGHT_BACKEND_NONE:
+                case BACKLIGHT_BACKEND_MUTTER:
+                        if (g_variant_lookup (monitor, "value", "i", &backlight->brightness_val)) {
+                                g_variant_lookup (monitor, "min", "i", &backlight->brightness_min);
+                                g_variant_lookup (monitor, "max", "i", &backlight->brightness_max);
+                                have_backlight = TRUE;
+                                backlight->backend = BACKLIGHT_BACKEND_MUTTER;
+                        }
+                        break;
+                case BACKLIGHT_BACKEND_UDEV:
+                        break;
                 }
         }
 
-        if (!have_backlight) {
+        if (!have_backlight && backlight->backend == BACKLIGHT_BACKEND_MUTTER) {
                 backlight->brightness_val = -1;
                 backlight->brightness_min = -1;
                 backlight->brightness_max = -1;
         }
+}
+
+static void
+maybe_update_mutter_backlight (GsdBacklight *backlight)
+{
+        GsdDisplayConfig *display_config =
+                gnome_settings_bus_get_display_config_proxy ();
+        g_autofree char *name_owner = NULL;
+
+        if ((name_owner = g_dbus_proxy_get_name_owner (G_DBUS_PROXY (display_config))))
+                update_mutter_backlight (backlight);
 }
 
 static void
@@ -834,7 +875,13 @@ gsd_backlight_initable_init (GInitable       *initable,
                           "notify::backlight",
                           G_CALLBACK (on_backlight_changed),
                           backlight);
-        update_mutter_backlight (backlight);
+
+        g_signal_connect_object (display_config,
+                                 "notify::g-name-owner",
+                                 G_CALLBACK (maybe_update_mutter_backlight),
+                                 backlight,
+                                 G_CONNECT_SWAPPED);
+        maybe_update_mutter_backlight (backlight);
 
 #ifdef __linux__
         backlight->logind_proxy =
@@ -876,11 +923,13 @@ gsd_backlight_initable_init (GInitable       *initable,
         }
 
         /* Try finding a udev device. */
-        if (gsd_backlight_udev_init (backlight))
+        if (gsd_backlight_udev_init (backlight)) {
+                g_assert (backlight->backend == BACKLIGHT_BACKEND_UDEV);
                 goto found;
+        }
 #endif /* __linux__ */
 
-        if (backlight->backlight_connector) {
+        if (backlight->backend == BACKLIGHT_BACKEND_MUTTER) {
                 g_debug ("Using DisplayConfig (mutter) for backlight.");
                 goto found;
         }
