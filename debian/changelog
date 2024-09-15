@@ -1,3 +1,9 @@
+gnome-settings-daemon (47-1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Sun, 15 Sep 2024 06:10:59 -0400
+
 gnome-settings-daemon (47~rc-1) experimental; urgency=medium
 
   [ Simon McVittie ]
