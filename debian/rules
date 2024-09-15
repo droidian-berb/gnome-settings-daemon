@@ -30,17 +30,6 @@ override_dh_auto_configure:
 		--libdir=/usr/lib \
 		$(CONFFLAGS)
 
-override_dh_auto_test:
-	mkdir -p -m 01777 /tmp/.X11-unix || true
-# Ignore test failures on some architectures because they
-# require working mutter & gnome-session.
-# Similar skipping is being done in mutter
-ifeq (,$(filter $(DEB_HOST_ARCH), mips64el riscv64))
-	dh_auto_test
-else
-	dh_auto_test || true
-endif
-
 override_dh_installchangelogs:
 	dh_installchangelogs -XChangeLog
 
