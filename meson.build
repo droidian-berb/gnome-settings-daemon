@@ -1,9 +1,15 @@
 project(
   'gnome-settings-daemon', 'c',
-  version: '47',
+  version: '47.1',
   license: [ 'GPL2+', 'LGPLv2+' ],
   meson_version: '>= 0.57.0'
 )
+
+# Make sure the version always has a trailing N.0 so that
+# it can be sorted properly when comparing to N.alpha and so on.
+#
+# See https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas/-/issues/66
+assert(meson.project_version().split('.').length() > 1)
 
 gsd_version = meson.project_version()
 version_array = gsd_version.split('.')
