@@ -1,9 +1,11 @@
-gnome-settings-daemon (47.1-1) UNRELEASED; urgency=medium
+gnome-settings-daemon (47.1-1) experimental; urgency=medium
 
   [ Jeremy Bícha ]
   * New upstream release
-  * Disable tests that require working mutter & xwayland
-    (Mitigates: #1081417, #1018437, #1081439, #1081440)
+  * Disable tests that require working mutter & xwayland.
+    Debian only started running these tests in July and they
+    became much flakier after they were switched upstream to xwayland
+    for 47~rc. (Mitigates: #1081417, #1018437, #1081439, #1081440)
 
   [ Simon McVittie ]
   * Drop unused Lintian override for #1031037, fixed in Lintian 2.117.0
