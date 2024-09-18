@@ -10,7 +10,7 @@ gnome-settings-daemon (47.1-1) experimental; urgency=medium
   [ Simon McVittie ]
   * Drop unused Lintian override for #1031037, fixed in Lintian 2.117.0
 
- -- Simon McVittie <smcv@debian.org>  Wed, 18 Sep 2024 11:05:29 +0100
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Wed, 18 Sep 2024 07:35:54 -0400
 
 gnome-settings-daemon (47~rc-1) experimental; urgency=medium
 
