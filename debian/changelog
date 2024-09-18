@@ -1,3 +1,9 @@
+gnome-settings-daemon (47.1-2) UNRELEASED; urgency=medium
+
+  * Fix a typo in a bug number in the previous changelog entry
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 18 Sep 2024 14:14:18 +0100
+
 gnome-settings-daemon (47.1-1) experimental; urgency=medium
 
   [ Jeremy Bícha ]
@@ -5,7 +11,7 @@ gnome-settings-daemon (47.1-1) experimental; urgency=medium
   * Disable tests that require working mutter & xwayland.
     Debian only started running these tests in July and they
     became much flakier after they were switched upstream to xwayland
-    for 47~rc. (Mitigates: #1081417, #1018437, #1081439, #1081440)
+    for 47~rc. (Mitigates: #1081417, #1081437, #1081439, #1081440)
 
   [ Simon McVittie ]
   * Drop unused Lintian override for #1031037, fixed in Lintian 2.117.0
