@@ -1,8 +1,11 @@
 gnome-settings-daemon (47.1-1) UNRELEASED; urgency=medium
 
+  [ Jeremy Bícha ]
   * New upstream release
+  * Disable tests that require working mutter & xwayland
+    (Mitigates: #1081417, #1018437, #1081439, #1081440)
 
- -- Jeremy Bícha <jbicha@ubuntu.com>  Mon, 16 Sep 2024 16:29:38 -0400
+ -- Simon McVittie <smcv@debian.org>  Wed, 18 Sep 2024 10:35:15 +0100
 
 gnome-settings-daemon (47~rc-1) experimental; urgency=medium
 
