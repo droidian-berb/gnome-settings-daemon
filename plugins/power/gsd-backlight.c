@@ -152,6 +152,12 @@ gsd_backlight_udev_resolve (GsdBacklight *backlight)
 
         g_assert (backlight->udev != NULL);
 
+        /* Try looking at:
+         * /sys/class/leds/lcd-backlight. */
+        backlight->udev_device = g_udev_client_query_by_sysfs_path (backlight->udev, "/sys/class/backlight/backlight");
+        if (backlight->udev_device != NULL)
+                return;
+
         devices = g_udev_client_query_by_subsystem (backlight->udev, "backlight");
         if (devices == NULL)
                 return;
