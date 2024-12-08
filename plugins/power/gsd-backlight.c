@@ -155,9 +155,12 @@ gsd_backlight_udev_resolve (GsdBacklight *backlight)
         /* Try looking at:
          * /sys/class/leds/lcd-backlight. */
         backlight->udev_device = g_udev_client_query_by_sysfs_path (backlight->udev, "/sys/class/backlight/backlight");
+        g_message("berb-debug: Resolve: El valor de backlight->udev_device és: %s", backlight->udev_device);
+
         if (backlight->udev_device != NULL)
                 return;
 
+        g_message("berb-debug: Resolve: No hauria de sortir desprs del if (backlight->udev_device != NULL");
         devices = g_udev_client_query_by_subsystem (backlight->udev, "backlight");
         if (devices == NULL)
                 return;
@@ -251,6 +254,8 @@ gsd_backlight_udev_init (GsdBacklight *backlight)
 
         backlight->udev = g_udev_client_new (subsystems);
         gsd_backlight_udev_resolve (backlight);
+
+        g_message("berb-debug: udev_init: Tornat de resolve, el valor de backlight->udev_device és: %s", backlight->udev_device);
         if (backlight->udev_device == NULL)
                 return FALSE;
 
