@@ -970,6 +970,16 @@ gsd_backlight_initable_init (GInitable       *initable,
         maybe_update_mutter_backlight (backlight);
 
 #ifdef __linux__
+        /* If BACKLIGHT_BACKEND_PREFER is udev */
+        const char *backlight_backend_prefer = getenv("BACKLIGHT_BACKEND_PREFER");
+        if (backlight_backend_prefer != NULL && strcmp(backlight_backend_prefer, "udev") == 0) {
+                if (gsd_backlight_udev_init (backlight)) {
+                        g_assert (backlight->backend == BACKLIGHT_BACKEND_UDEV);
+                        goto found;
+                }
+        }
+        backlight_backend_prefer = NULL;
+
         backlight->droid_leds = droid_leds_new ();
         if (droid_leds_is_kind_supported (backlight->droid_leds, DROID_LEDS_KIND_BACKLIGHT)) {
             backlight->backend = BACKLIGHT_BACKEND_LIBDROID;
@@ -1022,10 +1032,13 @@ gsd_backlight_initable_init (GInitable       *initable,
                 g_error_free (logind_error);
         }
 
-        /* Try finding a udev device. */
-        if (gsd_backlight_udev_init (backlight)) {
-                g_assert (backlight->backend == BACKLIGHT_BACKEND_UDEV);
-                goto found;
+        /* Try finding a udev device.
+           If BACKLIGHT_BACKEND_PREFER is NULL */
+        if (backlight_backend_prefer == NULL) {
+                if (gsd_backlight_udev_init (backlight)) {
+                        g_assert (backlight->backend == BACKLIGHT_BACKEND_UDEV);
+                }
+                        goto found;
         }
 #endif /* __linux__ */
 

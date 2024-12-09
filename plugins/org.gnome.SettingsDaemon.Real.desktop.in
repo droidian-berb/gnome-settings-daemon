@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=@description@
-Exec=@libexecdir@/gsd-@pluginname@
+Exec=@EXEC_VAR@@libexecdir@/gsd-@pluginname@
 OnlyShowIn=GNOME;
 NoDisplay=true
 X-GNOME-Autostart-Phase=Initialization

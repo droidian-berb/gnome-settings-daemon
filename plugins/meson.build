@@ -104,6 +104,13 @@ foreach plugin: all_plugins
     desktop_conf.set('systemd_hidden', enable_systemd ? 'true' : 'false')
     desktop_conf.set('pluginname', plugin_name)
     desktop_conf.set('description', plugin_description)
+
+    if plugin_name == 'power'
+        desktop_conf.set('EXEC_VAR', '$BACKLIGHT_BACKEND_PREFER ')
+    else
+        desktop_conf.set('EXEC_VAR', '')
+    endif
+
     configure_file(
         input: desktop_in_file,
         output: desktop,
